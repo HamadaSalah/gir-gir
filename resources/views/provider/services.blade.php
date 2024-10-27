@@ -43,7 +43,7 @@ margin-top: 5px; ">5.0</span>
   </div>
 
   <!-- nav service -->
-  <nav class="navitems">
+  <nav class="navitems"  style="width: 100%;height: 60px;line-height: 60px;background: #EAEAEA;">
     <div class="navservice">
       <a class="nav-link  m-2" href="#">
         <img class="vector-item" src="./imgs/material-symbols_home.png" alt="" />Full Page</a

@@ -188,7 +188,7 @@
     </div>
 
     <!-- nav service -->
-    <nav class="navitems">
+    <nav class="navitems" >
       <div class="navservice">
         <a class="nav-link m-2" href="#">
           <img

@@ -45,10 +45,7 @@ margin-top: 5px; ">5.0</span>
   </div>
 
     <!-- nav service -->
-    <nav class="navitems" style="width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background: #EAEAEA;">
+    <nav class="navitems" style="width: 100%;    height: 60px;line-height: 60px;background: #EAEAEA;">
       <div class="navservice">
         <a class="nav-link m-2" href="{{ Route('provider.show', $provider->id) }}">Full Page</a>
         <a class="nav-link m-2" href="#">Reviews</a>
