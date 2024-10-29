@@ -79,6 +79,9 @@
                 <!-- Admin Manager Login Button -->
                 <a href="{{ route('admin.login') }}" class="btn btn-secondary w-100 rounded-5">Admin manager login</a>
             </form>
+
+            <a style="display: block" href="{{ route('register') }}" class="mt-3"> Or Register Now</a>
+
         </div>
 
         <div class="col-lg-1 mt-4 d-none d-lg-block">

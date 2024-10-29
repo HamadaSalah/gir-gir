@@ -74,12 +74,14 @@ margin-top: 5px; ">5.0</span>
             <div class="package-content">
                 <h3>{{ $package->name }}</h3>
                 <p style="font-weight: 300;color: #636363;"><strong  style="font-weight: 600;color: #000">Name Shop:</strong> {{ $provider->name }}</p>
-                <p style="font-weight: 300;color: #636363;display: inline-block"> <strong   style="font-weight: 600;color: #000">Details:</strong> {{ $package->description }}</p>
+                <p style="font-weight: 300;color: #636363;display: inline-block"> <strong   style="font-weight: 600;color: #000;height: 50px;
+    overflow: hidden;
+    margin-bottom: 0;">Details:</strong> {{ $package->description }}</p>
                 <p style="font-weight: 300;color: #636363;"><strong style="font-weight: 600;color: #000">Provider Type:</strong> Company</p>
                 <p style="font-weight: 300;color: #636363;"><strong style="font-weight: 600;color: #000">From:</strong> <span style="color: #931158">{{ $package->cost }}$</span></p>
-                <p>
-                    {{-- <strong>You Get:</strong><span style="color: #931158"> 1204 Coin</span> --}}
-                </p>
+                {{-- <p>
+                     <strong>You Get:</strong><span style="color: #931158"> 1204 Coin</span> 
+                </p> --}}
                 <div class="package-footer">
                     <span class="rating"><img style="width: 12.6px; height: 12.57px"
                             src="{{ asset('imgs/Star 1.png') }}" alt="" />
@@ -324,13 +326,13 @@ alt=""></buttton>
 </div>
 
 <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+    function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -498,13 +500,15 @@ function closeForm() {
     float: right;
 
 }
+.d-flex.flex-column.align-items-center.p-4 {
+    display: none!important
+}
 </style>
 @endsection
 
 
 @push('js')
-    </footer>
-    <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="{{ asset('js/service.js') }}"></script>
 @endpush
