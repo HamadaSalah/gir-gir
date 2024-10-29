@@ -61,64 +61,47 @@ class PackagesController extends Controller
 
         return view('provider-panel.packages.create', compact('categories'));
     }
+
     public function store(Request $request)
-    {
-        // Update validation rules to handle services with names, costs, and optional images
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'cost' => 'required|numeric',
-            'category_id' => 'required|exists:categories,id',
-            'files' => 'required|array',
-            'files.*' => 'required|file|mimes:jpg,jpeg,png,pdf,docx,doc',
-            'service_name' => 'required|array|min:1', // Ensure at least one service is added
-            'service_name.*' => 'required|string|max:255',
-            'service_cost' => 'required|array|min:1',
-            'service_cost.*' => 'required|numeric',
-            'service_image.*' => 'nullable|file|mimes:jpg,jpeg,png|max:2048' // Optional image for each service
-        ]);
+{
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'cost' => 'required|numeric',
+        'category_id' => 'required|exists:categories,id',
+        'files.*' => 'file|mimes:jpg,jpeg,png,pdf,docx,doc',
+        'service_name.*' => 'required|string|max:255',
+        'service_cost.*' => 'required|numeric',
+        'service_image.*' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'
+    ]);
 
-        // Get authenticated provider
-        $provider = auth('provider')->user();
+    $provider = auth('provider')->user();
+    $package = $provider->packages()->create($request->only(['name', 'description', 'cost', 'category_id']));
 
-        // Create the package with basic details
-        $package = $provider->packages()->create($request->only(['name', 'description', 'cost', 'category_id']));
+    // Handle file uploads in parallel
+    $paths = collect($request->file('files'))->map(function ($file) {
+        return [
+            'path' => $file->store('uploads/packages', 'public'),
+            'name' => $file->getClientOriginalName(),
+        ];
+    });
+    $package->files()->createMany($paths->toArray());
 
-        // Handle package files
-        if ($request->hasFile('files')) {
-            foreach ($request->file('files') as $file) {
-                $path = $file->store('uploads/packages', 'public');
-                $package->files()->create(['path' => $path, 'name' => $file->getClientOriginalName()]);
-            }
-        }
+    // Add services in a single operation
+    $services = collect($data['service_name'])->map(function ($serviceName, $index) use ($data, $request) {
+        $serviceData = [
+            'name' => $serviceName,
+            'cost' => $data['service_cost'][$index],
+            'image_path' => $request->hasFile("service_image.{$index}") ?
+                $request->file("service_image.{$index}")->store('uploads/service_images', 'public') : null,
+        ];
+        return $serviceData;
+    });
 
-        // Add services to the package
-        $serviceNames = $request->input('service_name');
-        $serviceCosts = $request->input('service_cost');
-        $serviceImages = $request->file('service_image', []);
+    $package->services()->createMany($services->toArray());
 
-        foreach ($serviceNames as $index => $serviceName) {
-            $serviceCost = $serviceCosts[$index];
-            $serviceData = [
-                'name' => $serviceName,
-                'cost' => $serviceCost,
-            ];
-
-            // Handle optional service image
-            if (isset($serviceImages[$index]) && $serviceImages[$index]->isValid()) {
-                $serviceData['image_path'] = $serviceImages[$index]->store('uploads/service_images', 'public');
-            }
-
-            $serviceData['provider_id'] = $provider->id;
-
-            // Create the service for the package
-            $package->services()->create($serviceData);
-        }
-
-        // Redirect with success message
-        return redirect()->route('provider-panel.packages.index')->with('success', 'Package created successfully.');
-    }
-
+    return redirect()->route('provider-panel.packages.index')->with('success', 'Package created successfully.');
+}
 
 
     public function edit(Category $category, $package)

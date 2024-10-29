@@ -225,6 +225,10 @@ class HomeController extends Controller
         return view('about-provider', compact('provider'));
     }
 
+    public function locationProvider(Provider $provider) {
+        return view('location-provider', compact('provider'));
+    }
+
     public function checkout() {
 
         $carts = Cart::with('cartable')->where('user_id', auth()->user()?->id)->get();

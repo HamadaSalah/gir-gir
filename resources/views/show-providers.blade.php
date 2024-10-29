@@ -46,13 +46,13 @@ margin-top: 5px; ">5.0</span>
                 alt="" />Full Page</a>
         <a class="nav-link m-2" href="#">Reviews</a>
         <a class="nav-link m-2" href="#">Services</a>
-        <a class="nav-link m-2" href="#">Location</a>
+        <a class="nav-link m-2" href="{{ route('provider.location' , $provider) }}">Location</a>
         <a class="nav-link m-2" href="{{ Route('provider.about', $provider->id) }}">About</a>
-        <a class="nav-link m-2" href="#">Pacckages</a>
+        <a class="nav-link m-2" href="{{ route('provider.packages' , $provider) }}">Pacckages</a>
     </div>
 </nav>
 
- 
+
 <div class="package-list container p-10">
 
     <div class="cleafix"></div>
@@ -60,7 +60,7 @@ margin-top: 5px; ">5.0</span>
 <div class="Pacckages" style="display: block;width: 100%;">
     <h3>PACKAGES</h3>
    </div>
- 
+
 
     <img src="{{ asset('imgs/blue-balloon-png') }}-image-2400.png" alt="" class="bluepallon" />
     <img src="{{ asset('imgs/purple-balloon-png') }}-image-2416.png" alt="" class="puprepallon" />
@@ -80,7 +80,7 @@ margin-top: 5px; ">5.0</span>
                 <p style="font-weight: 300;color: #636363;"><strong style="font-weight: 600;color: #000">Provider Type:</strong> Company</p>
                 <p style="font-weight: 300;color: #636363;"><strong style="font-weight: 600;color: #000">From:</strong> <span style="color: #931158">{{ $package->cost }}$</span></p>
                 {{-- <p>
-                     <strong>You Get:</strong><span style="color: #931158"> 1204 Coin</span> 
+                     <strong>You Get:</strong><span style="color: #931158"> 1204 Coin</span>
                 </p> --}}
                 <div class="package-footer">
                     <span class="rating"><img style="width: 12.6px; height: 12.57px"
@@ -90,7 +90,7 @@ margin-top: 5px; ">5.0</span>
                 </div>
             </div>
         </div>
-        
+
     @endforeach
 
 </div>
@@ -101,12 +101,12 @@ margin-top: 5px; ">5.0</span>
 <!-- slider -->
 <main class="main__content sliders ">
     <section class="most_requested mb-5 position-relative">
-        
+
         <section class="splide trinds__slider--one container" aria-label="Splide Basic HTML Example">
             <div class="Pacckages" style="display: block;width: 100%;">
                 <h3>SERVICES</h3>
                </div>
-    
+
             <div class="splide__track">
                 <ul class="splide__list gap-2">
                     @foreach ($services as $service)
@@ -146,7 +146,7 @@ margin-top: 5px; ">5.0</span>
                                     </div>
                                 </div>
                             </div>
-                        </li>                        
+                        </li>
                     @endforeach
 
                 </ul>
@@ -315,7 +315,7 @@ alt=""></buttton>
         </div>
         <form action="/action_page.php" class="form-container">
             <textarea placeholder="Type message.." name="msg" id="MyMessage" required></textarea>
-      
+
           <div class="bottomButtons">
               <button type="button" class="btn" id="sendRequestBtn">Send</button>
               <button type="button" class="btn cancel" style="float: right" onclick="closeForm()">Close</button>
@@ -400,7 +400,7 @@ alt=""></buttton>
     border-radius: 25px 25px 0 25px;
     margin-bottom: 10px;
     float: left;
-    
+
 }
 .oneMessage p {
     margin: 0
