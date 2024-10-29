@@ -180,9 +180,9 @@
                     alt="" />Full Page</a>
             <a class="nav-link m-2" href="#">Reviews</a>
             <a class="nav-link m-2 active" href="#">Services</a>
-            <a class="nav-link m-2" href="{{ route('provider.about' , $package->provider) }}">Location</a>
+            <a class="nav-link m-2" href="{{ route('provider.location' , $package->provider) }}">Location</a>
             <a class="nav-link m-2" href="{{ route('provider.about' , $package->provider) }}">About</a>
-            <a class="nav-link m-2" href="{{ route('provider.packages' , $package->provider) }}">Pacckages</a>
+            <a class="nav-link m-2" href="{{ route('provider.packages' , $package->provider) }}">Packages</a>
         </div>
     </nav>
 
