@@ -175,7 +175,7 @@
     <!-- nav service -->
     <nav class="navitems">
         <div class="navservice">
-            <a class="nav-link m-2" href="#">
+            <a class="nav-link m-2" href="{{ route('provider.show' , $package->provider) }}">
                 <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}"
                     alt="" />Full Page</a>
             <a class="nav-link m-2" href="#">Reviews</a>

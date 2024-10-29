@@ -50,8 +50,8 @@ margin-top: 5px; ">5.0</span>
         <a class="nav-link m-2" href="{{ Route('provider.show', $provider->id) }}">Full Page</a>
         <a class="nav-link m-2" href="#">Reviews</a>
         <a class="nav-link m-2" href="#">Services</a>
-        <a class="nav-link m-2" href="#">Location</a>
-        <a class="nav-link m-2 active" href="#">About</a>
+        <a class="nav-link m-2" href="{{ route('provider.location' , $provider) }}">Location</a>
+        <a class="nav-link m-2 active" href="{{ route('provider.about' , $provider) }}">About</a>
         <a class="nav-link m-2" href="{{ Route('provider.show', $provider->id) }}">Pacckages</a>
       </div>
     </nav>
@@ -94,7 +94,7 @@ margin-top: 5px; ">5.0</span>
 
     <!-- info -->
 
-{{-- 
+{{--
     <div class="container containerInfo">
         <section class="customer-details-container">
           <div class="customer-details-content">
