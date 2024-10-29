@@ -190,16 +190,16 @@
 
     <div class="ballons">
         <h1>
-            Hanging 100 balloons ready
+            {{ $package->name }}
             <span><i class="fa-solid fa-star"></i>4.8</span>
         </h1>
-        <div class="">
+        <div class="images">
             @foreach($package->files as $img)
-                <img src="{{ asset($img->path) }}" />
-
+                <img src="{{ asset($img->path) }}" class="img-thumbnail" alt="{{ $package->name }}" />
             @endforeach
         </div>
     </div>
+
     <!-- service section -->
     <form action="{{ Route('addToCard') }}" method="POST">
         @csrf
@@ -446,7 +446,7 @@
                             <input type="hidden" name="service_id" value="{{ $service->id }}">
                             <input type="hidden" name="package_id" value="{{ $package->id }}">
                             <div class="choosePackage">
-                                <div class="leftch"><img src="{{ asset($service->files[0]->path) }}" alt="">
+                                <div class="leftch"><img src="{{ asset($service->cover) }}" alt="">
                                 </div>
                                 <div class="rightch">
                                     <p>name : {{ $service->name }}</p>
@@ -484,7 +484,7 @@
                             <div class="choosePackage">
                                 <div class="leftch">
                                   @if (isset($service1->files[0]?->path))
-                                    <img src="{{ asset($service1->files[0]?->path) }}" alt="">  
+                                    <img src="{{ asset($service1->files[0]?->path) }}" alt="">
                                   @endif
                                 </div>
                                 <div class="rightch">
