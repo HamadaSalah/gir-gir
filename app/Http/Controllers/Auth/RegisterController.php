@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Provider;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,26 +17,45 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
+
         $data = $request->validated();
         $data['phone'] = '+' . $data['countryCode'] . $data['phone'];
 
         unset($data['countryCode']);
 
-        $user = User::create($data);
 
-        if ($user->type === 'company_provider') {
-            $user->company()->create([
-                'business_name' => $data['business_name'],
-                'website' => $data['website'],
-            ]);
-        }elseif ($user->type === 'individual_provider') {
-            $user->individual()->create([
-                'business_name' => $data['business_name'],
-            ]);
-        }
+        if($data['type'] === 'user'){
+            $user = User::create(
+                [
+                    'first_name' => $data['first_name'],
+                    'last_name' => $data['last_name'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'password' => $data['password'],
+                    'type' => $data['type'],
+                ]
+            );
 
         auth()->login($user);
 
         return redirect()->route('home');
+        }
+
+        $user = Provider::create(
+            [
+                'name' => $data['first_name'] . ' ' . $data['last_name'],
+                'tag' => $data['tag'],
+                'type' => $data['type'] == 'Individual providers' ? 'individual' : 'company',
+                'phone' => $data['phone'],
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'website' => $data['website'],
+                'company_id' => $data['combined_company_code'],
+            ]
+            );
+
+        auth()->login($user);
+        
+        return redirect()->route('provider-panel.home');
     }
 }
