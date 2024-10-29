@@ -187,11 +187,10 @@
     </nav>
 
     <!-- ballons image -->
-
     <div class="ballons">
         <h1>
             {{ $package->name }}
-            <span><i class="fa-solid fa-star"></i>4.8</span>
+            <span class="rating"><i class="fa-solid fa-star"></i> 4.8</span>
         </h1>
         <div class="images">
             @foreach($package->files as $img)
@@ -199,6 +198,47 @@
             @endforeach
         </div>
     </div>
+
+    <style>
+        .ballons {
+    text-align: center;
+    margin: 20px;
+}
+
+.ballons h1 {
+    font-size: 2rem;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.ballons .rating {
+    font-size: 1rem;
+    color: #ffa500;
+    margin-left: 10px;
+}
+
+.images {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.images img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.images img:hover {
+    transform: scale(1.05);
+}
+
+</style>
 
     <!-- service section -->
     <form action="{{ Route('addToCard') }}" method="POST">
