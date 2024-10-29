@@ -89,12 +89,12 @@ class HomeController extends Controller
         return view('providers', ['best_shops' => Provider::with('package.files')->get()]);
     }
     public function bestShops() {
-        $providers = Provider::with('package.files')->get();
+
         if (Schema::hasColumn('providers', 'to_home')){
-            Provider::with('package.files')->where('to_home', 1)->with('package.files')->get();
+            $providers = Provider::with('package.files')->where('to_home', 1)->with('package.files')->get();
         }
         else {
-            Provider::with('package.files')->get();
+            $providers = Provider::with('package.files')->get();
         }
         return view('bestShops', ['best_shops' => $providers]);
     }
