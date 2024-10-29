@@ -106,7 +106,7 @@
 
         </div>
 
-          <div class="card card-custom align-items-center mt-3" style="width: 25%; padding: 15px;border:1px solid #83044a" id="rightprev">
+          <div id="order-card" class="card card-custom align-items-center mt-3" style="width: 25%; padding: 15px;border:1px solid #83044a" id="rightprev">
             <img src="{{ asset('') }}imgs/gir.png" alt="" width="100px">
 
             <!-- Row for Name and Order Date -->
@@ -141,7 +141,7 @@
                 </div>
                 <div>
                     <small style="font-size: 0.8rem;">Status:</small>
-                    <small style="font-size: 0.8rem; margin-left: 5px;">{{ $order->status }}</small>
+                    <small style="font-size: 0.8rem; margin-left: 5px;">{{ $order->readable_status }}</small>
                 </div>
             </div>
         <hr color="black" width="100%">
@@ -181,7 +181,7 @@
                 <strong style="font-size: 0.8rem;">Total Amount:</strong>
                 <strong style="font-size: 0.8rem; margin-left: 5px;">{{ number_format($order->total,2) }}$</strong><br>
             </div>
-            <div style="flex-direction: column;display: flex;align-items: center;text-align: left;">
+            <div  onclick="printOrder()"  style="flex-direction: column;display: flex;align-items: center;text-align: left;">
 <img src="{{ asset('') }}imgs/print.png" alt="" width="70px">
 <strong>Print</strong>
             </div>
@@ -207,21 +207,21 @@
     @elseif($order->status == 'cancelled')
     <h3 class="text-center">The order has been cancelled.</h3>
     @else
-    <div class="flex items-start justify-center" style="width: 100%; margin-right: 30%;">
-        <section class="col-12 col-lg-12 track-order">
-            <h3 class="track-title text-lg font-semibold text-xl mb-4">Track Order</h3>
-            <div class="track-status flex flex-wrap justify-between">
+    <div class="flex items-start justify-center" style="width: 70%; margin-right: 30%;margin-top:-10%; margin-left: 2%">
+        <section class="col-12 col-lg-12 track-order p-4 bg-white shadow-lg rounded-lg">
+            <h3 class="track-title text-lg font-semibold text-xl mb-6 text-center text-gray-800">Track Order</h3>
+            <div class="track-status flex flex-wrap justify-between border-b pb-4 mb-4">
 
                 @php
                     // Define the statuses in order
                     $statuses = [
-                        'requested' => ['title' => 'Received request', 'description' => 'Your request has been successfully received and is being reviewed.'],
+                        'requested' => ['title' => 'Received Request', 'description' => 'Your request has been successfully received and is being reviewed.'],
                         'approved' => ['title' => 'Approved', 'description' => 'Your request has been approved.'],
-                        'set_the_installation' => ['title' => 'Set the installation', 'description' => 'A worker has been assigned to install or deliver the decorations and ornaments to you.'],
-                        'the_visit_has_been_scheduled' => ['title' => 'The visit has been scheduled', 'description' => 'The appointment is scheduled.'],
-                        'worker_on_the_road' => ['title' => 'Worker on the road', 'description' => 'Technician on the way to your location.'],
-                        'get_started' => ['title' => 'Get started', 'description' => 'The worker has started working on your order.'],
-                        'work_completed' => ['title' => 'Work completed', 'description' => 'Your order has been completed, please rate the service and provide your feedback.'],
+                        'set_the_installation' => ['title' => 'Set the Installation', 'description' => 'A worker has been assigned to install or deliver the decorations and ornaments to you.'],
+                        'the_visit_has_been_scheduled' => ['title' => 'Visit Scheduled', 'description' => 'The appointment is scheduled.'],
+                        'worker_on_the_road' => ['title' => 'Worker on the Road', 'description' => 'Technician on the way to your location.'],
+                        'get_started' => ['title' => 'Get Started', 'description' => 'The worker has started working on your order.'],
+                        'work_completed' => ['title' => 'Work Completed', 'description' => 'Your order has been completed, please rate the service and provide your feedback.'],
                     ];
 
                     // Get the current order status
@@ -231,25 +231,100 @@
                 @foreach ($statuses as $key => $status)
                     <div class="step mb-4 flex items-start w-1/6 {{ $currentStatusIndex >= array_search($key, array_keys($statuses)) ? 'active' : '' }}">
                         <div class="icon mr-3">
-                            <img src="{{ asset('provider-panel/imgs/k-track-order' . (array_search($key, array_keys($statuses)) + 1) . '.svg') }}" alt="track" loading="lazy" class="w-8 h-8">
+                            <img src="{{ asset('provider-panel/imgs/k-track-order' . (array_search($key, array_keys($statuses)) + 1) . '.svg') }}" alt="track" loading="lazy" class="w-12 h-12 transition duration-300 ease-in-out transform hover:scale-110 {{ $currentStatusIndex >= array_search($key, array_keys($statuses)) ? 'text-primary' : 'text-gray-400' }}">
                         </div>
                         <div class="content">
-                            <h3 class="font-semibold text-lg">{{ $status['title'] }}</h3>
-                            <p>{{ $status['description'] }}</p>
+                            <h3 class="font-semibold text-lg text-gray-700">{{ $status['title'] }}</h3>
+                            <p class="text-sm text-gray-600">{{ $status['description'] }}</p>
                         </div>
                     </div>
                 @endforeach
             </div>
 
             <!-- Form to move to the next step -->
-            <form id="next-step-form" class="mt-4" method="POST" action="{{ route('provider-panel.orders.update' , $order) }}">
+            <form id="next-step-form justify-center align-items-center" class="mt-4" method="POST" action="{{ route('provider-panel.orders.update', $order) }}">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="btn btn-primary btn-sm" style="font-size: 12px; padding: 5px 15px; border: 1px solid #83044a;">Move to Next Step</button>
+                <button type="submit" class="btn btn-primary btn-sm w-full bg-[#83044a] hover:bg-[#6f033d] text-white rounded-lg py-2 transition duration-200 ease-in-out" style="font-size: 14px;">Move to Next Step</button>
             </form>
         </section>
     </div>
+
+    <style>
+        .track-order {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .step.active .icon img {
+            filter: brightness(1.5);
+        }
+
+        .btn-primary {
+            border: 1px solid #83044a;
+        }
+
+        .text-primary {
+            color: #83044a;
+        }
+
+        .border-b {
+            border-bottom: 2px solid #ececec;
+        }
+    </style>
+
 @endif
+
+<script>
+    function printOrder() {
+        // Create a new window
+        const printWindow = window.open('', '_blank', 'width=800,height=600');
+
+        // Get the content of the order card
+        const content = document.getElementById('order-card').innerHTML;
+
+        // Write the content to the new window
+        printWindow.document.write(`
+            <html>
+                <head>
+                    <title>Print Order</title>
+                    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Include your CSS -->
+                    <style>
+                        /* Include styles for the order card here */
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 20px;
+                        }
+                        /* Add your custom styles */
+                        #order-card {
+                            border: 1px solid #ddd; /* Example border */
+                            padding: 20px;
+                            border-radius: 5px; /* Rounded corners */
+                        }
+                        /* Hide buttons in print view */
+                        .btn {
+                            display: none;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div id="order-card">
+                        ${content}
+                    </div>
+                </body>
+            </html>
+        `);
+
+        // Close the document to finish loading
+        printWindow.document.close();
+
+        // Wait for the new window to load completely
+        printWindow.onload = function() {
+            // Trigger the print dialog
+            printWindow.print();
+            printWindow.close(); // Optionally close the window after printing
+        };
+    }
+</script>
 
 
     <script>

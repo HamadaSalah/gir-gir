@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Provider;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
@@ -10,6 +11,7 @@ class ServicesController extends Controller
     public function index()
     {
         $services = auth()->user()->services()->latest()->get();
+
 
         return view('provider-panel.services.index', compact('services'));
     }
@@ -30,7 +32,15 @@ class ServicesController extends Controller
 
         $provider = auth('provider')->user();
 
-        $service = $provider->services()->create($request->only(['name', 'description', 'cost']));
+        $service = Service::create(
+            [
+                'provider_id' => auth()->id(),
+                'name' => $request->name,
+                'description' => $request->description,
+                'cost' => $request->cost,
+            ]
+            );
+        // $service = $provider->services()->create($request->only(['name', 'description', 'cost']));
 
         if ($request->hasFile('file')) {
             $path = $request->file('file')->store('uploads/services', 'public');
