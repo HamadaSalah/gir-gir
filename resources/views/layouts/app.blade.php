@@ -44,7 +44,7 @@
                 <a class="nav-link p-0" href="{{ Route('search') }}">Packages</a>
               </li>
               <li class="nav-item px-4 text-nowrap">
-                <a class="nav-link p-0" href="{{ Route('providers') }}">Best shops</a>
+                <a class="nav-link p-0" href="{{ Route('bestShops') }}">Best shops</a>
               </li>
               <li class="nav-item px-4 text-nowrap">
                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>

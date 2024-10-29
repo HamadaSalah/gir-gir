@@ -18,6 +18,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\Facades\Schema;
 
 class HomeController extends Controller
 {
@@ -86,6 +87,18 @@ class HomeController extends Controller
      */
     public function providers() {
         return view('providers', ['best_shops' => Provider::with('package.files')->get()]);
+    }
+
+    public function bestShops() {
+
+        $providers = Provider::with('package.files')->get();
+        if (Schema::hasColumn('providers', 'to_home')){
+            Provider::with('package.files')->where('to_home', 1)->with('package.files')->get();
+        }
+        else {
+            Provider::with('package.files')->get();
+        }
+        return view('bestShops', ['best_shops' => $providers]);
     }
 
     /**

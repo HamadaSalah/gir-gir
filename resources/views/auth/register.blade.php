@@ -802,7 +802,7 @@
                   />
                 </button>
               </div>
-
+              <a style="display: block" href="{{ route('users.login') }}" class="mt-3"> Or Login Now</a>
             <input
               type="text"
               class="form-control rounded mt-3 d-none account rounded-5 bg-secondary border-0"

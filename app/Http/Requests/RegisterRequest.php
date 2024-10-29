@@ -26,7 +26,8 @@ class RegisterRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => ['required', Password::min(8)->mixedCase()->letters()->numbers()->symbols()->uncompromised()],
+            'password' => ['required', Password::min(8)],
+            // ->mixedCase()->letters()->numbers()->symbols()->uncompromised()
             'countryCode' => 'required|string|max:2',
             'phone' => 'required|numeric|max_digits:10|unique:users,phone',
             'type' => 'required|string|in:user,individual_provider,company_provider',
