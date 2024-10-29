@@ -1,13 +1,5 @@
 @extends('provider-panel.layouts.app')
 
-@push('css')
-    <link rel="stylesheet" href="{{ asset('') }}css/bootstrap.css" />
-    <link rel="stylesheet" href="{{ asset('') }}css/service.css" />
-    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-@endpush
-
 @section('title', 'Chat Messages')
 
 @section('content')
@@ -26,7 +18,7 @@
             </div>
             <div class="tab-content">
                 <div id="inbox" class="contacts-outter-wrapper tab-pane active">
-                    
+
                     <div class="contacts-outter">
                         <ul class="list-unstyled contacts">
                             @foreach ($chats as $chat)
@@ -41,9 +33,9 @@
                                         <i class="fa fa-trash-o"></i>
                                         {{-- <i class="fa fa-paperclip"></i> --}}
                                     </div>
-                                </li>                                
+                                </li>
                             @endforeach
-                          
+
                         </ul>
                     </div>
                 </div>
@@ -67,7 +59,7 @@
                                         <i class="fa fa-trash-o"></i>
                                         <i class="fa fa-paperclip"></i>
                                     </div>
-                            </li>                                
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -137,7 +129,7 @@
         <div class="tab-content">
             @foreach ($chats as $chat)
                 <div class="tab-pane message-body <?php if($loop->index == 0) echo "active"; ?>"" id="inbox-message-{{ $chat->id }}">
-                
+
 
                     <div class="message-chat">
                         <div class="chat-body">
@@ -152,7 +144,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                </div>                                
+                                </div>
                             @endforeach
                         </div>
                         <div class="chat-footer">
@@ -171,10 +163,10 @@
     </div>
 </div>
 
-  
+
 <style>
     .contacts li > .info-combo > h3.name{
-    font-size:12px;    
+    font-size:12px;
 }
 
 .contacts li .message-time {
@@ -347,7 +339,7 @@
   overflow: hidden;
 }
 
- 
+
 .contacts-outter-wrapper:nth-child(2):after {
   background-color: #0ec8a2;
 }
@@ -663,7 +655,7 @@
   margin: 0 5px 20px 15px;
   color: #788288;
 }
- 
+
 .message .medium-image {
   float: left;
   margin-left: 10px;
@@ -713,7 +705,7 @@
   float: right;
   margin: 0 15px 20px 5px;
 }
- 
+
 
 .message.my-message .medium-image {
   float: right;
@@ -737,7 +729,7 @@
   color: #fff;
 }
 
- 
+
 .message.success .message-body {
   background-color: #0ec8a2;
   border: 1px solid #0ec8a2;
@@ -927,7 +919,7 @@
 }
 
 .profile-main .profile-background {
-  
+
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -1029,16 +1021,16 @@
 
                                     <div class="message-body">
                                         <div class="message-text">
-                                          ${message} 
+                                          ${message}
                                         </div>
                                     </div>
                                     <br>
-                                </div>                                
+                                </div>
 `;
                     // Append the new message to the messages container
-                    
+
                     console.log(button.parent().parent().find('.chat-body'));
-                    
+
                     button.parent().parent().find('.chat-body').append(newMessage);
 
                     $('.send-message-text').val('');

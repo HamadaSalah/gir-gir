@@ -38,6 +38,6 @@ class AboutController extends Controller
             ]
         );
 
-        return redirect()->route('provider-panel.home');
+        return redirect()->route('provider-panel.about');
     }
 }

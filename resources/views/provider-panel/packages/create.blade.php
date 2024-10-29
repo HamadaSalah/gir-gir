@@ -97,11 +97,12 @@
 
 @push('scripts')
     <script>
-        // Handle file input click for each package image
         document.querySelectorAll('.custom-file-input').forEach((label, index) => {
             const fileInput = document.getElementById(`fileInput${index + 1}`);
 
-            label.addEventListener('click', function() {
+            label.addEventListener('click', function(event) {
+                // Prevent the default behavior
+                event.preventDefault();
                 // Click the associated file input when the label is clicked
                 fileInput.click();
             });
@@ -116,6 +117,7 @@
                 }
             });
         });
+
 
         document.getElementById('addServiceBtn').addEventListener('click', function() {
             const servicesContainer = document.getElementById('servicesContainer');

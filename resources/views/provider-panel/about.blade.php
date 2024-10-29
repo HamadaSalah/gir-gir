@@ -59,10 +59,8 @@
 
           </div>
 
-        <div id="acard" style="margin-top: 20px;">
-            <h3 style="color: darkred;margin-top: 5px">
-                Provider Details
-            </h3>
+          <div id="acard" style="margin-top: 20px;">
+            <h3 style="color: darkred; margin-top: 5px;">Provider Details</h3>
             <div>
                 <strong style="font-size: 0.8rem;">Name :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->name }}</small><br>
@@ -71,10 +69,10 @@
                 <strong style="font-size: 0.8rem;">Invoice No :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">2136</small><br>
                 <strong style="font-size: 0.8rem;">Date :</strong>
-                <small style="font-size: 0.8rem; margin-left: 5px;">12-3-2024</small>   <br>
-                 <strong style="font-size: 0.8rem;">Email :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">12-3-2024</small><br>
+                <strong style="font-size: 0.8rem;">Email :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->email }}</small><br>
-                <strong style="font-size: 0.8rem;">Licence  :</strong>
+                <strong style="font-size: 0.8rem;">License :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->license_number ?? 'N/A' }}</small><br>
                 <strong style="font-size: 0.8rem;">Phones No :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">
@@ -84,18 +82,37 @@
                         N/A
                     @endif
                 </small><br>
-                <strong style="font-size: 0.8rem;">Date :</strong>
-                <small style="font-size: 0.8rem; margin-left: 5px;">12-3-2024</small><br>
                 <strong style="font-size: 0.8rem;">Country :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->country ?? 'N/A' }}</small><br>
-                <strong style="font-size: 0.8rem;">City  :</strong>
+                <strong style="font-size: 0.8rem;">City :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->city ?? 'N/A' }}</small><br>
                 <strong style="font-size: 0.8rem;">Address :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->address ?? 'N/A' }}</small><br>
                 <strong style="font-size: 0.8rem;">ZipCode :</strong>
                 <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->zip_code ?? 'N/A' }}</small>
             </div>
+
+            <hr style="margin: 20px 0;"> <!-- Separator -->
+
+            <div>
+                <h3 style="color: darkred; margin-top: 5px;">Social Information</h3>
+                <strong style="font-size: 0.8rem;">Telegram :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->telegram ?? 'N/A' }}</small><br>
+                <strong style="font-size: 0.8rem;">Instagram :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->instagram ?? 'N/A' }}</small><br>
+                <strong style="font-size: 0.8rem;">WhatsApp :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->whatsapp ?? 'N/A' }}</small><br>
+                <strong style="font-size: 0.8rem;">Twitter :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->twitter ?? 'N/A' }}</small><br>
+                <strong style="font-size: 0.8rem;">Facebook :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->facebook ?? 'N/A' }}</small><br>
+                <strong style="font-size: 0.8rem;">YouTube :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->youtube ?? 'N/A' }}</small><br>
+                <strong style="font-size: 0.8rem;">WeChat :</strong>
+                <small style="font-size: 0.8rem; margin-left: 5px;">{{ auth()->user()->info->wechat ?? 'N/A' }}</small><br>
+            </div>
         </div>
+
     </div>
           </main>
 

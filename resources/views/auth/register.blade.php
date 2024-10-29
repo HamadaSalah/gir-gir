@@ -730,57 +730,93 @@
             <option value="user" selected>User</option>
             </select>
             <div class="input-group mt-3 companyId d-none">
-                <label for="type" class="form-label fw-bold mt-3 w-100"
-                  >Enter Company Add mail
-                </label>
+                <label for="type" class="form-label fw-bold mt-3 w-100">Enter Company Add Mail</label>
                 <div class="d-flex">
                   <div class="d-flex">
                     <input
-                      id="id"
+                      name="company_code[]"
                       type="text"
+                      maxlength="1"
                       placeholder="1"
                       class="form-control rounded-5 bg-secondary border-0"
+                      onkeyup="moveToNextInput(this)"
                     />
                     <input
-                      id="id"
+                      name="company_code[]"
                       type="text"
+                      maxlength="1"
                       placeholder="2"
                       class="form-control rounded-5 bg-secondary border-0"
+                      onkeyup="moveToNextInput(this)"
                     />
                     <input
-                      id="id"
+                      name="company_code[]"
                       type="text"
+                      maxlength="1"
                       placeholder="3"
                       class="form-control rounded-5 bg-secondary border-0"
+                      onkeyup="moveToNextInput(this)"
                     />
                     <input
-                      id="id"
+                      name="company_code[]"
                       type="text"
+                      maxlength="1"
                       placeholder="4"
                       class="form-control rounded-5 bg-secondary border-0"
+                      onkeyup="moveToNextInput(this)"
                     />
                     <input
-                      id="id"
+                      name="company_code[]"
                       type="text"
+                      maxlength="1"
                       placeholder="5"
                       class="form-control rounded-5 bg-secondary border-0"
+                      onkeyup="moveToNextInput(this)"
                     />
                     <input
-                      id="id"
+                      name="company_code[]"
                       type="text"
+                      maxlength="1"
                       placeholder="6"
                       class="form-control rounded-5 bg-secondary border-0"
+                      onkeyup="moveToNextInput(this)"
                     />
                   </div>
                 </div>
+                <input type="hidden" id="combinedCompanyCode" name="combined_company_code" />
               </div>
+
+              <script>
+                // Function to move to the next input after a digit is entered
+                function moveToNextInput(currentInput) {
+                  if (currentInput.value.length === 1) {
+                    let nextInput = currentInput.nextElementSibling;
+                    while (nextInput && nextInput.tagName !== 'INPUT') {
+                      nextInput = nextInput.nextElementSibling;
+                    }
+                    if (nextInput) {
+                      nextInput.focus();
+                    }
+                  }
+                }
+
+                // On form submit, concatenate all input values into the hidden input
+                document.querySelector('form').addEventListener('submit', function (e) {
+                  const inputs = document.querySelectorAll('input[name="company_code[]"]');
+                  const combinedValue = Array.from(inputs).map(input => input.value).join('');
+                  document.getElementById('combinedCompanyCode').value = combinedValue;
+                });
+              </script>
+
               <input
                 type="text"
+                name="tag"
                 class="form-control rounded mt-3 d-none account rounded-5 bg-secondary border-0"
                 placeholder="Account Business Name"
               />
               <input
                 type="text"
+                name="website"
                 class="form-control rounded mt-3 website d-none rounded-5 bg-secondary border-0"
                 placeholder="Website "
               />
@@ -789,6 +825,7 @@
               >
                 <input
                   type="password"
+                  name="password"
                   placeholder="Password"
                   class="form-control p-2 rounded-start-5 bg-secondary border-0"
                 />
@@ -803,21 +840,12 @@
                 </button>
               </div>
               <a style="display: block" href="{{ route('users.login') }}" class="mt-3"> Or Login Now</a>
-            <input
-              type="text"
-              class="form-control rounded mt-3 d-none account rounded-5 bg-secondary border-0"
-              placeholder="Account Business Name"
-            />
-            <input
-              type="text"
-              class="form-control rounded mt-3 website d-none rounded-5 bg-secondary border-0"
-              placeholder="Website "
-            />
             <div
               class="input-group align-items-start provider-password mb-3 d-none"
             >
               <input
                 type="password"
+                name="password_confirmation"
                 placeholder="Re-Password"
                 class="form-control p-2 rounded-start-5 bg-secondary border-0"
               />

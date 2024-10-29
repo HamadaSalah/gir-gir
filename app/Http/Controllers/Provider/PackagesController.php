@@ -9,23 +9,42 @@ use Illuminate\Support\Facades\DB;
 
 class PackagesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $provider = auth('provider')->user();
 
-        $categories = Category::whereHas('packages', function ($query) use ($provider) {
-            $query->where('provider_id', $provider->id);
-        })
-        ->withCount(['packages' => function ($query) use ($provider) {
-            $query->where('provider_id', $provider->id);
-        }])
-        ->with(['packages' => function ($query) use ($provider) {
-            $query->where('provider_id', $provider->id)->with('files');
-        }])
-        ->get();
+        $categoryId = $request->input('category');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
 
-        return view('provider-panel.packages.index', compact('categories'));
+        $categories = Category::whereHas('packages', function ($query) use ($provider, $minPrice, $maxPrice) {
+                $query->where('provider_id', $provider->id);
+                if ($minPrice) {
+                    $query->where('cost', '>=', $minPrice);
+                }
+                if ($maxPrice) {
+                    $query->where('cost', '<=', $maxPrice);
+                }
+            })
+            ->withCount(['packages' => function ($query) use ($provider) {
+                $query->where('provider_id', $provider->id);
+            }])
+            ->with(['packages' => function ($query) use ($provider) {
+                $query->where('provider_id', $provider->id)
+                      ->with('files');
+            }]);
+
+        if ($categoryId) {
+            $categories->where('id', $categoryId);
+        }
+
+        $categories = $categories->get();
+
+        $allcategories = Category::get();
+
+        return view('provider-panel.packages.index', compact('categories' , 'allcategories'));
     }
+
 
     public function show(Category $category, $package)
     {

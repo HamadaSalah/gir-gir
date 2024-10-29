@@ -37,22 +37,25 @@
                 <a class="nav-link" href="{{ route('provider-panel.home') }}">Home</a>
               </li>
               <li class="nav-item px-4">
+                <a class="nav-link" href="{{ route('provider-panel.packages.index') }}">Packages</a>
+              </li>
+              <li class="nav-item px-4">
+                <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Services</a>
+              </li>
+              <li class="nav-item px-4">
+                <a class="nav-link" href="{{ route('provider-panel.chat.index') }}">Chats</a>
+              </li>
+              <li class="nav-item px-4">
                 <a class="nav-link" href="{{ route('provider-panel.reviews') }}">Reviews</a>
               </li>
               <li class="nav-item px-4">
                 <a class="nav-link" href="{{ route('provider-panel.orders.index') }}">Orders</a>
               </li>
               <li class="nav-item px-4">
-                <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Services</a>
-              </li>
-              <li class="nav-item px-4">
                 <a class="nav-link" href="{{ route('provider-panel.location') }}">Location</a>
               </li>
               <li class="nav-item px-4">
                 <a class="nav-link" href="{{ route('provider-panel.about') }}">About</a>
-              </li>
-              <li class="nav-item px-4">
-                <a class="nav-link" href="{{ route('provider-panel.packages.index') }}">Packages</a>
               </li>
               <li class="nav-item px-4">
                 <a class="nav-link" href="{{ route('provider-panel.withdrawal.create') }}">Withdrawal</a>

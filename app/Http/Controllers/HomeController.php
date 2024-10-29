@@ -170,7 +170,7 @@ class HomeController extends Controller
         $services = $package->provider->packages->pluck('services')->flatten()->unique() ;
         return view('package', ['package' => $package, 'services' => $services, 'another_Service' => $another_Service, 'an_service' => Service::take(30)->get()]);
 
-                    
+
     }
 
     public function addToCard(Request $request) {
@@ -285,9 +285,9 @@ class HomeController extends Controller
         ]);
         return redirect()->back();
 
-    }   
+    }
     public function DeleteFromANother($id) {
-   
+
 
         $ser = ServicesToPackage::findOrFail($id);
 
@@ -303,7 +303,7 @@ class HomeController extends Controller
             'provider_id' => 'required|integer',
             'message' => 'required|string',
         ]);
-    
+
         // Process the data, e.g., save it to the database
         // Example:
         $data = [
@@ -311,24 +311,24 @@ class HomeController extends Controller
             'provider_id' => $request->provider_id,
             'message' => $request->message,
         ];
-  
+
         $chat = Chat::where('user_id', $request->user_id)->where('provider_id', $request->provider_id)->first();
 
         if(!$chat) {
             $chat = Chat::create([
                 'user_id' => $request->user_id,
-                'provider_id' => $request->provider_id,    
+                'provider_id' => $request->provider_id,
             ]);
         }
-        
-        
+
+
         // Assuming you save it to a model or do further processing
         Message::create([
             'chat_id' => $chat->id,
             'message' => $request->message,
             'sender_id' => $request->sender_id ?? 'guest'
         ]);
-    
+
         return response()->json(['success' => true, 'message' => 'Request sent successfully!']);
     }
 }

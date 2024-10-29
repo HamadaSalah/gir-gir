@@ -26,13 +26,14 @@ class RegisterRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => ['required', Password::min(8)],
+            'password' => ['required', Password::min(8), 'confirmed'],
             // ->mixedCase()->letters()->numbers()->symbols()->uncompromised()
             'countryCode' => 'required|string|max:2',
             'phone' => 'required|numeric|max_digits:10|unique:users,phone',
-            'type' => 'required|string|in:user,individual_provider,company_provider',
-            'website' => 'required_if:type,company_provider|url',
-            'business_name' => 'required_if:type,company_provider,individual_provider|string|max:255',
+            'type' => 'required|string|in:user,Individual providers,Company providers',
+            'website' => 'required_if:type,Company providers',
+            'tag' => 'required_if:type,Company providers|string|max:255',
+            'combined_company_code' => 'required_if:type,Company providers|string|max_digits:6|min_digits:6',
         ];
     }
 }
