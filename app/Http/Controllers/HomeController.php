@@ -5,20 +5,15 @@ namespace App\Http\Controllers;
 use App\Filters\PackagesFilter;
 use App\Models\Cart;
 use App\Models\Category;
-use App\Models\Chat;
-use App\Models\CouponCode;
-use App\Models\Message;
 use App\Models\Order;
 use App\Models\Package;
 use App\Models\Provider;
 use App\Models\Service;
 use App\Models\ServiceProvider;
-use App\Models\ServicesToPackage;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
-use Illuminate\Support\Facades\Schema;
 
 class HomeController extends Controller
 {
@@ -49,11 +44,6 @@ class HomeController extends Controller
         return view('home', compact('categories' ,  'most_requested_packages', 'best_shops', 'trendy_packages'));
     }
 
-    public function logout()
-    {
-        auth()->logout();
-        return redirect()->route('home');
-    }
 
     /**
      * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
@@ -89,18 +79,6 @@ class HomeController extends Controller
         return view('providers', ['best_shops' => Provider::with('package.files')->get()]);
     }
 
-    public function bestShops() {
-
-        $providers = Provider::with('package.files')->get();
-        if (Schema::hasColumn('providers', 'to_home')){
-            Provider::with('package.files')->where('to_home', 1)->with('package.files')->get();
-        }
-        else {
-            Provider::with('package.files')->get();
-        }
-        return view('bestShops', ['best_shops' => $providers]);
-    }
-
     /**
      * @param Provider $provider
      * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
@@ -114,10 +92,7 @@ class HomeController extends Controller
             return $package->services;
         });
 
-        $chat = Chat::with('messages')->where('user_id', auth()->user()->id)->where('provider_id', $provider->id)->first();
-
-
-        return view('show-providers', ['provider' => $provider, 'services' => $services, 'chat' => $chat]);
+        return view('show-providers', ['provider' => $provider, 'services' => $services]);
     }
 
     /**
@@ -168,25 +143,13 @@ class HomeController extends Controller
     public function showPackage(Package $package){
 
 
-        $another_Service = ServicesToPackage::where('package_id', $package->id)->where('user_id', auth()->user()->id)->get();
-        $services = $package->provider->packages->pluck('services')->flatten()->unique() ;
-        return view('package', ['package' => $package, 'services' => $services, 'another_Service' => $another_Service, 'an_service' => Service::take(30)->get()]);
-
-                    
+        return view('package', ['package' => $package]);
     }
 
     public function addToCard(Request $request) {
 
-        $discount = NULL;
-
-        if($request->coupon_code) {
-            $coupon_code = CouponCode::where('code', $request->coupon_code)->first();
-            if($coupon_code) {
-                $discount = $coupon_code->dicount;
-            }
-        }
-
         if($request->add_to_card) {
+
             $package = Package::find($request->package);
             $package->carts()->create([
                 'user_id'=>auth()->user()->id,
@@ -195,25 +158,20 @@ class HomeController extends Controller
                 "location" => $request->location,
                 "notes" => $request->notes,
                 "phone_numbers" => $request->phone_numbers,
-                'discount' => $discount
             ]);
         }
+        else {
+
+        }
+
         return redirect()->route('myCart');
 
     }
 
     public function myCart() {
-
         $carts = Cart::with('cartable')->where('user_id', auth()->user()?->id)->get();
-        $totalCost = Cart::with('cartable')
-        ->where('user_id', auth()->user()?->id)
-        ->get()
-        ->sum(function($cart) {
-            return $cart->cartable->cost;
-        });
 
-
-        return view('carts', compact('carts', 'totalCost'));
+        return view('carts', compact('carts'));
     }
 
     public function deleteMyCart(Cart $cart) {
@@ -266,71 +224,15 @@ class HomeController extends Controller
         return view('orders', compact('orders'));
     }
 
+    public function orderDetails(Order $order) {
 
-    public function orderDetails($invoice_number) {
-
-        $order =  Order::where('user_id', auth()->user()->id)->where('invoice_number', $invoice_number)->first();
         return view('order_details', compact('order'));
     }
 
-    public function addServicesToPackage(Request $request) {
-       $data =  $request->validate([
-            'service_id' => 'required',
-            'package_id' => 'required'
-        ]);
-
-        ServicesToPackage::create([
-            'service_id' => $request->service_id,
-            'package_id' =>  $request->package_id,
-            'another' =>  $request->another ?? NULL,
-            'user_id' =>auth()->user()->id
-        ]);
-        return redirect()->back();
-
-    }   
-    public function DeleteFromANother($id) {
-   
-
-        $ser = ServicesToPackage::findOrFail($id);
-
-        $ser->delete();
-        return redirect()->back();
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('home');
     }
 
-
-    public function sendMessage(Request $request) {
-
-        $request->validate([
-            'user_id' => 'required|integer',
-            'provider_id' => 'required|integer',
-            'message' => 'required|string',
-        ]);
-    
-        // Process the data, e.g., save it to the database
-        // Example:
-        $data = [
-            'user_id' => $request->user_id,
-            'provider_id' => $request->provider_id,
-            'message' => $request->message,
-        ];
-  
-        $chat = Chat::where('user_id', $request->user_id)->where('provider_id', $request->provider_id)->first();
-
-        if(!$chat) {
-            $chat = Chat::create([
-                'user_id' => $request->user_id,
-                'provider_id' => $request->provider_id,    
-            ]);
-        }
-        
-        
-        // Assuming you save it to a model or do further processing
-        Message::create([
-            'chat_id' => $chat->id,
-            'message' => $request->message,
-            'sender_id' => $request->sender_id ?? 'guest'
-        ]);
-    
-        return response()->json(['success' => true, 'message' => 'Request sent successfully!']);
-    }
 }
