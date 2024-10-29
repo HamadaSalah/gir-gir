@@ -31,6 +31,7 @@ Route::get('providers', [HomeController::class,'providers'])->name('providers');
 Route::get('bestShops', [HomeController::class,'bestShops'])->name('bestShops');
 Route::get('providers/{provider}', [HomeController::class,'showProvider'])->middleware('auth:web')->name('provider.show');
 Route::get('providers/{provider}/packages', [HomeController::class,'providerPackage'])->name('provider.packages');
+Route::get('providers/{provider}/services', [HomeController::class,'providerService'])->name('provider.services');
 Route::get('providers/{provider}/about', [HomeController::class,'aboutProvider'])->name('provider.about');
 Route::get('providers/{provider}/location', [HomeController::class,'locationProvider'])->name('provider.location');
 Route::get('packages/{package}', [HomeController::class,'showPackage'])->middleware('auth:web')->name('package');

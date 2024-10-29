@@ -143,7 +143,7 @@
     margin-top: 5px; ">5.0</span>
         </div>
     </div>
-    
+
     <!-- nav service -->
     <nav class="navitems">
         <div class="navservice">
@@ -182,7 +182,7 @@
                 <h1>{{ $category->name}}</h1>
                 <div class="myCards">
                     @foreach ($category->packages as $package)
-                        
+
                     @endforeach
                     <div class="myCard">
                         <div class="image">
@@ -205,7 +205,7 @@
 
             </div>
 
-                
+
             @endforeach
             <!-- baby gender  section-->
 

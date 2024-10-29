@@ -1,228 +1,199 @@
-@extends('layouts.app')
-@section('title' , 'Services')
+<!DOCTYPE html>
+<html lang="en">
 
-@push('css')
-    <link rel="stylesheet" href="{{ asset('') }}css/bootstrap.css" />
-    <link rel="stylesheet" href="{{ asset('') }}css/service.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
-@endpush
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $provider->name }} Services</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/NewBorn.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
 
-@section('content')
-
-<div class="backgroundService">
-    <img
-      class="backgroundImg col-sm-6 col-md-6"
-      src="./imgs/Ellipse 398.png"
-      alt=""
-    />
-    <div class="hypernav">
-      <a href="">home</a>
-      <a href="">Individual providers</a>
-      <a href="">Providers : sick rose compay</a>
-    </div>
-    <div class="companyname">
-<h1>
-Sick Rose
-</h1>
-<span>
-<img src="./imgs/Star 9.png" alt="">
-<img src="./imgs/star 9.png" alt="">
-<img src="./imgs/star 9.png" alt="">
-<img src="./imgs/star 9.png" alt="">
-<img src="./imgs/star 9.png" alt="">
-</span>
-<span style="font-family: Chau Philomene One;
-font-size: 25px;
-font-weight: 400;
-line-height: 20px;
-letter-spacing: -0.5px;
-text-align: center;
-; color: white;
-margin-top: 5px; ">5.0</span>
-    </div>
-  </div>
-
-  <!-- nav service -->
-  <nav class="navitems"  style="width: 100%;height: 60px;line-height: 60px;background: #EAEAEA;">
-    <div class="navservice">
-      <a class="nav-link  m-2" href="#">
-        <img class="vector-item" src="./imgs/material-symbols_home.png" alt="" />Full Page</a
-      >
-      <a class="nav-link m-2" href="#">Reviews</a>
-      <a class="nav-link m-2 active" href="#">Services</a>
-      <a class="nav-link m-2" href="#">Location</a>
-      <a class="nav-link m-2" href="./aboutProviders.html">About</a>
-      <a class="nav-link m-2" href="#">Pacckages</a>
-    </div>
-  </nav>
-
-  <!-- pacckage section -->
-  <div class="row col-12 Pacckages">
-    Services
-    <img class="Pacckagesicons" src="./imgs/Group 1000004403.png" alt="" />
-    <img class="PacckagesQR" src="./imgs/Frame 1321315269.png" alt="" />
-  </div>
-  <div class="col-12">
-    <div
-      class="Group40660"
-      style="
-        width: 638px;
-        height: 0.5px;
-        position: relative;
-        transform: rotate(180deg);
-        transform-origin: 0 0;
-      "
-    >
-      <div
-        class="Line441"
-        style="
-          width: 65.23px;
-          height: 0px;
-          left: -350px;
-          top: 20px;
-          position: absolute;
-          transform: rotate(180deg);
-          transform-origin: 0 0;
-          border: 3px #931158 solid;
-        "
-      ></div>
-    </div>
-  </div>
-
-
-
-  <!-- slider -->
-  <main class="main__content sliders ">
-    <section class="most_requested mb-5 position-relative">
-      <section
-        class="splide trinds__slider--one container"
-        aria-label="Splide Basic HTML Example"
-      >
-        <div class="splide__track">
-          <ul class="splide__list gap-2">
-            {{-- (LOOPING) Start Services--}}
-            <li class="splide__slide">
-              <div
-                class="card mb-5 text-start shadow-sm position-relative border-0 p-0 rounded-5"
-              >
-                <img
-                  src="imgs/mdi_heart-outline.svg"
-                  alt="add to fav"
-                  class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute end-0 me-3 mt-3"
-                />
-
-                <img
-                  src="imgs/Rectangle 3463357.png"
-                  alt="wedding"
-                  class="card-img-top"
-                />
-
-                <div class="card-body px-2 py-4">
-                  <div
-                    class="d-flex align-items-center justify-content-between mb-2"
-                  >
-                    <h3 class="card-title h6 fw-bold mb-0">
-                      Pink Theme Wedding
-                    </h3>
-                    <span class="d-block"
-                      ><img src="imgs/rating.svg" alt="rating"
-                    /></span>
-                  </div>
-                  <p class="card-text text-black-50 fs-12">
-                    <span class="text-black text-opacity-25 fs-14">
-                      <img style="margin-bottom: 5px;" src="imgs/houseico.svg" alt="icon" />
-                    <strong>Shop:</strong>  kareem evee <br>
-                    <strong> Provider Type :</strong>   Company <br>
-                    You Get <img style="width: 16px;height: 16px; margin-bottom: 5px;" src="./imgs/openmoji_coin.png" alt=""><span style="color: #931158;"> 120 Coin </span>
-                    </span>
-
-                  </p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <a
-                      href="#"
-                      class="btn btn-primary fm-cairo py-1 px-2 rounded-2"
-                      >Discover now</a
-                    >
-                    <p class="fm-cairo mb-0">
-                      <span class="text-primary fw-medium " style="font-family: Cairo;font-size: 19px;font-weight: 500;line-height: 20px;letter-spacing: -0.5px;
-                      ">100.2$</span>
-                    </p>
-                  </div>
+<body class="newBorn-container">
+    <!-- Navbar -->
+    <div class="container-fluid border-bottom">
+        <div class="row align-items-center">
+            <nav class="navbar navbar-expand-lg col-md-12 col-lg-6">
+                <button class="navbar-toggler border-0 ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center text-lg-start" id="navbarNav">
+                    <a href="{{ Route('home') }}" class="navbar-brand ps-5">
+                        <img src="{{ asset('imgs/logo.svg') }}" alt="brand logo" /></a>
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item active px-4 text-nowrap">
+                            <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item px-4 text-nowrap">
+                            <a class="nav-link p-0" href="{{ Route('search') }}">Packages</a>
+                        </li>
+                        <li class="nav-item px-4 text-nowrap">
+                            <a class="nav-link p-0" href="{{ Route('providers') }}">Best shops</a>
+                        </li>
+                        <li class="nav-item px-4 text-nowrap">
+                            <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
-            </li>
-            {{-- End Services --}}
-          </ul>
+            </nav>
+            <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start">
+                <a href="#contactus" class="text-decoration-none text-black text-opacity-75">
+                    <img src="{{ asset('imgs/call-calling.svg') }}" alt="contact us" />
+                    <span>Contact Us</span>
+                </a>
+                @guest
+                    <a href="#" class="fm-cairo btn btn-primary py-1 px-3 mx-3"><span><img
+                                src="{{ asset('imgs/loginico.svg') }}" alt="login icon" /></span>
+                        Login</a>
+                    <a href="signupuser.html" class="fm-cairo btn text-bg-light py-1 px-3">
+                        <span><img src="{{ asset('imgs/signupico.svg }}" alt="sign up icon" /></span>
+                        Sign Up</a>
+                @endguest
+                @auth
+                    <button class="btn btn-outline-primary border-0 py-1 px-2">
+                        <img src="{{ asset('imgs/Bell_pin_light.svg') }}" alt="bell pin light">
+                    </button>
+                    <button class="btn btn-outline-primary border-0 py-1 px-2 mb-1">
+                       <a href="{{Route('myCart')}}"> <img src="{{ asset('imgs/cartnavico.svg') }}" alt="cart icon"></a>
+                    </button>
+                @endauth
+            </div>
         </div>
-      </section>
-    </section>
-  </main>
-  <!-- slider -->
+    </div>
 
-  <!-- slider -->
-  <main class="main__content sliders ">
-      <div class="row Pacckages">
-          Best Choice
+    <!-- User Coins -->
+    <div class="row align-items-center position-relative">
+        <div class="coinuser">
+            <span><img src="{{ asset('imgs/openmoji_coin.png') }}" alt="">
+                {{ auth()->user()?->coins }} Coin</span>
         </div>
-        <div class="col-12">
-          <div
-            class="Group40660"
-            style="
-              width: 638px;
-              height: 0.5px;
-              position: relative;
-              transform: rotate(180deg);
-              transform-origin: 0 0;
-            "
-          >
-            <div
-              class="Line441"
-              style="
-                width: 65.23px;
-                height: 0px;
-                left: -130px;
-                top: 20px;
-                position: absolute;
-                transform: rotate(180deg);
-                transform-origin: 0 0;
-                border: 3px #931158 solid;
-              "
-            ></div>
-          </div>
+        <div class="col-6 d-none d-lg-block">
+            <ul class="list-group d-flex flex-row ms-5">
+                @foreach(categories() as $category)
+                    <li class="list-group-item p-0 border-0">
+                        <a href="{{ Route('category', $category->id) }}"
+                            class="btn px-2 py-3 text-black-50">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
         </div>
-    <section class="most_requested mb-5 position-relative">
-      <section
-        class="splide trinds__slider--two container"
-        aria-label="Splide Basic HTML Example"
-      >
-        <div class="splide__track">
-          <ul class="splide__list gap-2">
-            {{-- (LOOPING) Start Best Choice--}}
-            <li class="splide__slide">
-              <div class="card mb-5 text-start shadow-sm position-relative border-0 p-0 rounded-5 cardslider2">
-                <div class="cardslider2-info">
-                <h6>British Flag Theme Party</h6>
-                <span><img style="margin-bottom: 5px;" src="./imgs/calendar-check.png" alt="">   <srong>providers :</srong> sick rose</span>
-                <span><img style="margin-bottom: 5px;" src="./imgs/dolar.png" alt="">  <strong>Cost :</strong>  1000$</span>
-                <span><img style="margin-bottom: 5px; width: 15px;height: 15px;" src="./imgs/star.png" alt="">  <strong>Rating :</strong>  4.9</span>
+        <div class="col-lg-5 col-sm-12">
+            <form class="form form__nav my-3 me-5">
+                <div class="input-group border ms-2 rounded rounded-5">
+                    <input type="text" class="form-control border-end-0 rounded-start-5 p-2 form__nav--input"
+                        placeholder="What is the event?">
+                    <button class="btn filter p-2">
+                        <img src="{{ asset('imgs/uil_filter.svg') }}" alt="filter icon">
+                    </button>
+                    <button class="btn search p-2">
+                        <img src="{{ asset('imgs/searchico.svg') }}" alt="search icon">
+                    </button>
                 </div>
-              </div>
-            </li>
-            {{-- End Best Choice --}}
-          </ul>
+            </form>
         </div>
-      </section>
-    </section>
-  </main>
-  <!-- slider -->
+    </div>
 
+    <!-- Provider Background and Info -->
+    <div class="backgroundService">
+        <img class="backgroundImg col-sm-6 col-md-6" src="{{ asset('imgs/Ellipse 398.png') }}" alt="" />
+        <div class="companyname">
+            <h1>{{ $provider->name }}</h1>
+            <span>
+                <img src="{{ asset('imgs/Star 9.png') }}" alt="">
+                <img src="{{ asset('imgs/star 9.png') }}" alt="">
+                <img src="{{ asset('imgs/star 9.png') }}" alt="">
+                <img src="{{ asset('imgs/star 9.png') }}" alt="">
+                <img src="{{ asset('imgs/star 9.png') }}" alt="">
+            </span>
+            <span style="font-family: Chau Philomene One; font-size: 25px; font-weight: 400; line-height: 20px; letter-spacing: -0.5px; text-align: center; color: white; margin-top: 5px;">5.0</span>
+        </div>
+    </div>
 
-@endsection
+    <!-- Navigation for Services -->
+    <nav class="navitems">
+        <div class="navservice">
+            <a class="nav-link active m-2" href="#">
+                <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}" alt="" />Full Page</a>
+            <a class="nav-link m-2" href="#">Reviews</a>
+            <a class="nav-link m-2" href="#">Services</a>
+            <a class="nav-link m-2" href="#">Location</a>
+            <a class="nav-link m-2" href="./aboutProviders.html">About</a>
+            <a class="nav-link m-2" href="#">Packages</a>
+        </div>
+    </nav>
 
-@push('js')
-    <script src="{{asset('')}}js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="{{asset('')}}js/services.js"></script>
-@endpush
+    <!-- Main Content -->
+    <div class="divide">
+        <aside>
+            <ul>
+                <li>Birthday <i class="fa-solid fa-crown"></i></li>
+                <li>New Born <i class="fa-solid fa-face-smile"></i></li>
+                <li>Baby Gender <i class="fa-solid fa-mars-and-venus"></i></li>
+                <li>Wedding <img style="width: 25px;height: 25px;" src="./imgs/wpf_wedding-cake.png" alt=""></li>
+                <li>More <i class="fa-solid fa-arrow-down"></i></li>
+            </ul>
+        </aside>
+
+        <div>
+            @foreach ($services->groupBy('category_id') as $categoryId => $categoryServices)
+                <div class="newBorn">
+                    <h1>{{ $categories->find($categoryId)->name }}</h1>
+                    <div class="myCards">
+                        @foreach ($categoryServices as $service)
+                            <div class="myCard">
+                                <div class="image">
+                                    <img src="{{ $service->files[0]->path }}" alt="Service Image" />
+                                </div>
+                                <div class="info">
+                                    <div class="header">
+                                        <h1>{{ $service->name }}</h1>
+                                        <span><i class="fa-solid fa-star"></i> {{ $service->rating }}</span>
+                                    </div>
+                                    <p>Details: {{ $service->description }}</p>
+                                    <span>From / {{ $service->cost }}$</span>
+                                    <button>Discover now</button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>
+                    Gir <img style="width: 30%" src="./imgs/Vectorgir.png" alt="" />
+                    <br />
+                    Events
+                </h2>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Legal Information</h4>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Phone</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+</body>
+
+</html>

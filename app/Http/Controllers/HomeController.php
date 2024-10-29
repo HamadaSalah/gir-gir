@@ -147,6 +147,17 @@ class HomeController extends Controller
         return view('provider.packages', ['categories' => $categories, 'provider' => $provider]);
     }
 
+    public function providerService(Provider $provider) {
+
+        $services = $provider->load('packages.services')
+        ->packages
+        ->flatMap(function ($package) {
+            return $package->services;
+        });
+
+        return view('provider.services', ['services' => $services, 'provider' => $provider]);
+    }
+
     /**
      * @param Request $request
      * @param Category $category
