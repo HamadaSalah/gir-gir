@@ -227,8 +227,8 @@
 }
 
 .images img {
-    width: 150px;
-    height: 150px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
@@ -278,12 +278,6 @@
                         from other providers</a>
                     </a>
 
-                </div>
-                <div class="btn2">
-                    <a href="" style="height: 20px;line-height: 20px;padding: 0" type="button" class="btn btn-primary"
-                        data-bs-toggle="modal" data-bs-target="#choosefromporvider"><img
-                            src="{{ asset('imgs/ic_round-plus.png') }}" alt=""> Choose more packages
-                        from here</a>
                 </div>
             </div>
         </div>
