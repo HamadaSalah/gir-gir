@@ -227,8 +227,8 @@
 }
 
 .images img {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
