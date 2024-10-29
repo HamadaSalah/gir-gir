@@ -41,6 +41,10 @@ class PackageResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ToggleColumn::make('to_home')
+                ->label('Add To Home')
+                ->alignCenter(),
+                
                 Tables\Columns\TextColumn::make('id')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')

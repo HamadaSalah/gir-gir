@@ -26,7 +26,7 @@ class CompanyProviderResource extends Resource
 
     public static function canCreate(): bool
     {
-        return true;
+        return false;
     }
 
     public static function canEdit(Model $record): bool
@@ -80,17 +80,49 @@ class CompanyProviderResource extends Resource
         return $table
             ->modifyQueryUsing(fn (Builder $query) => $query->where('type' , 'company'))
             ->columns([
-            Tables\Columns\ImageColumn::make('business_picture')
+            Tables\Columns\ToggleColumn::make('to_home')
+            ->label('Add To Home')
+            ->alignCenter(),
+
+            Tables\Columns\ImageColumn::make('avatar')
             ->label('')
             ->circular(),
+
             Tables\Columns\TextColumn::make('name')
             ->searchable(),
+
             Tables\Columns\TextColumn::make('tag')
+            ->name('Business Name')
             ->searchable(),
+
             Tables\Columns\TextColumn::make('phone')
                 ->searchable(),
+
+            Tables\Columns\TextColumn::make('address')
+            ->searchable(),
+
+
             Tables\Columns\TextColumn::make('email')
-                ->searchable(),
+            ->searchable(),
+
+
+            Tables\Columns\BadgeColumn::make('packages_count')
+            ->counts('packages')
+            ->label('Packages')
+            ->color(fn ($state) => $state > 0 ? 'success' : 'danger'),
+
+            Tables\Columns\BadgeColumn::make('services_count')
+            ->label('Services')
+            ->counts('services')
+            ->color(fn ($state) => $state > 0 ? 'success' : 'danger'),
+
+            Tables\Columns\BadgeColumn::make('employees_count')
+            ->label('Employees')
+            ->counts('employees')
+            ->color(fn ($state) => $state > 0 ? 'success' : 'danger'),
+
+
+
             Tables\Columns\TextColumn::make('created_at')
                 ->label('Joined At')
                 ->sortable(),
