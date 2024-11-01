@@ -17,47 +17,23 @@ class LoginController extends Controller
 
     public function authenticate(LoginRequest $request)
     {
+        $guards = ['web', 'manager', 'provider'];
 
-        $guard = $request->type;
-
-        if (auth()->guard($guard)->attempt($request->only('email', 'password') )) {
-
-            if ($guard === 'user') {
-                return redirect()->route('home');
-            } elseif ($guard === 'provider') {
-                return redirect()->route('provider-panel.home');
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->attempt($request->only('email', 'password'))) {
+                switch ($guard) {
+                    case 'web':
+                        return redirect()->route('home');
+                    case 'manager':
+                        return redirect()->route('employee-panel.home');
+                    case 'provider':
+                        return redirect()->route('provider-panel.home');
+                }
             }
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
-    }
-
-    public function adminLogin()
-    {
-        return view('auth.admin-login');
-    }
-
-    public function adminAuthenticate(Request $request)
-    {
-        $request->validate([
-            'company_id' => 'required|string',
-            'manager_id' => 'required|string',
-            'password' => 'required|string',
-        ]);
-
-
-        $manager = Manager::where('company_id', $request->company_id)
-                          ->where('manager_id', $request->manager_id)
-                          ->first();
-
-        if ($manager && Auth::guard('manager')->attempt($request->only('company_id', 'manager_id', 'password'))) {
-            return redirect()->route('employee-panel.home');
-        }
-
-        return back()->withErrors([
-            'password' => 'Invalid company ID, manager ID, or password.',
-        ])->withInput();
     }
 }

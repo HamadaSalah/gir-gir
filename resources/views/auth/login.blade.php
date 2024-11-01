@@ -61,27 +61,9 @@
                     <a href="#" class="text-primary">Forgot your password?</a>
                 </div>
 
-                <!-- Guard Selection Dropdown -->
-                <div class="form-group mt-3 mb-4">
-                    <label for="guard">Sign in as:</label>
-                    <select name="type" class="form-control">
-                        <option value="web">User</option>
-                        <option value="provider">Provider</option>
-                    </select>
-                    @error('type')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
                 <!-- Submit Button -->
                 <button class="btn btn-primary w-100 rounded-5 mb-3">Login</button>
-
-                <!-- Admin Manager Login Button -->
-                <a href="{{ route('admin.login') }}" class="btn btn-secondary w-100 rounded-5">Admin manager login</a>
             </form>
-
-            <a style="display: block" href="{{ route('register') }}" class="mt-3"> Or Register Now</a>
-
         </div>
 
         <div class="col-lg-1 mt-4 d-none d-lg-block">

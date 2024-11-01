@@ -24,6 +24,7 @@ class EmployeesController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:managers,email',
             'manager_id' => 'required|numeric|unique:managers,manager_id|digits:6',
             'phone' => 'required|string|max:255|unique:managers,phone',
             'password' => 'required|string|min:6',
@@ -35,6 +36,7 @@ class EmployeesController extends Controller
             'manager_id' => $request->manager_id,
             'description' => 'Employee of ' . auth()->user()->name,
             'title' => 'Employee',
+            'email' => $request->email,
             'phone' => $request->phone,
             'company_id' => auth()->user()->company_id,
             'password' => $request->password,
@@ -62,6 +64,7 @@ class EmployeesController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:managers,email,' . $employee,
             'manager_id' => 'numeric|digits:6|required|string|unique:managers,manager_id,' . $employee,
             'phone' => 'required|string|max:255|unique:managers,phone,' . $employee,
             'password' => 'nullable|string|min:6',
@@ -72,10 +75,16 @@ class EmployeesController extends Controller
 
         $employee->update([
             'name' => $request->name,
+            'email' => $request->email,
             'manager_id' => $request->manager_id,
             'phone' => $request->phone,
-            'password' => $request->password ? $request->password : $employee->password,
         ]);
+
+        if ($request->filled('password')) {
+            $employee->update([
+                'password' => $request->password,
+            ]);
+        }
 
         if ($request->hasFile('profile_picture')) {
             if ($employee->files->isNotEmpty()) {

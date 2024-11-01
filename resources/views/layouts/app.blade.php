@@ -52,7 +52,7 @@
             </ul>
           </div>
         </nav>
-        
+
         <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start menusm" style="text-align: right !important;">
           <a
             href="#contactus"
@@ -66,7 +66,7 @@
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" style="border-radius: 25px" data-bs-toggle="dropdown" aria-expanded="false">
               {{auth()->user()->name}}
             </a>
-          
+
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{Route('orders')}}">Order Histroy</a></li>
               <li><a class="dropdown-item" href="{{Route('logout')}}">Logout</a></li>
@@ -88,7 +88,7 @@
             Sign Up</a
             >
           @endguest
-           
+
           @auth
             {{-- <button class="btn btn-outline-primary border-0 py-1 px-2">
               <img src="{{ asset('imgs') }}/Bell_pin_light.svg" alt="bell pin light">
@@ -111,9 +111,11 @@
     </div>
     <div class="row align-items-center position-relative">
         {{-- Auth User Coins --}}
-      <div class="coinuser">
-        <span><img src="{{ asset('imgs/openmoji_coin.png') }}" alt=""> {{ auth()->user()?->coins }} Coin</span>
-      </div>
+        @auth('web')
+        <div class="coinuser">
+            <span><img src="{{ asset('imgs/openmoji_coin.png') }}" alt=""> {{ auth()->user()?->coins }} Coin</span>
+          </div>
+        @endauth
       {{--End auth user coins --}}
       <div class="col-6 d-none d-lg-block">
         <ul class="list-group d-flex flex-row ms-5">
@@ -131,10 +133,10 @@
           <div class="input-group border ms-2 rounded rounded-5">
                @csrf
               <input type="text" name="name" class="form-control border-end-0 rounded-start-5 p-2  " placeholder="What is the event?">
-              <input type="submit" 
+              <input type="submit"
               style="position: absolute; left: -9999px; width: 1px; height: 1px;"
               tabindex="-1" />
-       
+
              <button class="btn filter p-2" type="submit">
               <img src="{{ asset('imgs/uil_filter.svg') }}" alt="filter icon">
             </button>
