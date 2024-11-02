@@ -115,7 +115,7 @@
         </div>
         <div class="col-lg-5 col-sm-12">
             <form class="form   my-3 me-5" action="{{ Route('search') }}" method="GET"
-                style="display: inline-block;width: 65%">
+                style="display: inline-block;width: 75%">
                 <div class="input-group border ms-2 rounded rounded-5">
                     @csrf
                     <input type="text" name="name" class="form-control border-end-0 rounded-start-5 p-2  "

@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     @stack('css')
+    <style>
+
+      .form.my-3.me-5 input[type="text"] {
+        border-top: 0;
+        border-bottom: 0
+      }
+    </style>
   </head>
   <body>
     <div class="container-fluid border-bottom">
