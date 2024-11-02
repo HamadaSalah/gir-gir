@@ -839,7 +839,6 @@
                   />
                 </button>
               </div>
-              <a style="display: block" href="{{ route('users.login') }}" class="mt-3"> Or Login Now</a>
             <div
               class="input-group align-items-start provider-password mb-3 d-none"
             >
@@ -859,6 +858,8 @@
                 />
               </button>
             </div>
+            <a style="display: block" href="{{ route('users.login') }}" class="mt-3"> Or Login Now</a>
+
             <button class="btn btn-submit btn-primary position-fixed bottom-0 end-0 m-4">
               Go To Dahsbord
             </button>

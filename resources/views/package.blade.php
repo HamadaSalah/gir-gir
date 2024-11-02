@@ -194,7 +194,7 @@
         </h1>
         <div class="images">
             @foreach($package->files as $img)
-                <img src="{{ asset($img->path) }}" class="img-thumbnail" alt="{{ $package->name }}" />
+                <img src="{{ asset($img->path) }}" id="PackageImg" class="img-thumbnail" alt="{{ $package->name }}" />
             @endforeach
         </div>
     </div>
@@ -225,7 +225,10 @@
     justify-content: center;
     margin-top: 15px;
 }
-
+#PackageImg {
+    width: unset;
+    height: 240px;
+}
 .images img {
     width: 20px;
     height: 20px;
