@@ -25,15 +25,28 @@ class RegisterRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'email' => [
+            'required',
+            'email',
+                function ($attribute, $value, $fail) {
+                    if ($this->input('type') === 'user') {
+                        if (\App\Models\User::where('email', $value)->exists()) {
+                            $fail("The $attribute has already been taken by another user.");
+                        }
+                    } else{
+                        if (\App\Models\Provider::where('email', $value)->exists()) {
+                            $fail("The $attribute has already been taken by another provider.");
+                        }
+                    }
+                },
+            ],
             'password' => ['required', Password::min(8), 'confirmed'],
-            // ->mixedCase()->letters()->numbers()->symbols()->uncompromised()
             'countryCode' => 'required|string|max:2',
             'phone' => 'required|numeric|max_digits:10|unique:users,phone',
-            'type' => 'required|string|in:user,Individual providers,Company providers',
-            'website' => 'required_if:type,Company providers',
-            'tag' => 'required_if:type,Company providers|string|max:255',
-            'combined_company_code' => 'required_if:type,Company providers|string|max_digits:6|min_digits:6',
+            'type' => 'required|string|in:user,individual,company',
+            'website' => 'required_if:type,company',
+            'individual_tag' => 'required_if:type,individual',
+            'company_tag' => 'required_if:type,company',
         ];
     }
 }
