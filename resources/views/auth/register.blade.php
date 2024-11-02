@@ -263,8 +263,8 @@
           passwordInput.type === "password" ? "text" : "password";
         togglePasswordButton.querySelector("img").src =
           passwordInput.type === "password"
-            ? "{{ asset('') }}/imgs/show_pass_icon.svg"
-            : "{{ asset('') }}/imgs/show_pass_icon.svg";
+            ? "{{ asset('') }}imgs/show_pass_icon.svg"
+            : "{{ asset('') }}imgs/show_pass_icon.svg";
       });
 
       toggleRePasswordButton.addEventListener("click", function (e) {
