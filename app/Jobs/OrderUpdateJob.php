@@ -29,24 +29,6 @@ class OrderUpdateJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $statuses = [
-            'requested',
-            'approved',
-            'set_the_installation',
-            'the_visit_has_been_scheduled',
-            'worker_on_the_road',
-            'get_started',
-            'work_completed'
-        ];
-
-        $currentStatusIndex = array_search($this->order->status, $statuses);
-
-        if ($currentStatusIndex !== false && $currentStatusIndex < count($statuses) - 1) {
-            $this->order->status = $statuses[$currentStatusIndex + 1];
-            $this->order->save();
-        }
-
         Mail::to($this->order->user->email)->send(new OrderResponsMail($this->order));
-
     }
 }

@@ -46,6 +46,28 @@ class OrdersController extends Controller
     }
     public function update(Order $order)
     {
+        $statuses = [
+            'requested',
+            'approved',
+            'set_the_installation',
+            'the_visit_has_been_scheduled',
+            'worker_on_the_road',
+            'get_started',
+            'work_completed'
+        ];
+
+        $currentStatusIndex = array_search($order->status, $statuses);
+
+        if($order->status =='work_completed')
+        {
+            return redirect()->route('provider-panel.home');
+        }
+
+        if ($currentStatusIndex !== false && $currentStatusIndex < count($statuses) - 1) {
+            $order->status = $statuses[$currentStatusIndex + 1];
+            $order->save();
+        }
+
         OrderUpdateJob::dispatch($order);
         return redirect()->route('provider-panel.home');
     }

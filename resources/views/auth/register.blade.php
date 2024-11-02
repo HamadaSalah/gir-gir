@@ -234,10 +234,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 position-relative d-flex align-items-center mt-3">
-                <button class="submit me-2" type="submit">Register</button>
-                <a href="login" class="ms-2 text-decoration-none mt-2">Or Login now</a>
-              </div>
+            <div class="col-12 position-relative">
+                <button class="submit" type="submit">Register</button>
+            </div>
+            <a style="display: block" href="{{ route('users.login') }}" class="mt-3"> Or Login Now</a>
           </form>
         </div>
       </div>
