@@ -85,8 +85,9 @@
                 </div>
                 <div class="send">
                   <a href="#"> Send To Email </a>
-                  <a href="#"> Print Now </a>
+                  <a  onclick="printOrder()" > Print Now </a>
                 </div>
+                
               </div>
             </div>
             <div class="details-section">
@@ -304,10 +305,90 @@
               </form>
             </div>
           </div>
+
+          
         </div>
       </div>
     </section>
+    <div id="order-card" class="card card-custom align-items-center mt-3" style="width: 100%; padding: 15px;border:1px solid #83044a">
+      <img src="http://gir-gir.test/imgs/gir.png" alt="" width="100px">
 
+      <!-- Row for Name and Order Date -->
+      <div style="flex: 1; display: flex; justify-content: space-between; width: 100%;margin-top: 5px">
+          <div>
+              <small style="font-size: 0.8rem;">Name:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">Merlin Jones</small>
+          </div>
+          <div>
+              <small style="font-size: 0.8rem;">Order Date:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">26-10-2024</small>
+          </div>
+      </div>
+
+      <!-- Row for Invoice number and Order Time -->
+      <div style="flex: 1;  display: flex; justify-content: space-between;width: 100%">
+          <div>
+              <small style="font-size: 0.8rem;">Invoice number:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">671d2742b1d9a</small>
+          </div>
+          <div>
+              <small style="font-size: 0.8rem;">Order Time:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">17:30</small>
+          </div>
+      </div>
+
+      <!-- Row for Phone number and Status -->
+      <div style="flex: 1; display: flex; justify-content: space-between;width: 100%">
+          <div>
+              <small style="font-size: 0.8rem;">Phone number:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">1-480-338-3240</small>
+          </div>
+          <div>
+              <small style="font-size: 0.8rem;">Status:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">Approved</small>
+          </div>
+      </div>
+  <hr color="black" width="100%">
+  <div class="d-flex justify-content-between" id="contentToPrint" style="width: 100%;">
+      <div>
+          <div>
+              <small style="font-size: 0.8rem;">Execution Date:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">19-10-2024</small>
+              <br>
+              <small style="font-size: 0.8rem;">Execution Time:</small>
+              <small style="font-size: 0.8rem; margin-left: 5px;">00:00</small><br>
+
+                                      <small style="font-size: 0.8rem;">Package Name:</small>
+                  <small style="font-size: 0.8rem; margin-left: 5px;">Pink Theme Weddingeeeee</small><br>
+                  <small style="font-size: 0.8rem;">Package No:</small>
+                  <small style="font-size: 0.8rem; margin-left: 5px;">1</small>
+                  <br>
+                  <strong style="font-size: 0.8rem;">Package Details:</strong><br>
+                  <small style="font-size: 0.8rem">100 Guests, DJ Muisc, Drinks, Decor 100 Guests 100 Guests, DJ Muisc, Drinks, Decor</small><br>
+                              </div>
+          <strong style="font-size: 0.8rem;">Order Location</strong><br>
+          <small style="font-size: 0.8rem">Order Location</small><br>
+      </div>
+      <div style="width: 1px; background-color: #ccc; margin: 0 15px;"></div>
+      <div style="text-align: left;">
+          <strong style="font-size: 0.8rem;">Order Location</strong><br>
+          <small style="font-size: 0.8rem">Order Location</small><br>
+      </div>
+  </div>
+
+  <div class="d-flex justify-content-between" style="width: 100%;">
+      <div>
+          <strong style="font-size: 0.8rem;">Providers:</strong>
+          <strong style="font-size: 0.8rem; margin-left: 5px;">Hamada Shops</strong><br>
+          <strong style="font-size: 0.8rem;">Total Amount:</strong>
+          <strong style="font-size: 0.8rem; margin-left: 5px;">200.00$</strong><br>
+      </div>
+      {{-- <div onclick="printOrder()" style="flex-direction: column;display: flex;align-items: center;text-align: left;">
+<img src="http://gir-gir.test/imgs/print.png" alt="" width="70px">
+<strong>Print</strong>
+      </div> --}}
+  </div>
+  </div>
     <footer>
       <div class="footer-container">
         <div class="footer-logo">
@@ -389,7 +470,90 @@
 
 @endsection
 
+<script>
+  function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
 
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+
+    function printOrder() {
+        // Create a new window
+        const printWindow = window.open('', '_blank', 'width=800,height=600');
+
+        // Get the content of the order card
+        const content = document.getElementById('order-card').innerHTML;
+
+        // Write the content to the new window
+        printWindow.document.write(`
+            <html>
+                <head>
+                    <title>Print Order</title>
+                    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Include your CSS -->
+                    <style>
+                      .header-controls {
+                        display: none!important
+                      }
+                        /* Include styles for the order card here */
+                        body {
+                            font-family: verdana, sans-serif;
+                            margin: 20px;
+                        }
+                        /* Add your custom styles */
+                        #order-card {
+                            border: 1px solid #ddd; /* Example border */
+                            padding: 20px;
+                            border-radius: 5px; /* Rounded corners */
+                        }
+                        /* Hide buttons in print view */
+                        .btn {
+                            display: none;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div id="order-card">
+                        ${content}
+                    </div>
+                </body>
+            </html>
+        `);
+        // Close the document to finish loading
+        printWindow.document.close();
+
+        // Wait for the new window to load completely
+        printWindow.onload = function() {
+            // Trigger the print dialog
+  
+            printWindow.print();
+  
+                // printWindow.close(); // Optionally close the window after printing
+        };
+    }
+</script>
+<style>
+  #order-card {
+      display: none
+    }
+    .translate-tooltip-mtz.translator-hidden {
+      display:  none!important
+    }
+    .header-controls {
+      display: none!important
+
+    }
+  @media print {
+    .header-controls {
+      display: none!important
+    }
+    
+  }
+</style>
 @push('js')
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
