@@ -16,20 +16,24 @@
               <a class="nav-link active" href="#home">Control Panel</a>
             </li>
             <li class="nav-item d-flex justify-content-between">
-              <a class="nav-link" href="{{ route('provider-panel.orders.index') }}">
-                Orders ({{ $overall_orders }})
-                <img src="./imgs/order.png" width="20px" style="margin-left: 20px;" />
-              </a>
+                <a class="nav-link" href="{{ route('provider-panel.orders.index') }}">
+                    Orders
+                    <span style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #ff6666; color: white; text-align: center; line-height: 20px; margin-left: 10px;">
+                        {{ $overall_orders }}
+                    </span>
+                </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('provider-panel.packages.index') }}">Packages</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#vip">Offers</a>
+              <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Services</a>
             </li>
+            @if(auth('provider')->user()->type == 'company')
             <li class="nav-item">
-              <a class="nav-link" href="#providers">Invoices</a>
+                <a class="nav-link" href="{{ route('provider-panel.employees.index') }}">Employees</a>
             </li>
+            @endif
           </ul>
         </div>
       </nav>
@@ -140,7 +144,7 @@
                       @else
                       @foreach($orders as $order)
                       <div class="card-body">
-                          <h6 class="card-subtitle mb-2 text-muted">Order #{{ $order->id }}</h6>
+                          <h6 class="card-subtitle mb-2 text-muted">Order #{{ $order->invoice_number }}</h6>
                           <div class="d-flex flex-column flex-md-row justify-content-between">
                               <div style="width:100%" class="mb-3">
                                   <div class="d-flex justify-content-between mb-1 flex-wrap">

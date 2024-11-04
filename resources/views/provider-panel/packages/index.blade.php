@@ -66,7 +66,7 @@
                 <img src="{{ asset('imgs/line.png') }}" width="250px" alt="">
                 <div id="category-{{ $category->id }}" class="collapse">
                     <div class="row">
-                        @foreach ($category->packages as $package)
+                        @forelse ($category->packages as $package)
                             <div class="col-md-6 mt-2">
                                 <div class="card custom-card">
                                     <div class="row g-0">
@@ -75,17 +75,16 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ $package->name }}
-                                                    <img src="{{ asset('imgs/rating.png') }}" width="30px" style="margin-left: 90px;" alt="Rating">
-                                                </h5>
-                                                <small class="text-muted">Name Shop: {{ $package->provider->name }}</small>
-                                                <small class="details">
-                                                    Details: {{ implode(', ', array_slice(explode(',', $package->description), 0, 4)) }}
-                                                </small>
+                                                <h5 class="card-title">{{ $package->name }}</h5>
+                                                <small class="text-muted">Shop: {{ $package->provider->name }}</small>
+                                                <small class="details">Details: {{ Str::limit($package->description, 50, '...') }}</small>
                                                 <small class="price">From / {{ $package->cost }}$</small>
-
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <a href="{{ route('provider-panel.packages.show', $package->id) }}" class="btn btn-primary btn-sm" style="font-size: 12px; padding: 2px 10px; margin-right: 10px;">Discover Now</a>
+                                                    <a href="{{ route('provider-panel.packages.show', $package->id) }}"
+                                                       class="btn btn-primary btn-sm"
+                                                       style="font-size: 12px; margin-right: 10px;">
+                                                        Discover Now
+                                                    </a>
                                                     <div class="d-flex flex-column justify-content-between align-items-center">
                                                         <a href="#"
                                                             onclick="event.preventDefault();
@@ -98,7 +97,9 @@
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
-                                                        <a href="{{ route('provider-panel.packages.edit', $package->id) }}"><img src="{{ asset('imgs/edit.png') }}" alt="Edit" style="width: 20px"></a>
+                                                        <a href="{{ route('provider-panel.packages.edit', $package->id) }}">
+                                                            <img src="{{ asset('imgs/edit.png') }}" alt="Edit" style="width: 20px;">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,11 +107,22 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="col-12 text-center mt-3">
+                                <p>No packages available in this category.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
     @endforeach
+    @if($categories->isEmpty())
+        <div class="container mt-5">
+            <div class="col-12 text-center mt-3">
+                <p>No packages available.</p>
+            </div>
+        </div>
+    @endif
 </main>
 @endsection

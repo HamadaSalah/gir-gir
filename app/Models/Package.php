@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Package extends Model
@@ -31,6 +32,10 @@ class Package extends Model
         return $this->belongsToMany(Service::class);
     }
 
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(Feedback::class);
+    }
 
     public function getCoverAttribute()
     {
@@ -46,7 +51,7 @@ class Package extends Model
 
     public function orders(): MorphMany
     {
-        return $this->morphMany(Order::class, 'orderable');
+        return $this->morphMany(OrderItem::class, 'orderable');
     }
 
     public function category()
