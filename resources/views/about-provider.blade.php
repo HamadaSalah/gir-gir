@@ -268,87 +268,7 @@ margin-top: 5px; ">5.0</span>
         </div>
       </div>
     </div> --}}
-    <!-- <div class="container containerMission">
-      <div class="mission">
-        <h2>Location </h2>
-        <div class="row col-12">
-          <div
-            class="Group40660"
-            style="
-              width: 638px;
-              height: 0.5px;
-              position: relative;
-              transform: rotate(180deg);
-              transform-origin: 0 0;
-            "
-          >
-            <div
-              class="Line441"
-              style="
-                width: 75.23px;
-                height: 0px;
-                left: 130px;
-                top: 10px;
-                position: absolute;
-                transform: rotate(180deg);
-                transform-origin: 0 0;
-                border: 3px #931158 solid;
-              "
-            ></div>
-          </div>
-        </div>
-        <div class="location">
-          <p> <img style="width: 10px; height: 13.03px;" src="" alt="">
-            Location 1: Downtown Dubai, near Burj Khalifa, Dubai, United Arab
-            Emirates.
-          </p>
-          <p> <img style="width: 10px; height: 13.03px;" src="" alt="">
-            Location 1: Downtown Dubai, near Burj Khalifa, Dubai, United Arab
-            Emirates.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="container ">
-        <div class="mission containerMission">
-            <h2>Call </h2>
-            <div class="row col-12">
-              <div
-                class="Group40660"
-                style="
-                  width: 638px;
-                  height: 0.5px;
-                  position: relative;
-                  transform: rotate(180deg);
-                  transform-origin: 0 0;
-                "
-              >
-                <div
-                  class="Line441"
-                  style="
-                    width: 75.23px;
-                    height: 0px;
-                    left: 130px;
-                    top: 10px;
-                    position: absolute;
-                    transform: rotate(180deg);
-                    transform-origin: 0 0;
-                    border: 3px #931158 solid;
-                  "
-                ></div>
-              </div>
-            </div>
-            <div class="location">
-              <p> <img style="width: 10px; height: 13.03px;" src="" alt="">
-                You can reach us at the following numbers. We are at your service 12/24 hours a day
-              </p>
-    <div>
-        <p>9719444444444</p>
-        <p>9719444444444</p>
-    </div>
-            </div>
-          </div>
-    </div> -->
+ 
     </div>
 
 
@@ -370,3 +290,12 @@ margin-top: 5px; ">5.0</span>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="{{asset('')}}js/services.js"></script>
 @endpush
+
+
+
+
+
+
+
+
+
