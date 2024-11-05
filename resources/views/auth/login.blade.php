@@ -63,6 +63,9 @@
 
                 <!-- Submit Button -->
                 <button class="btn btn-primary w-100 rounded-5 mb-3">Login</button>
+                <!-- Register Button -->
+                <a href="{{ route('register') }}" class="btn btn-outline-primary w-100 rounded-5">Register</a>
+
             </form>
         </div>
 
