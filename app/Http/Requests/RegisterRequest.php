@@ -41,7 +41,7 @@ class RegisterRequest extends FormRequest
                 },
             ],
             'password' => ['required', Password::min(8), 'confirmed'],
-            'countryCode' => 'required|string|max:2',
+            'countryCode' => 'required|string|max:3|min:1',
             'phone' => 'required|numeric|max_digits:10|unique:users,phone',
             'type' => 'required|string|in:user,individual,company',
             'website' => 'required_if:type,company',

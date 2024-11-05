@@ -115,37 +115,64 @@ class HomeController extends Controller
         $chat = Chat::with('messages')->where('user_id', auth()->user()->id)->where('provider_id', $provider->id)->first();
 
 
-        return view('show-providers', ['provider' => $provider, 'services' => $services, 'chat' => $chat]);
+        return view('provider.new-home', ['provider' => $provider, 'services' => $services, 'chat' => $chat]);
     }
 
     /**
      * @param Provider $provider
      * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
-    public function providerPackage(Provider $provider) {
 
 
-        $categories = Category::whereHas('packages', function ($query) use ($provider) {
-            $query->where('provider_id', $provider->id);
-        })->with(['packages' => function ($query) use ($provider) {
+    // public function providerPackage(Provider $provider) {
+
+
+    //     $categories = Category::whereHas('packages', function ($query) use ($provider) {
+    //         $query->where('provider_id', $provider->id);
+    //     })->with(['packages' => function ($query) use ($provider) {
+    //         $query->where('provider_id', $provider->id);
+    //     }])->get();
+
+    //     // $categories = Category::all();
+
+    //     // if($request->has('category_id'))
+    //     // {
+    //     //     $provider->load(['packages' => function($query) use ($request){
+    //     //         $query->where('category_id', $request->category_id);
+    //     //     }]);
+    //     // }else{
+    //     // $provider->load('packages');
+    //     // }
+
+    //     // $provider->load(['packages']);
+
+    //     return view('provider.new-packages', ['categories' => $categories, 'provider' => $provider]);
+    //     // return view('provider.packages', ['categories' => $categories, 'provider' => $provider]);
+    // }
+
+    public function providerPackage(Provider $provider, $categoryId = null) {
+        $categories = Category::with(['packages' => function ($query) use ($provider) {
             $query->where('provider_id', $provider->id);
         }])->get();
+    
+        if ($categoryId) {
+            $categories = $categories->filter(function ($category) use ($categoryId) {
+                return $category->id == $categoryId || $category->packages->isNotEmpty();
+            });
+        }
 
-        // $categories = Category::all();
-
-        // if($request->has('category_id'))
-        // {
-        //     $provider->load(['packages' => function($query) use ($request){
-        //         $query->where('category_id', $request->category_id);
-        //     }]);
-        // }else{
-        // $provider->load('packages');
-        // }
-
-        // $provider->load(['packages']);
-
-        return view('provider.packages', ['categories' => $categories, 'provider' => $provider]);
+        $allCategories = Category::all();
+    
+        return view('provider.new-packages', [
+            'categories' => $categories,
+            'provider' => $provider,
+            'selectedCategoryId' => $categoryId,
+            'allCategories' => $allCategories
+        ]);
     }
+    
+    
+    
 
     public function providerService(Provider $provider) {
 
@@ -155,7 +182,8 @@ class HomeController extends Controller
             return $package->services;
         });
 
-        return view('provider.services', ['services' => $services, 'provider' => $provider]);
+
+        return view('provider.new-services', ['services' => $services, 'provider' => $provider]);
     }
 
     /**
@@ -233,7 +261,8 @@ class HomeController extends Controller
     }
 
     public function aboutProvider(Provider $provider) {
-        return view('about-provider', compact('provider'));
+        $provider->load('info');
+        return view('provider.new-about' , compact('provider'));
     }
 
     public function locationProvider(Provider $provider) {

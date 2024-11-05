@@ -281,7 +281,8 @@ footer {
   background-color:#F6F6F6 !important;
  }
 
-.newBorn-container .divide{
+.divide{
+    margin-top: 10px;
     display:flex;
     /* gap:50px; */
 }
@@ -295,7 +296,7 @@ aside{
 aside ul{
     list-style: none;
 }
-aside ul li{
+aside ul li a{
     color: #4F4F4F;
     padding: 10px 20px;
     border-radius:7px;
@@ -306,9 +307,9 @@ aside ul li{
     line-height: 25.52px;
     text-align:center;
 }
-aside ul li:hover{
+aside ul li a:hover{
     background-color:#4F4F4F;
-    color: white;
+    color: #fff !important;
 }
 /* cards */
 .newBorn >h1{
