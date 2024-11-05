@@ -75,5 +75,23 @@
 </header>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.querySelector('input[name="password"]');
+        const toggleButton = document.querySelector('.input-group .btn');
+
+        toggleButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.querySelector("img").src = "{{ asset('imgs/show_pass_icon.svg') }}";
+            } else {
+                passwordInput.type = "password";
+                toggleButton.querySelector("img").src = "{{ asset('imgs/show_pass_icon.svg') }}";
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

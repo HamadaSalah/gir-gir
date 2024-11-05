@@ -17,43 +17,66 @@ class PackagesController extends Controller
         $minPrice = $request->input('min_price');
         $maxPrice = $request->input('max_price');
 
-        $categories = Category::whereHas('packages', function ($query) use ($provider, $minPrice, $maxPrice) {
-                $query->where('provider_id', $provider->id);
-                if ($minPrice) {
-                    $query->where('cost', '>=', $minPrice);
-                }
-                if ($maxPrice) {
-                    $query->where('cost', '<=', $maxPrice);
-                }
-            })
-            ->withCount(['packages' => function ($query) use ($provider) {
-                $query->where('provider_id', $provider->id);
-            }])
-            ->with(['packages' => function ($query) use ($provider) {
-                $query->where('provider_id', $provider->id)
-                      ->with('files');
-            }]);
+        // Validate inputs
+        $request->validate([
+            'min_price' => 'nullable|numeric',
+            'max_price' => 'nullable|numeric',
+        ]);
 
+        // Start with the base query for categories
+        $categoriesQuery = Category::whereHas('packages', function ($query) use ($provider, $minPrice, $maxPrice) {
+            $query->where('provider_id', $provider->id);
+
+            // Apply price filtering to packages
+            if ($minPrice !== null) {
+                $query->where('cost', '>=', $minPrice);
+            }
+            if ($maxPrice !== null) {
+                $query->where('cost', '<=', $maxPrice);
+            }
+        })
+        ->withCount(['packages' => function ($query) use ($provider) {
+            $query->where('provider_id', $provider->id);
+        }])
+        ->with(['packages' => function ($query) use ($provider, $minPrice, $maxPrice) {
+            $query->where('provider_id', $provider->id);
+
+            // Apply the same price filtering here to the packages
+            if ($minPrice !== null) {
+                $query->where('cost', '>=', $minPrice);
+            }
+            if ($maxPrice !== null) {
+                $query->where('cost', '<=', $maxPrice);
+            }
+
+            $query->with('files'); // Keep files relationship loading
+        }]);
+
+        // Filter categories by the selected category ID, if provided
         if ($categoryId) {
-            $categories->where('id', $categoryId);
+            $categoriesQuery->where('id', $categoryId);
         }
 
-        $categories = $categories->get();
+        $categories = $categoriesQuery->get();
+        $allcategories = Category::all();
 
-        $allcategories = Category::get();
-
-        return view('provider-panel.packages.index', compact('categories' , 'allcategories'));
+        return view('provider-panel.packages.index', compact('categories', 'allcategories'));
     }
 
 
-    public function show(Category $category, $package)
+    public function show(Category $category, $packageId)
     {
         $provider = auth('provider')->user();
 
-        $package = $provider->packages()->where('id', $package)->with('files')->first();
+        $package = $provider->packages()
+            ->with(['provider', 'services', 'orders'])
+            ->findOrFail($packageId);
 
-        return view('provider-panel.packages.show', compact('package'));
+        $orderingCount = $package->orders()->count();
+
+        return view('provider-panel.packages.show', compact('package', 'orderingCount'));
     }
+
 
     public function create()
     {

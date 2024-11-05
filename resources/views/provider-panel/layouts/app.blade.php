@@ -82,7 +82,9 @@
             <img src="{{ auth()->user()->avatar }}" alt="User Image" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;">
             <span>{{ auth()->user()->name }}</span>
             <span class="text-center" style="margin-left: 10px;">(${{ number_format(auth()->user()->balance,2) }})</span>
+            @if(auth('provider')->user()->type == 'company')
             <span class="text-center" style="margin-left: 3px;"> - Company ID: {{ auth()->user()->company_id }}</span>
+            @endif
         </div>
         <div class="col text-end">
             <a href="{{ route('provider-panel.signout') }}">Logout</a>
