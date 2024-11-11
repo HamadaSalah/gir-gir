@@ -266,7 +266,10 @@ alt=""></buttton>
 
 
     <div class="chatHeader">
+        @if (isset($provider->files))
+            
         <img src="{{asset($provider->files[0]->path)}}" width="40px" height="40px" alt=""> <span style="color: #fff">{{ $provider->name }}</span>
+        @endif
         <a href="tel:{{ $provider->phone }}"> <i class="fa-solid fa-phone-volume" style="font-size: 30px;float: right;color: #fff;margin-top: 7px;"></i></a>
     </div>
     <div class="chat-Body">
