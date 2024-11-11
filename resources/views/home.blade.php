@@ -151,70 +151,50 @@
 
     <section class="splide wedding__splide wow flipInX " aria-label="Splide Basic HTML Example">
         <div class="splide__track">
-            <ul class="splide__list gap-2">
+            <ul class="splide__list ">
                 {{-- (LOOPING)  Big banner --}}
-                <li class="splide__slide">
-                    <section class="wedding w-100 p-2 mt-5 mb-6 position-relative">
-                        <div class="position-absolute mb-4 d-flex gap-2 bottom-0 start-50 translate-middle-y">
-                            <span class="line bg-primary"></span>
-                            <span class="line bg-white"></span><span class="line bg-white"></span>
-                        </div>
-                        <div class="container mt-6">
-                            <div class="d-flex justify-content-between flex-wrap">
-                                <div class="d-flex flex-column">
-                                    <h2 class="text-white display-6 fw-medium">
-                                        Wedding packages
-                                    </h2>
-                                    <ul class="d-flex flex-column gap-2 text-white list-unstyled fm-cairo fs-14">
-                                        <li>
-                                            <span class="right position-relative"><img
-                                                    src="{{ asset('imgs') }}/rightprimary.svg"
-                                                    alt="right check" /></span>
-                                            DJ and Music
-                                        </li>
+                @foreach ($slider as $slid)
+                    <li class="splide__slide">
+                        <section class="wedding w-100 p-2 mt-5 mb-6 position-relative">
+                            <div class="position-absolute mb-4 d-flex  bottom-0 start-50 translate-middle-y">
+                                <span class="line bg-primary"></span>
+                                <span class="line bg-white"></span><span class="line bg-white"></span>
+                            </div>
+                            <div class="container mt-6">
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <div class="d-flex flex-column">
+                                        <h2 class="text-white display-6 fw-medium">
+                                            {{ $slid->name }}
+                                        </h2>
+                                        <ul class="d-flex flex-column  text-white list-unstyled fm-cairo fs-14">
+                                            @foreach ($slid->services as $ser)
+                                                <li>
+                                                    <span class="right position-relative"><img
+                                                            src="{{ asset('imgs') }}/rightprimary.svg"
+                                                            alt="right check" /></span>
+                                                            {{ $ser->name }}
+                                                </li>
+                                            @endforeach
 
-                                        <li>
-                                            <span class="right position-relative"><img
-                                                    src="{{ asset('imgs') }}/rightprimary.svg"
-                                                    alt="right check" /></span>
-                                            Balloons and Decorations
-                                        </li>
-                                        <li>
-                                            <span class="right position-relative"><img
-                                                    src="{{ asset('imgs') }}/rightprimary.svg"
-                                                    alt="right check" /></span>
-                                            Cake and Sweets
-                                        </li>
-                                        <li>
-                                            <span class="right position-relative"><img
-                                                    src="{{ asset('imgs') }}/rightprimary.svg"
-                                                    alt="right check" /></span>
-                                            Food and Drinks
-                                        </li>
-                                        <li>
-                                            <span class="right position-relative"><img
-                                                    src="{{ asset('imgs') }}/rightprimary.svg"
-                                                    alt="right check" /></span>
-                                            Party Favors
-                                        </li>
-                                    </ul>
-                                    <p class="text-white fm-cairo fw-medium">
-                                        providers: sick rose compay <br />
-                                        sates from: 100.3 $
-                                    </p>
+                                        </ul>
+                                        <p class="text-white fm-cairo fw-medium">
+                                            providers: {{ $slid->provider->name }} <br />
+                                            sates from: {{ $slid->cost }} $
+                                        </p>
 
-                                    <button class="align-self-center mb-4 btn btn-primary rounded-5 fm-cairo py-2 px-5">
-                                        order now
-                                    </button>
-                                </div>
-                                <div>
-                                    <img src="{{ asset('imgs') }}/party.webp" alt="party"
-                                        class="img-fluid" />
+                                       <a href="{{Route('package', $slid->id)}}"> <button class="align-self-center mb-4 btn btn-primary rounded-5 fm-cairo py-2 px-5">
+                                            order now
+                                        </button></a>
+                                    </div>
+                                    <div>
+                                        <img src="{{ asset('imgs') }}/party.webp" alt="party"
+                                            class="img-fluid" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                </li>
+                        </section>
+                    </li>
+                @endforeach
                 {{-- end of Big banner --}}
             </ul>
         </div>
@@ -328,9 +308,11 @@
                     <div class="mb-3 position-relative">
                         <img src="{{ asset($trend->files[0]?->path) }}" style="height: 260px;border-radius: 5px" alt="birthday party" class="img-fluid"/>
                         <div class="bg-white mb-3 rounded-2 p-2 position-absolute start-50 bottom-0 translate-middle-x w-90">
-                        <h5 class="text-black fw-medium fm-cairo ls-5 text-start" style="margin-bottom: 5px">
+                        <a href="{{Route('package', $trend->id)}}">
+                            <h5 class="text-black fw-medium fm-cairo ls-5 text-start" style="margin-bottom: 5px">
                             {{ $trend->name }}
-                        </h5>
+                            </h5>
+                        </a>
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                             <span class="fm-cairo fs-10"><img src="imgs/union-1.svg" alt="union icon"  style="width: 15px"
@@ -349,7 +331,7 @@
                             <span class="fm-cairo fs-10"><img src="imgs/star.svg" alt="union icon"   style="width: 20px"
                                 class="me-1 rounded-5 bg-black p-1" /></span>
                             <p class="cost fm-cairo fs-12 fw-light mb-0">
-                                 4.9
+                                {{ $trend->average_rate ?? 'N/A' }}
                             </p>
                             </div>
                         </div>
@@ -824,6 +806,12 @@
 
 @endsection
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Splide('.splide').mount();
+        //new WOW().init();
+    });
+</script>
 
 @push('js')
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

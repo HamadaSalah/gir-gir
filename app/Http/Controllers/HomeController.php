@@ -36,10 +36,10 @@ class HomeController extends Controller
 
         $best_shops = Provider::withCount(['services as services_order_count' => function ($query) {
                 $query->withCount('orders');
-            }])
-            ->orderBy('services_order_count', 'desc')->take(3)->get();
+            }])->orderBy('services_order_count', 'desc')->take(3)->get();
 
         $trendy_packages = Package::take(10)->orderBy('order_count', 'desc')->get();
+        $slider = Package::where('to_home', 1)->take(3)->get();
 
 
         if ($trendy_packages->isEmpty()) {
@@ -47,7 +47,7 @@ class HomeController extends Controller
         }
 
 
-        return view('home', compact('categories' ,  'most_requested_packages', 'best_shops', 'trendy_packages'));
+        return view('home', compact('categories' ,  'most_requested_packages', 'best_shops', 'trendy_packages', 'slider'));
     }
 
     public function logout()
