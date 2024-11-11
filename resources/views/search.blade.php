@@ -82,7 +82,7 @@
                 <div class="col-lg-6">
                     <div style="background: #fff;padding: 10px;border-radius: 20px;box-shadow: 0 0 5px #CCC;" class="mb-4">
                         <img src="{{ asset('imgs') }}/mdi_heart-outline.svg" alt="add to fav" class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute add__tofav mt-3" />
-                        <img src="{{ asset('imgs') }}/most1.png" alt="wedding" class="card-img-top img-fluid rounded-3 leftImgcard" />
+                        <img src="{{ asset($package->files()->first()?->path) }}" alt="wedding" class="card-img-top img-fluid rounded-3 leftImgcard" />
                         <div class="card-body ">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h3 class="card-title h6 fw-bold mb-0">{{ $package->name }}</h3>
@@ -119,11 +119,11 @@
 
             @endforeach
         </div>
-        <div class="d-flex justify-content-center">
+        {{-- <div class="d-flex justify-content-center">
             <button class="btn btn-primary fw-light py-1 px-3 mb-5 text-center">
                 Find out more &rarr;
             </button>
-        </div>
+        </div> --}}
         <h5 class="pb-4 border-bottom mb-3 position-relative  ">
             services
         </h5>
@@ -154,7 +154,7 @@
                                 <img src="http://girgir.test/imgs/mdi_heart-outline.svg" alt="add to fav"
                                     class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute end-0 me-3 mt-3">
 
-                                <img src="http://girgir.test/imgs/most1.png" alt="wedding" class="card-img-top">
+                                <img src="{{ asset($service->files()->first()?->path) }}" alt="wedding" class="card-img-top">
 
                                 <div class="card-body px-2 py-3">
                                     <div class="d-flex align-items-center justify-content-between mb-2">

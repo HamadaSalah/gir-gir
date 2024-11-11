@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         $categories = Category::take(5)->get();
 
-        $most_requested_packages = Package::with('files')->take(10)->orderBy('order_count', 'desc')->get();
+        $most_requested_packages = Package::with('files')->latest('id')->take(10)->orderBy('order_count', 'desc')->get();
 
 
         $best_shops = Provider::withCount(['services as services_order_count' => function ($query) {

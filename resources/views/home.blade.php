@@ -229,11 +229,11 @@
                             <div
                               class="card mb-5 text-start shadow-sm position-relative border-0 p-0 rounded-5"
                             >
-                              <img
+                              {{-- <img
                                 src="{{ asset('') }}/imgs/straightromhear.png"
                                 alt="add to fav"
                                 class="border border-4 border-white rounded-5 position-absolute top-54 start-50 translate-middle"
-                              />
+                              /> --}}
 
                               <img
                                 src="{{ asset($shop->files()->first()?->path) }}"
