@@ -266,7 +266,7 @@ alt=""></buttton>
 
 
     <div class="chatHeader">
-        @if (isset($provider->files))
+        @if (isset($provider->files[0]->path))
             
         <img src="{{asset($provider->files[0]->path)}}" width="40px" height="40px" alt=""> <span style="color: #fff">{{ $provider->name }}</span>
         @endif
