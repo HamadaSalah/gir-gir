@@ -23,6 +23,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         border-top: 0;
         border-bottom: 0
       }
+      .favouriteicon {
+        display: none
+      }
     </style>
 
     
