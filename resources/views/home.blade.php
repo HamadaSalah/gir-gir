@@ -236,7 +236,7 @@
                               /> --}}
 
                               <img
-                                src="{{ asset($shop->files()->first()?->path) }}"
+                                src="{{ asset($shop->files()->first()?->path ?? 'storage/provider1.png') }}"
                                 alt="wedding"
                                 class="card-img-top"
                               />
