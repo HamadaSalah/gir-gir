@@ -262,7 +262,7 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
     </div>
   </div>
 
-  <div style="background: #ccc;
+  <div style="background: #f0f0f0;
     padding-bottom: 4px;">
     <div class="container hayperlinks col-8 m-auto d-flex">
       <a class="col m-2 {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $provider]) }}">
