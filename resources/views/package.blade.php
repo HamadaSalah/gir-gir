@@ -183,9 +183,10 @@
     </div>
 
     <div class="backgroundService">
+        
         <img class="backgroundImg col-sm-6 col-md-6" style="border-radius: 50%;
     width: 100px;
-    height: 100px;" src="{{ asset($package->provider->files[0]?->path) }}"
+    height: 100px;" src="{{ asset($package->provider->files[0]?->path ?? '') }}"
             alt="" />
         <div class="hypernav">
             <a href="">home</a>

@@ -341,10 +341,9 @@ aside ul li a:hover{
 }
 .myCards .myCard{
     background-color:white;
-    width:49%;
     min-width: 400px;
     min-height:fit-content;
-    padding: 30px;
+    padding: 10px;
     border-radius:10px;
     display:flex !important;
     justify-content:space-between;

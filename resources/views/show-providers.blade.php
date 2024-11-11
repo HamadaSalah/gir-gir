@@ -67,7 +67,7 @@ margin-top: 5px; ">5.0</span>
     <img src="{{ asset('imgs/purple-balloon-png') }}-image-2416.png" alt="" class="puprepallon2" />
     @foreach ($provider->packages as $package)
         <div class="package-card">
-            <img src="{{ asset('imgs/Rectangle 18903.png') }}" alt="Pink Theme Wedding" />
+            <img src="{{ asset($package->files[0]?->path) }}" alt="Pink Theme Wedding" />
             <span><img class="favouriteicon" src="{{ asset('imgs/Vector fav.png') }}"
                     alt="Pink Theme Wedding" /></span>
 
@@ -115,7 +115,7 @@ margin-top: 5px; ">5.0</span>
                                 <img src="{{ asset('imgs/mdi_heart-outline.svg') }}" alt="add to fav"
                                     class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute end-0 me-3 mt-3" />
 
-                                <img src="{{ asset('imgs/Rectangle 3463357.png') }}" alt="wedding"
+                                <img src="{{ asset($service->files[0]?->path) }}" alt="wedding"
                                     class="card-img-top" />
 
                                 <div class="card-body px-2 py-4">

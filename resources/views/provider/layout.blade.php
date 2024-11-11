@@ -262,16 +262,20 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
     </div>
   </div>
 
-  <div class="container hayperlinks col-8 m-auto d-flex">
-    <a class="col m-2 {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $provider]) }}">
-        <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
-        FullPage</a>
-    <a class="col m-2 {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $provider]) }}">Reviews</a>
-    <a class="col m-2 {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $provider]) }}">Services</a>
-    <a class="col m-2 {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $provider]) }}">Location</a>
-    <a class="col m-2 {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $provider]) }}">About</a>
-    <a class="col m-2 {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $provider]) }}">Packages</a>
-</div>
+  <div style="background: #ccc;
+    padding-bottom: 4px;">
+    <div class="container hayperlinks col-8 m-auto d-flex">
+      <a class="col m-2 {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $provider]) }}">
+          <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
+          FullPage</a>
+      <a class="col m-2 {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $provider]) }}">Reviews</a>
+      <a class="col m-2 {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $provider]) }}">Services</a>
+      <a class="col m-2 {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $provider]) }}">Location</a>
+      <a class="col m-2 {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $provider]) }}">About</a>
+      <a class="col m-2 {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $provider]) }}">Packages</a>
+  </div>
+
+  </div>
     <!-- about-contant -->
     <div class="container col-8 m-auto about-contant d-flex">
         <h2>{{ $provider->tag ?? $provider->name }}' @yield('title') </h2>
