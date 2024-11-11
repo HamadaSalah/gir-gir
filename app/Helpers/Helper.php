@@ -2,6 +2,7 @@
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Notification;
 use Illuminate\Support\Str;
 
 if (!function_exists('detectModelPath')) {
@@ -53,6 +54,15 @@ if (!function_exists('cartCount')) {
             return Cart::where('user_id', auth()->user()->id)->count();
         }
         return 0;
+    }
+}
+if (!function_exists('notifications')) {
+    function notifications()
+    {
+        if(auth()->user()) {
+            return Notification::where('user_id', auth()->user()->id)->latest()->limit(5)->get();
+        }
+        return [];
     }
 }
 

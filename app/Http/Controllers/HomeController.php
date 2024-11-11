@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Chat;
 use App\Models\CouponCode;
 use App\Models\Message;
+use App\Models\Notification;
 use App\Models\Order;
 use App\Models\Package;
 use App\Models\Provider;
@@ -15,6 +16,7 @@ use App\Models\Rate;
 use App\Models\Service;
 use App\Models\ServiceProvider;
 use App\Models\ServicesToPackage;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -375,6 +377,15 @@ class HomeController extends Controller
             'message' => $request->message,
             'sender_id' => $request->sender_id ?? 'guest'
         ]);
+
+        $provider = Provider::find($chat->provider_id);
+
+        if(auth()->user()?->id != $chat->user_id) {
+            Notification::create([
+                'user_id' => $chat->user_id,
+                'text' => $provider->name . ' Provider Send you an message ' 
+            ]);    
+        }
 
         return response()->json(['success' => true, 'message' => 'Request sent successfully!']);
     }

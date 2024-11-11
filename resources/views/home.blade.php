@@ -143,9 +143,11 @@
                     </ul>
                 </div>
             </section>
-            <button class="btn btn-primary fw-light py-1 px-3">
-                Find out more &rarr;
-            </button>
+            <a href="{{ Route('search') }}">
+                <button class="btn btn-primary fw-light py-1 px-3">
+                    Find out more &rarr;
+                </button>
+            </a>
         </div>
     </section>
 
@@ -287,10 +289,11 @@
                     </ul>
                 </div>
             </section>
-
-            <button class="btn btn-primary fw-light py-1 px-3">
-                Find out more &rarr;
-            </button>
+            <a href="{{ Route('providers') }}">
+                <button class="btn btn-primary fw-light py-1 px-3">
+                    Find out more &rarr;
+                </button>
+            </a>
         </div>
     </section>
 

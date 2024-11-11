@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Provider;
 use App\Http\Controllers\Controller;
 use App\Jobs\OrderResponseJob;
 use App\Jobs\OrderUpdateJob;
+use App\Models\Notification;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -66,6 +67,12 @@ class OrdersController extends Controller
         if ($currentStatusIndex !== false && $currentStatusIndex < count($statuses) - 1) {
             $order->status = $statuses[$currentStatusIndex + 1];
             $order->save();
+
+        Notification::create([
+            'user_id' => $order->user_id,
+            'text' => 'Order Status Updated to' . $order->status 
+        ]);
+
         }
 
         OrderUpdateJob::dispatch($order);

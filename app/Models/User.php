@@ -127,5 +127,10 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Cart::class);
     }
 
+    public function Notification()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
 
 }
