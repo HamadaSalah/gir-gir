@@ -14,7 +14,6 @@
 
     @stack('css')
     <style>
-
       .form.my-3.me-5 input[type="text"] {
         border-top: 0;
         border-bottom: 0

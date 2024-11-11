@@ -45,6 +45,7 @@ Route::get('orders', [HomeController::class,'orders'])->name('orders');
 Route::get('orderDetails/{invoice_number}', [HomeController::class,'orderDetails'])->name('orderDetails');
 Route::post('add-service-to-package', [HomeController::class,'addServicesToPackage'])->middleware('auth:web')->name('addServicesToPackage');
 Route::get('delete-service-to-package/{id}', [HomeController::class,'DeleteFromANother'])->middleware('auth:web')->name('DeleteFromANother');
+Route::post('rating', [HomeController::class,'rate'])->middleware('auth:web')->name('rating');
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripePaymentController;
 

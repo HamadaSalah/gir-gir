@@ -14,9 +14,9 @@
         <div class="routing d-flex align-items-center">
             <a href="#" class="text-black home__main fs-10 me-2 fw-light">Home</a>
             <span class="text-black">-</span>
-            <a href="#" class="text-black fs-10 ms-2 fw-light add__package">Search Filter</a>
+            {{-- <a href="#" class="text-black fs-10 ms-2 fw-light add__package">Search Filter</a> --}}
         </div>
-        <h3 class="mt-3 mb-5 me-2 h1">Search results</h3>
+        {{-- <h3 class="mt-3 mb-5 me-2 h1">Search results</h3> --}}
         <div class="d-flex justify-content-between border-bottom pb-2 mb-4 search__content position-relative">
             <div class="d-flex align-items-center">
                 <label for="#type" class="service__label">Service Provider :</label>
@@ -56,7 +56,7 @@
                                 <h3 class="card-title h6 fw-bold mb-0">{{ $package->name }}</h3>
                                 <span class="d-flex align-items-center bg_rating p-1 rounded-5"><img
                                         src="{{ asset('imgs') }}/Star_1.svg" alt="rating" class="me-1" />
-                                    <span class="rating__number text-white fs-12 fw-light">4.9</span>
+                                    <span class="rating__number text-white fs-12 fw-light">{{ $package->average_rate ?? 'N/A' }}</span>
                                 </span>
                             </div>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">

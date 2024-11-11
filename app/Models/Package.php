@@ -16,6 +16,9 @@ class Package extends Model
     protected $casts = [
         'cost' => 'integer'
     ];
+    
+    protected $appends = ['average_rate'];
+
     /*
      |--------------------------------------------------------------------------
      | Relations methods
@@ -25,6 +28,10 @@ class Package extends Model
     public function files(): MorphMany
     {
         return $this->morphMany(File::class, 'fileable');
+    }
+    public function rates(): MorphMany
+    {
+        return $this->morphMany(Rate::class, 'rateable');
     }
 
     public function services()
@@ -63,5 +70,13 @@ class Package extends Model
     {
         return $this->morphMany(Cart::class, 'cartable');
     }
+
+    public function getAverageRateAttribute()
+    {
+        $averageRate = $this->rates()->avg('rate');
+
+        return $averageRate ? round($averageRate, 2) : null;
+    }
+
 
 }

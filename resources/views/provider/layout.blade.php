@@ -198,11 +198,18 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     {{ $provider->tag ?? $provider->name }}
 </h1>
 <span>
-<img src="{{ asset('') }}imgs/Star 9.png" alt="">
+  @for ($i = 1; $i <= ceil($provider->average_rate); $i++)
+  <i style="color: gold" class="fa-solid fa-star"></i>
+  @endfor
+  @for ($i = 5; $i > ceil($provider->average_rate); $i--)
+  <i style="color: gray" class="fa-solid fa-star"></i>
+  @endfor
+
+{{-- <img src="{{ asset('') }}imgs/Star 9.png" alt="">
 <img src="{{ asset('') }}imgs/star 9.png" alt="">
 <img src="{{ asset('') }}imgs/star 9.png" alt="">
 <img src="{{ asset('') }}imgs/star 9.png" alt="">
-<img src="{{ asset('') }}imgs/star 9.png" alt="">
+<img src="{{ asset('') }}imgs/star 9.png" alt=""> --}}
 </span>
 <span style="font-family: Chau Philomene One;
 font-size: 25px;
@@ -211,7 +218,7 @@ line-height: 20px;
 letter-spacing: -0.5px;
 text-align: center;
 color: white;
-margin-top: 15px;">5.0</span>
+margin-top: 15px;">{{ $provider->average_rate }}</span>
     </div>
   </div>
 

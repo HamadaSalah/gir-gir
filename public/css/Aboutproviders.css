@@ -236,7 +236,7 @@ table{
   position: relative;
 }
 .mission div {
-  position: absolute;
+  position: relative;
   left: 80px;
 }
 .mission div h2 {
@@ -324,7 +324,7 @@ top: 95%;
     left: 5px;
   }
   .mission div {
-    position: absolute;
+    position: relative;
     left: 80px;
   }
   .mission div h2 {
@@ -358,7 +358,7 @@ top: 95%;
     left: 5px;
   }
   .mission div {
-    position: absolute;
+    position: relative;
     left: 80px;
   }
   .mission div h2 {

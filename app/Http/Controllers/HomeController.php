@@ -11,6 +11,7 @@ use App\Models\Message;
 use App\Models\Order;
 use App\Models\Package;
 use App\Models\Provider;
+use App\Models\Rate;
 use App\Models\Service;
 use App\Models\ServiceProvider;
 use App\Models\ServicesToPackage;
@@ -261,7 +262,9 @@ class HomeController extends Controller
     }
 
     public function aboutProvider(Provider $provider) {
-        $provider->load('info');
+        
+        $provider->load(['info', 'rates.user', 'rates.rateable']);
+
         return view('provider.new-about' , compact('provider'));
     }
 
@@ -374,5 +377,23 @@ class HomeController extends Controller
         ]);
 
         return response()->json(['success' => true, 'message' => 'Request sent successfully!']);
+    }
+
+    public function rate(Request $request) {
+        $request->validate([
+            'rate' => 'required',
+            'comment' => 'nullable',
+            'package_id' => 'required'
+        ]);
+
+        $package = Package::findOrFail($request->package_id);
+        $package->rates()->create([
+            'rate' => $request->rate,
+            'comment' => $request->comment,
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect()->route('home')->with('success', 'Rated Successfully');
+
     }
 }

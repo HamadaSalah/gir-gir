@@ -4,6 +4,164 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <style>.rating-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row-reverse;
+      padding: 0;
+      gap: 10px;
+      border-radius: 75px;
+      position: relative;
+      background: #2b2b2b;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 2px 2px rgba(0, 0, 0, 0.075), 0 4px 4px rgba(0, 0, 0, 0.075), 0 8px 8px rgba(0, 0, 0, 0.075), 0 16px 16px rgba(0, 0, 0, 0.075);
+    }
+    .rating-container .rating-value {
+      display: none;
+      position: absolute;
+      top: -10px;
+      left: -69px;
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+      background: #ffbb00;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 2px 2px rgba(0, 0, 0, 0.075), 0 4px 4px rgba(0, 0, 0, 0.075), 0 8px 8px rgba(0, 0, 0, 0.075), 0 16px 16px rgba(0, 0, 0, 0.075), inset 0 0 10px #f7db5e, 0 0 10px #f7db5e;
+    }
+    .rating-container .rating-value:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+      line-height: 80px;
+      font-size: 2.5em;
+      color: #2b2b2b;
+      content: "0";
+      transform-origin: "center center";
+      transition: all 0.25s ease 0s;
+    }
+    .rating-container .rating-value:after {
+      content: "";
+      position: absolute;
+      height: 80px;
+      width: 80px;
+      top: -1px;
+      left: -1px;
+      margin: auto;
+      border: 1px solid #ffbb00;
+      border-radius: 50%;
+      transition: all 0.4s ease-in;
+    }
+    .rating-container input {
+      display: none;
+    }
+    .rating-container label {
+      height: 50px;
+      width: 50px;
+      transform-origin: "center center";
+    }
+    .rating-container label svg {
+      transition: transform 0.4s ease-in-out;
+      opacity: 0.5;
+    }
+    .rating-container label:hover svg {
+      transform: scale(1.25) rotate(10deg);
+    }
+    
+    input:checked ~ label svg {
+      opacity: 1;
+      transform: scale(1.25) rotate(10deg);
+    }
+    
+    label:hover svg,
+    label:hover ~ label svg {
+      opacity: 1;
+      transform: scale(1.25) rotate(10deg);
+    }
+    
+    input:checked + label:hover svg {
+      opacity: 1;
+    }
+    input:checked ~ label:hover svg,
+    input:checked ~ label:hover ~ label svg {
+      opacity: 1;
+    }
+    
+    label:hover ~ input:checked ~ label svg {
+      opacity: 1;
+    }
+    
+    #rate1:checked ~ .rating-value:before {
+      content: "1";
+      font-size: 2.75em;
+    }
+    
+    label[for=rate1]:hover ~ .rating-value:before {
+      content: "1" !important;
+      font-size: 2.75em !important;
+    }
+    
+    #rate2:checked ~ .rating-value:before {
+      content: "2";
+      font-size: 3em;
+    }
+    
+    label[for=rate2]:hover ~ .rating-value:before {
+      content: "2" !important;
+      font-size: 3em !important;
+    }
+    
+    #rate3:checked ~ .rating-value:before {
+      content: "3";
+      font-size: 3.25em;
+    }
+    
+    label[for=rate3]:hover ~ .rating-value:before {
+      content: "3" !important;
+      font-size: 3.25em !important;
+    }
+    
+    #rate4:checked ~ .rating-value:before {
+      content: "4";
+      font-size: 3.5em;
+    }
+    
+    label[for=rate4]:hover ~ .rating-value:before {
+      content: "4" !important;
+      font-size: 3.5em !important;
+    }
+    
+    #rate5:checked ~ .rating-value:before {
+      content: "5";
+      font-size: 3.75em;
+    }
+    
+    @keyframes pulse {
+      0% {
+        height: 80px;
+        width: 80px;
+        top: -1px;
+        left: -1px;
+        opacity: 1;
+      }
+      100% {
+        height: 170px;
+        width: 170px;
+        top: -16px;
+        left: -16px;
+        opacity: 0;
+      }
+    }
+    #rate5:checked ~ .rating-value:after {
+      animation: pulse 0.4s ease-out 1;
+    }
+    
+    label[for=rate5]:hover ~ .rating-value:before {
+      content: "5" !important;
+      font-size: 3.75em !important;
+    }</style>
 @endpush
 
 @section('content')
@@ -104,8 +262,9 @@
                 <ul>
                   
                   <li>{{ $order->items[0]->orderable->description }}</li>
-                  {{(int)$order->delivery_status}}
+                  {{-- {{(int)$order->delivery_status}} --}}
                 </ul>
+                <button   type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Rate it Now <i class="fa-solid fa-star"></i></button>
               </div>
             </div>
           </div>
@@ -468,9 +627,64 @@
     <script src="js/orderDetails.js"></script>
   </body>
 
-@endsection
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{{ route('rating') }}" method="POST">
+            @csrf
+            <input type="hidden" name="package_id" value="{{$order->items[0]->orderable->id}}">
+            <fieldset class="rating-container">	
+              <input type="radio" name="rate" id="rate5" value="5">
+              <label for="rate5">
+                <svg id="Object" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1122 1122"><defs><style>.cls-1{fill:#f7db5e;}.cls-2{fill:#f3cc30;}.cls-3{fill:#edbd31;}</style></defs><path class="cls-2" d="m570.497,252.536l93.771,190c1.543,3.126,4.525,5.292,7.974,5.794l209.678,30.468c8.687,1.262,12.156,11.938,5.87,18.065l-151.724,147.895c-2.496,2.433-3.635,5.939-3.046,9.374l35.817,208.831c1.484,8.652-7.597,15.25-15.367,11.165l-187.542-98.596c-3.085-1.622-6.771-1.622-9.857,0l-187.542,98.596c-7.77,4.085-16.851-2.513-15.367-11.165l35.817-208.831c.589-3.436-.55-6.941-3.046-9.374l-151.724-147.895c-6.286-6.127-2.817-16.803,5.87-18.065l209.678-30.468c3.45-.501,6.432-2.668,7.974-5.794l93.771-190c3.885-7.872,15.11-7.872,18.995,0Z"/><path class="cls-1" d="m561,296.423l-83.563,161.857c-4.383,8.49-12.797,14.155-22.312,15.024l-181.433,16.562,191.688,8.964c12.175.569,23.317-6.81,27.543-18.243l68.077-184.164Z"/><path class="cls-3" d="m357.284,838.933l-4.121,24.03c-1.484,8.652,7.597,15.25,15.367,11.165l187.541-98.596c3.086-1.622,6.771-1.622,9.857,0l187.541,98.596c7.77,4.085,16.851-2.513,15.367-11.165l-35.817-208.831c-.589-3.435.55-6.941,3.046-9.374l151.724-147.894c6.287-6.127,2.818-16.802-5.87-18.065l-70.23-10.205c-113.59,203.853-287.527,311.181-454.405,370.34Z"/></svg>
+              </label>
+              <input type="radio" name="rate" id="rate4" value="5"> 
+              <label for="rate4">
+                <svg id="Object" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1122 1122"><defs><style>.cls-1{fill:#f7db5e;}.cls-2{fill:#f3cc30;}.cls-3{fill:#edbd31;}</style></defs><path class="cls-2" d="m570.497,252.536l93.771,190c1.543,3.126,4.525,5.292,7.974,5.794l209.678,30.468c8.687,1.262,12.156,11.938,5.87,18.065l-151.724,147.895c-2.496,2.433-3.635,5.939-3.046,9.374l35.817,208.831c1.484,8.652-7.597,15.25-15.367,11.165l-187.542-98.596c-3.085-1.622-6.771-1.622-9.857,0l-187.542,98.596c-7.77,4.085-16.851-2.513-15.367-11.165l35.817-208.831c.589-3.436-.55-6.941-3.046-9.374l-151.724-147.895c-6.286-6.127-2.817-16.803,5.87-18.065l209.678-30.468c3.45-.501,6.432-2.668,7.974-5.794l93.771-190c3.885-7.872,15.11-7.872,18.995,0Z"/><path class="cls-1" d="m561,296.423l-83.563,161.857c-4.383,8.49-12.797,14.155-22.312,15.024l-181.433,16.562,191.688,8.964c12.175.569,23.317-6.81,27.543-18.243l68.077-184.164Z"/><path class="cls-3" d="m357.284,838.933l-4.121,24.03c-1.484,8.652,7.597,15.25,15.367,11.165l187.541-98.596c3.086-1.622,6.771-1.622,9.857,0l187.541,98.596c7.77,4.085,16.851-2.513,15.367-11.165l-35.817-208.831c-.589-3.435.55-6.941,3.046-9.374l151.724-147.894c6.287-6.127,2.818-16.802-5.87-18.065l-70.23-10.205c-113.59,203.853-287.527,311.181-454.405,370.34Z"/></svg>
+              </label>
+              <input type="radio" name="rate" id="rate3" value="3">
+              <label for="rate3">
+                <svg id="Object" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1122 1122"><defs><style>.cls-1{fill:#f7db5e;}.cls-2{fill:#f3cc30;}.cls-3{fill:#edbd31;}</style></defs><path class="cls-2" d="m570.497,252.536l93.771,190c1.543,3.126,4.525,5.292,7.974,5.794l209.678,30.468c8.687,1.262,12.156,11.938,5.87,18.065l-151.724,147.895c-2.496,2.433-3.635,5.939-3.046,9.374l35.817,208.831c1.484,8.652-7.597,15.25-15.367,11.165l-187.542-98.596c-3.085-1.622-6.771-1.622-9.857,0l-187.542,98.596c-7.77,4.085-16.851-2.513-15.367-11.165l35.817-208.831c.589-3.436-.55-6.941-3.046-9.374l-151.724-147.895c-6.286-6.127-2.817-16.803,5.87-18.065l209.678-30.468c3.45-.501,6.432-2.668,7.974-5.794l93.771-190c3.885-7.872,15.11-7.872,18.995,0Z"/><path class="cls-1" d="m561,296.423l-83.563,161.857c-4.383,8.49-12.797,14.155-22.312,15.024l-181.433,16.562,191.688,8.964c12.175.569,23.317-6.81,27.543-18.243l68.077-184.164Z"/><path class="cls-3" d="m357.284,838.933l-4.121,24.03c-1.484,8.652,7.597,15.25,15.367,11.165l187.541-98.596c3.086-1.622,6.771-1.622,9.857,0l187.541,98.596c7.77,4.085,16.851-2.513,15.367-11.165l-35.817-208.831c-.589-3.435.55-6.941,3.046-9.374l151.724-147.894c6.287-6.127,2.818-16.802-5.87-18.065l-70.23-10.205c-113.59,203.853-287.527,311.181-454.405,370.34Z"/></svg>
+              </label>
+              <input type="radio" name="rate" id="rate2" value="2">
+              <label for="rate2">
+                <svg id="Object" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1122 1122"><defs><style>.cls-1{fill:#f7db5e;}.cls-2{fill:#f3cc30;}.cls-3{fill:#edbd31;}</style></defs><path class="cls-2" d="m570.497,252.536l93.771,190c1.543,3.126,4.525,5.292,7.974,5.794l209.678,30.468c8.687,1.262,12.156,11.938,5.87,18.065l-151.724,147.895c-2.496,2.433-3.635,5.939-3.046,9.374l35.817,208.831c1.484,8.652-7.597,15.25-15.367,11.165l-187.542-98.596c-3.085-1.622-6.771-1.622-9.857,0l-187.542,98.596c-7.77,4.085-16.851-2.513-15.367-11.165l35.817-208.831c.589-3.436-.55-6.941-3.046-9.374l-151.724-147.895c-6.286-6.127-2.817-16.803,5.87-18.065l209.678-30.468c3.45-.501,6.432-2.668,7.974-5.794l93.771-190c3.885-7.872,15.11-7.872,18.995,0Z"/><path class="cls-1" d="m561,296.423l-83.563,161.857c-4.383,8.49-12.797,14.155-22.312,15.024l-181.433,16.562,191.688,8.964c12.175.569,23.317-6.81,27.543-18.243l68.077-184.164Z"/><path class="cls-3" d="m357.284,838.933l-4.121,24.03c-1.484,8.652,7.597,15.25,15.367,11.165l187.541-98.596c3.086-1.622,6.771-1.622,9.857,0l187.541,98.596c7.77,4.085,16.851-2.513,15.367-11.165l-35.817-208.831c-.589-3.435.55-6.941,3.046-9.374l151.724-147.894c6.287-6.127,2.818-16.802-5.87-18.065l-70.23-10.205c-113.59,203.853-287.527,311.181-454.405,370.34Z"/></svg>
+              </label>
+              <input type="radio" name="rate" id="rate1" value="1">
+              <label for="rate1">
+                <svg id="Object" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1122 1122"><defs><style>.cls-1{fill:#f7db5e;}.cls-2{fill:#f3cc30;}.cls-3{fill:#edbd31;}</style></defs><path class="cls-2" d="m570.497,252.536l93.771,190c1.543,3.126,4.525,5.292,7.974,5.794l209.678,30.468c8.687,1.262,12.156,11.938,5.87,18.065l-151.724,147.895c-2.496,2.433-3.635,5.939-3.046,9.374l35.817,208.831c1.484,8.652-7.597,15.25-15.367,11.165l-187.542-98.596c-3.085-1.622-6.771-1.622-9.857,0l-187.542,98.596c-7.77,4.085-16.851-2.513-15.367-11.165l35.817-208.831c.589-3.436-.55-6.941-3.046-9.374l-151.724-147.895c-6.286-6.127-2.817-16.803,5.87-18.065l209.678-30.468c3.45-.501,6.432-2.668,7.974-5.794l93.771-190c3.885-7.872,15.11-7.872,18.995,0Z"/><path class="cls-1" d="m561,296.423l-83.563,161.857c-4.383,8.49-12.797,14.155-22.312,15.024l-181.433,16.562,191.688,8.964c12.175.569,23.317-6.81,27.543-18.243l68.077-184.164Z"/><path class="cls-3" d="m357.284,838.933l-4.121,24.03c-1.484,8.652,7.597,15.25,15.367,11.165l187.541-98.596c3.086-1.622,6.771-1.622,9.857,0l187.541,98.596c7.77,4.085,16.851-2.513,15.367-11.165l-35.817-208.831c-.589-3.435.55-6.941,3.046-9.374l151.724-147.894c6.287-6.127,2.818-16.802-5.87-18.065l-70.23-10.205c-113.59,203.853-287.527,311.181-454.405,370.34Z"/></svg>
+              </label>
+              <div class="rating-value"></div>
+            </fieldset>
+            <!-- partial -->
+            <div class="form-group">
+              <label for="exampleFormControlTextarea3"></label>
+              <textarea name="comment" class="form-control mt-1" id="exampleFormControlTextarea3" placeholder="Your Comment" rows="7"></textarea>
+            </div>   
+            <button type="submit" class="btn btn-primary mt-2">Rate Now</button>  
+          </form>
+     
+        </div>
+      </div>
+    </div>
+  </div>
 
+@endsection  
 <script>
+  const ratingContainer = document.querySelector('.rating-container');
+const ratingValueDisplay = document.querySelector('.rating-value');
+
+// Add an event listener to detect changes in the rating
+ratingContainer.addEventListener('change', () => {
+    const selectedRating = document.querySelector('input[name="rate"]:checked').value;
+    ratingValueDisplay.textContent = `Selected Rating: ${selectedRating}`;
+});
+
   function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;

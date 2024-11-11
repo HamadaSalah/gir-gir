@@ -11,7 +11,7 @@
 
 
     <!-- about-contant -->
-     <div class="container col-8 m-auto about-contant d-flex">
+     {{-- <div class="container col-8 m-auto about-contant d-flex">
       <h2>About {{ $provider->tag ?? $provider->name }}</h2>
 
       <div class="col-7 m-auto icons">
@@ -43,7 +43,7 @@
             <img src="{{ asset('imgs/Frame 1321315269.png') }}" alt="TikTok">
         </a>
     </div>
-    
+     --}}
            
      </div>
     <!-- about -->
@@ -199,22 +199,31 @@
         <div class="reviewphoto">
 
         </div>
-        <div class="reviewtext">
-          <span> <img src="{{ asset('') }}imgs/Mask group.svg" alt=""></span><span style="font-family: Cairo;
-          font-size: 16px;
-          font-weight: 600;
-          line-height: 16px;
-          letter-spacing: -0.02em;
-          text-align: center;
-          "> Mohammed Al Rajhi
-            <span> <img style="width: 86px; height: 18px;" src="{{ asset('') }}imgs/review.png" alt=""></span>
-            <p>dubai</p>
-          </span>
-          <span class="reviewparagraph">The drinks are a masterpiece. The hotel is more than wonderful. Sweet, <br>
-             beautiful, delicious. All the services are delicious.</span>
-          <span class="arrowformore">
-             <a  href="">More </a></span>
-        </div>
+        @foreach ($provider->rates as $rate)
+          <div class="reviewtext">
+            <span> <img src="{{ asset('') }}imgs/Mask group.svg" alt=""></span><span style="font-family: Cairo;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            "> {{ $rate->user?->name }}
+              <span>
+                
+                @for ($i = 1; $i <= (int)$rate->rate; $i++)
+                <i style="color: gold" class="fa-solid fa-star"></i>
+                @endfor
+                @for ($i = 5; $i > (int)$rate->rate; $i--)
+                <i style="color: gray" class="fa-solid fa-star"></i>
+                @endfor
+                
+              </span>
+              <p style="margin-bottom: 0">dubai</p>
+            </span>
+           <span style="padding-left: 50px">{{$rate->comment}}</span>
+
+            </div>            
+        @endforeach
       </div>
     </div>
     </div>

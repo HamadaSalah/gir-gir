@@ -88,7 +88,7 @@
                                 <h3 class="card-title h6 fw-bold mb-0">{{ $package->name }}</h3>
                                 <span class="d-flex align-items-center bg_rating p-1 rounded-5"><img
                                         src="{{ asset('imgs') }}/Star_1.svg" alt="rating" class="me-1" />
-                                    <span class="rating__number text-white fs-12 fw-light">4.9</span>
+                                    <span class="rating__number text-white fs-12 fw-light">{{ $package->average_rate ?? 'N/A' }}</span>
                                 </span>
                             </div>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">

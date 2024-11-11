@@ -16,6 +16,8 @@ class Provider extends Authenticatable
 
     protected $guarded = [];
 
+    protected $appends = ['average_rate'];
+
 
     public function services()
     {
@@ -63,6 +65,12 @@ class Provider extends Authenticatable
         return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
     }
 
+    public function rates()
+    {
+        return $this->hasManyThrough(Rate::class, Package::class, 'provider_id', 'rateable_id')
+                    ->where('rateable_type', Package::class);
+    }
+
 
     //Password Mutator for Hashing Password
     public function setPasswordAttribute($value): void
@@ -74,4 +82,12 @@ class Provider extends Authenticatable
     {
         return $this->hasMany(Manager::class);
     }
+
+    public function getAverageRateAttribute()
+    {
+        $averageRate = $this->rates()->avg('rate');
+
+        return $averageRate ? round($averageRate, 2) : null;
+    }
+
 }
