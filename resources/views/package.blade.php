@@ -184,7 +184,7 @@
 
     <div class="backgroundService">
         
-        @if (iiset($package->provider->files[0]?->path))
+        @if (isset($package->provider->files[0]?->path))
             
             <img class="backgroundImg col-sm-6 col-md-6" style="border-radius: 50%;
         width: 100px;
