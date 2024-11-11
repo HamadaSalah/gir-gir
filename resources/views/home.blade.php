@@ -157,7 +157,7 @@
                 {{-- (LOOPING)  Big banner --}}
                 @foreach ($slider as $slid)
                     <li class="splide__slide">
-                        <section class="wedding w-100 p-2 mt-5 mb-6 position-relative">
+                        <section class="wedding w-100 p-2 mt-5 mb-6 position-relative" style="background: url({{ asset($slid->files()->first()?->path) }}) no-repeat center;background-size:cover">
                             <div class="position-absolute mb-4 d-flex  bottom-0 start-50 translate-middle-y">
                                 <span class="line bg-primary"></span>
                                 <span class="line bg-white"></span><span class="line bg-white"></span>
@@ -189,7 +189,7 @@
                                         </button></a>
                                     </div>
                                     <div>
-                                        <img src="{{ asset('imgs') }}/party.webp" alt="party"
+                                        <img src="{{ asset($slid->files()->first()?->path) }}" alt="party"
                                             class="img-fluid" />
                                     </div>
                                 </div>
