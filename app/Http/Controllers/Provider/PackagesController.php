@@ -86,45 +86,51 @@ class PackagesController extends Controller
     }
 
     public function store(Request $request)
-{
-    $data = $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'required|string',
-        'cost' => 'required|numeric',
-        'category_id' => 'required|exists:categories,id',
-        'files.*' => 'file|mimes:jpg,jpeg,png,pdf,docx,doc',
-        'service_name.*' => 'required|string|max:255',
-        'service_cost.*' => 'required|numeric',
-        'service_image.*' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'
-    ]);
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'cost' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'files.*' => 'file|mimes:jpg,jpeg,png,pdf,docx,doc|max:2048',
+            'service_name' => 'required|array|min:1',
+            'service_name.*' => 'required|string|max:255',
+            'service_cost.*' => 'required|numeric',
+            'service_image.*' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
-    $provider = auth('provider')->user();
-    $package = $provider->packages()->create($request->only(['name', 'description', 'cost', 'category_id']));
+        $provider = auth('provider')->user();
 
-    // Handle file uploads in parallel
-    $paths = collect($request->file('files'))->map(function ($file) {
-        return [
-            'path' => $file->store('uploads/packages', 'public'),
-            'name' => $file->getClientOriginalName(),
-        ];
-    });
-    $package->files()->createMany($paths->toArray());
+        $package = $provider->packages()->create($request->only(['name', 'description', 'cost', 'category_id']));
 
-    // Add services in a single operation
-    $services = collect($data['service_name'])->map(function ($serviceName, $index) use ($data, $request) {
-        $serviceData = [
-            'name' => $serviceName,
-            'cost' => $data['service_cost'][$index],
-            'image_path' => $request->hasFile("service_image.{$index}") ?
-                $request->file("service_image.{$index}")->store('uploads/service_images', 'public') : null,
-        ];
-        return $serviceData;
-    });
+        if ($request->hasFile('files')) {
+            $paths = collect($request->file('files'))->map(function ($file) {
+                return [
+                    'path' => $file->store('uploads/packages', 'public'),
+                    'name' => $file->getClientOriginalName(),
+                ];
+            });
+            $package->files()->createMany($paths->toArray());
+        }
 
-    $package->services()->createMany($services->toArray());
+        collect($data['service_name'])->each(function ($serviceName, $index) use ($data, $request, $provider, $package) {
+            $service = $package->services()->create([
+                'name' => $serviceName,
+                'cost' => $data['service_cost'][$index],
+                'provider_id' => $provider->id,
+            ]);
 
-    return redirect()->route('provider-panel.packages.index')->with('success', 'Package created successfully.');
-}
+            if ($request->hasFile("service_image.{$index}")) {
+                $image = $request->file("service_image.{$index}");
+                $service->files()->create([
+                    'name' => "{$serviceName} Image",
+                    'path' => $image->store('uploads/service_images', 'public'),
+                ]);
+            }
+        });
+
+        return redirect()->route('provider-panel.packages.index')->with('success', 'Package created successfully.');
+    }
 
 
     public function edit(Category $category, $package)
