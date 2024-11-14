@@ -44,17 +44,17 @@
         </a>
     </div>
      --}}
-           
-     </div>
+
+     {{-- </div> --}}
     <!-- about -->
 
-    <div class="container col-8 description">
+    {{-- <div class="container col-8 description">
       <p>
         Our store organizes all types of parties with creative touches that
         give your event a unique flair. Enjoy parties tailored to your
         preferences and budget, with our meticulous attention to detail.
       </p>
-    </div>
+    </div> --}}
     <!-- paragraph -->
 
     <!-- info -->
@@ -119,7 +119,7 @@
         </tbody>
     </table>
 </div>
-    
+
     <!-- info -->
 
     <div class="container containerMission">
@@ -209,20 +209,20 @@
             text-align: center;
             "> {{ $rate->user?->name }}
               <span>
-                
+
                 @for ($i = 1; $i <= (int)$rate->rate; $i++)
                 <i style="color: gold" class="fa-solid fa-star"></i>
                 @endfor
                 @for ($i = 5; $i > (int)$rate->rate; $i--)
                 <i style="color: gray" class="fa-solid fa-star"></i>
                 @endfor
-                
+
               </span>
               <p style="margin-bottom: 0">dubai</p>
             </span>
            <span style="padding-left: 50px">{{$rate->comment}}</span>
 
-            </div>            
+            </div>
         @endforeach
       </div>
     </div>
