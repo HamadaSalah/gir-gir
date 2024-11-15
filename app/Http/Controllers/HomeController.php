@@ -121,6 +121,14 @@ class HomeController extends Controller
         return view('provider.new-home', ['provider' => $provider, 'services' => $services, 'chat' => $chat]);
     }
 
+    public function reviewsProvider(Provider $provider) {
+
+        $provider->load(['rates.user', 'rates.rateable']);
+
+        return view('provider.providerRates' , compact('provider'));
+
+    }
+
     /**
      * @param Provider $provider
      * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
