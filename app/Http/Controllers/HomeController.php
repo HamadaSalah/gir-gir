@@ -205,14 +205,16 @@ class HomeController extends Controller
         return view('category.show', ['packages' => $category->packages, 'services' => $services]);
     }
 
-    public function showPackage(Package $package){
-
-
+    public function showPackage(Package $package)
+    {
         $another_Service = ServicesToPackage::where('package_id', $package->id)->where('user_id', auth()->user()->id)->get();
         $services = $package->provider->packages->pluck('services')->flatten()->unique() ;
         return view('package', ['package' => $package, 'services' => $services, 'another_Service' => $another_Service, 'an_service' => Service::take(30)->get()]);
+    }
 
-
+    public function showService(Service $service)
+    {
+        return view('service', ['service' => $service]);
     }
 
     public function addToCard(Request $request) {
@@ -226,7 +228,7 @@ class HomeController extends Controller
             }
         }
 
-        if($request->add_to_card) {
+        if($request->package) {
             $package = Package::find($request->package);
             $package->carts()->create([
                 'user_id'=>auth()->user()->id,
@@ -237,6 +239,19 @@ class HomeController extends Controller
                 "phone_numbers" => $request->phone_numbers,
                 'discount' => $discount
             ]);
+        }
+        else if($request->service) {
+            $service = Service::find($request->service);
+            $service->carts()->create([
+                'user_id'=>auth()->user()->id,
+                "time_from" => $request->time_from,
+                "time_to" => $request->time_to,
+                "location" => $request->location,
+                "notes" => $request->notes,
+                "phone_numbers" => $request->phone_numbers,
+                'discount' => $discount
+            ]);
+
         }
         return redirect()->route('myCart');
 
@@ -251,7 +266,6 @@ class HomeController extends Controller
         ->sum(function($cart) {
             return $cart->cartable->cost;
         });
-
 
         return view('carts', compact('carts', 'totalCost'));
     }

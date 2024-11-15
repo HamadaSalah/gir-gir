@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\File;
 use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,7 @@ Route::get('providers/{provider}/about', [HomeController::class,'aboutProvider']
 Route::get('providers/{provider}/location', [HomeController::class,'locationProvider'])->name('provider.location');
 Route::get('providers/{provider}/reviews', [HomeController::class,'reviewsProvider'])->name('provider.reviews');
 Route::get('packages/{package}', [HomeController::class,'showPackage'])->middleware('auth:web')->name('package');
+Route::get('services/{service}', [HomeController::class,'showService'])->middleware('auth:web')->name('service');
 Route::post('addToCard', [HomeController::class,'addToCard'])->name('addToCard');
 Route::get('mycart', [HomeController::class,'myCart'])->name('myCart');
 Route::delete('deleteCart/{cart}', [HomeController::class,'deleteMyCart'])->name('deleteMyCart');
@@ -46,11 +49,7 @@ Route::get('orderDetails/{invoice_number}', [HomeController::class,'orderDetails
 Route::post('add-service-to-package', [HomeController::class,'addServicesToPackage'])->middleware('auth:web')->name('addServicesToPackage');
 Route::get('delete-service-to-package/{id}', [HomeController::class,'DeleteFromANother'])->middleware('auth:web')->name('DeleteFromANother');
 Route::post('rating', [HomeController::class,'rate'])->middleware('auth:web')->name('rating');
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\StripePaymentController;
 
-// Route::get('payment', [PaymentController::class, 'showPaymentForm'])->middleware('auth:web');
-// Route::post('payment', [PaymentController::class, 'processPayment'])->middleware('auth:web');
 
 Route::get('/stripe', [StripePaymentController::class, 'stripe'])->name('stripe.index');
 Route::get('stripe/checkout', [StripePaymentController::class, 'stripeCheckout'])->name('stripe.checkout');

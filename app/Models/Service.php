@@ -53,4 +53,10 @@ class Service extends Model
         return $firstFile ? asset($firstFile->path) : asset('imgs/package.png');
     }
 
+    public function carts(): MorphMany
+    {
+        return $this->morphMany(Cart::class, 'cartable');
+    }
+
+
 }

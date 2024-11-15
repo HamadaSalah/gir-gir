@@ -13,8 +13,6 @@
       gap: 10px;
       border-radius: 75px;
       position: relative;
-      background: #2b2b2b;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 2px 2px rgba(0, 0, 0, 0.075), 0 4px 4px rgba(0, 0, 0, 0.075), 0 8px 8px rgba(0, 0, 0, 0.075), 0 16px 16px rgba(0, 0, 0, 0.075);
     }
     .rating-container .rating-value {
       display: none;
@@ -257,13 +255,17 @@
                 <p>Providers : <span>{{ $order->provider->name}}</span></p>
               </div>
               <div class="details-right">
-                <p>Package name : <span>{{ $order->items[0]->orderable->name }}</span></p>
-                <h3>Package details :</h3>
-                <ul>
+                @foreach ($order->items as $item)
+                  <p>{{ class_basename($item->orderable_type) }} name : <span>{{ $item->orderable->name }}</span></p>
+                  <h3>{{ class_basename($item->orderable_type) }} details :</h3>
+                  <ul>
+                    
+                    <li>{{ $item->orderable->description }}</li>
+                    {{-- {{(int)$order->delivery_status}} --}}
+                  </ul>
                   
-                  <li>{{ $order->items[0]->orderable->description }}</li>
-                  {{-- {{(int)$order->delivery_status}} --}}
-                </ul>
+                    <hr>
+                @endforeach
                 <button   type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Rate it Now <i class="fa-solid fa-star"></i></button>
               </div>
             </div>

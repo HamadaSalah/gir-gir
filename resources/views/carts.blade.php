@@ -46,9 +46,9 @@
                         <img src="./imgs/Group 1000004716.png" alt="" />
                     </div>
                     <div class="card-image">
-                        <img src="./imgs/most1.png" alt="Pink Theme Wedding" />
+                        <img style="width: 260px" src="{{ asset($cart->cartable->files[0]->path) }}" alt="Pink Theme Wedding" />
                         <div class="card-actions3">
-                            <img src="./imgs/Group 1000004587.png" alt="" />
+                            {{-- <img src="./imgs/Group 1000004587.png" alt="" /> --}}
                         </div>
                     </div>
                     <div class="card-content">
