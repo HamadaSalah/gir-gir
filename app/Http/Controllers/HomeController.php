@@ -157,7 +157,7 @@ class HomeController extends Controller
         $categories = Category::with(['packages' => function ($query) use ($provider) {
             $query->where('provider_id', $provider->id);
         }])->get();
-    
+
         if ($categoryId) {
             $categories = $categories->filter(function ($category) use ($categoryId) {
                 return $category->id == $categoryId || $category->packages->isNotEmpty();
@@ -165,7 +165,7 @@ class HomeController extends Controller
         }
 
         $allCategories = Category::all();
-    
+
         return view('provider.new-packages', [
             'categories' => $categories,
             'provider' => $provider,
@@ -173,9 +173,9 @@ class HomeController extends Controller
             'allCategories' => $allCategories
         ]);
     }
-    
-    
-    
+
+
+
 
     public function providerService(Provider $provider) {
 
@@ -278,14 +278,15 @@ class HomeController extends Controller
     }
 
     public function aboutProvider(Provider $provider) {
-        
+
         $provider->load(['info', 'rates.user', 'rates.rateable']);
 
         return view('provider.new-about' , compact('provider'));
     }
 
     public function locationProvider(Provider $provider) {
-        return view('location-provider', compact('provider'));
+        $provider->load('info');
+        return view('provider.new-location', compact('provider'));
     }
 
     public function checkout() {
@@ -397,8 +398,8 @@ class HomeController extends Controller
         if(auth()->user()?->id != $chat->user_id) {
             Notification::create([
                 'user_id' => $chat->user_id,
-                'text' => $provider->name . ' Provider Send you an message ' 
-            ]);    
+                'text' => $provider->name . ' Provider Send you an message '
+            ]);
         }
 
         return response()->json(['success' => true, 'message' => 'Request sent successfully!']);

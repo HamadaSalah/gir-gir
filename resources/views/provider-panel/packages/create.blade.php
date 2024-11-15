@@ -80,6 +80,9 @@
                         <div id="services-section">
                             <img src="{{ asset('imgs/plussign.png') }}" width="50px" alt="Add Service" id="addServiceBtn" style="cursor: pointer;">
                         </div>
+                        @error('service_name')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <!-- Dynamic Service Inputs -->
