@@ -274,7 +274,7 @@ body {
 
   .package-card img {
     width: 100%;
-    height: 0;
+    height: auto;
   }
   .puprepallon2 {
     /* display: none; */
