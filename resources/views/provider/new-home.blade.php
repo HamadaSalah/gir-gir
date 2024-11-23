@@ -24,8 +24,7 @@
     @foreach ($provider->packages as $package)
         <div class="package-card">
             <img src="{{ asset($package->files[0]?->path ?? '') }}" alt="Pink Theme Wedding" />
-            <span><img class="favouriteicon" src="{{ asset('imgs/Vector fav.png') }}"
-                    alt="Pink Theme Wedding" /></span>
+             
 
             <div class="package-content">
                 <h3>{{ $package->name }}</h3>

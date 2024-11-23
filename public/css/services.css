@@ -191,6 +191,7 @@ body {
   position: relative;
   box-shadow: 0 0 5px #ccc;
     padding: 10px;
+    width: 50%;
 }
 
 .package-card img {
@@ -198,7 +199,7 @@ body {
   height: 95%;
   border-radius: 8px;
   object-fit: cover;
-  margin: auto;
+  margin: 0;
 }
 .favouriteicon {
   width: 20px !important;
@@ -211,7 +212,9 @@ body {
 .package-content {
   position: relative;
   padding: 15px;
-  text-align: left;
+  text-align: left;float: left;
+  width: 100%;
+  display: inline-block;
 }
 
 .package-content h3 {
@@ -271,7 +274,7 @@ body {
 
   .package-card img {
     width: 100%;
-    height: auto;
+    height: 0;
   }
   .puprepallon2 {
     /* display: none; */
