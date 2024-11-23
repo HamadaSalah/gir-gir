@@ -507,7 +507,7 @@ opacity: 0.34px;
     display: inline-block!important;
   }
   .package-card {
-    height: 480px!important;
+    height: auto!important;
   }
   .row.align-items-center {
     display: inline;

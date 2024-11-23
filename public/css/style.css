@@ -389,6 +389,7 @@ html {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
+    float: left;
     /* background: #e5e5e5; */
 }
 .splide__arrow {
