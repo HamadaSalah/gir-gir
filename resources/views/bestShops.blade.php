@@ -13,7 +13,7 @@
     @foreach($best_shops as $shop)
         <div class="col-lg-6  ">
 
-            <div class="ProviderClass">
+            <div class="ProviderClass ProviderClass2">
                 <img src="{{ asset('imgs') }}/mdi_heart-outline.svg" alt="add to fav"
                     class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute add__tofav mt-3" />
     

@@ -4,6 +4,9 @@ body {
   font-weight: 500 !important;
   overflow-x: hidden;
 }
+html {
+  overflow-x: hidden;
+}
 #birthdaytime {
   border: 1px solid #CCC;
     padding: 10px 20px;
@@ -484,10 +487,47 @@ body {
 @media only screen and (max-width: 36em) {
   .hero__content {
     width: 95% !important;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 108%);
   }
   .overlay__content {
     width: 100% !important;
+  }
+  .hero__title.text-primary {
+    padding-top: 15px;
+  }
+  .modal-dialog.mw-100.w-50 {
+    width: 100%!important;
+  }
+  .SelectCateg {
+    width: 99%;
+  }
+  .filter-bar {
+    height: 50px;
+    border-bottom: 1px solid #454545;
+     width: 100%;
+    float: right;
+    display: block;
+    padding: 0;
+  }
+  .search__content::before, .services__heading::before {
+    display: none;
+  }
+  .leftImgcard {
+    width: 100%!important;
+    height: auto!important;
+  }
+  .search__results  .card-body  {
+    display: block;
+    position: relative;
+    width: 100%;
+    clear: both;
+    padding: 20px;
+  }
+  .routing .d-flex.align-items-center {
+    height: 110px!important;
+  }
+  .search__results  .mt-3.mb-5.me-2.h1 {
+    margin: 0!important;
   }
   .w-165 {
     width: 115% !important;
@@ -497,6 +537,11 @@ body {
   .add__tofav {
     left: 85%;
   }
+
+  .d-flex.justify-content-between.border-bottom.pb-2.mb-4.search__content.position-relative {
+    padding-bottom: 2.5rem !important;
+  }
+
   .mb-9 {
     margin-bottom: 20rem !important;
   }
@@ -1531,5 +1576,30 @@ footer {
   }
   .startplan {
     margin-bottom: 30px;
+  }
+  .ProviderClass .card-img-top.img-fluid.rounded-3 {
+    width: 110%!important;
+    float: none!important;
+    margin-right: 20px!important;
+    height: auto;
+  }
+  .ProviderClass2 {
+    border-radius: 15px!important;
+    margin: 10px!important;
+    padding: 10px!important;
+    box-shadow: 0 0 5px #ccc!important;
+    height: 380px!important;
+  }
+  .row.align-items-center.position-relative {
+    display: inline;
+  }
+  .splide__arrow--next {
+    right: 10px;
+  }
+  .splide__arrow--prev {
+    left: 10px;
+  }
+  .footer-section {
+    width: 100%;
   }
 }

@@ -32,11 +32,11 @@ class Provider extends Authenticatable
 
     public function package(): HasMany
     {
-        return $this->hasMany(Package::class)->latest()->take(1);
+        return $this->hasMany(Package::class)->latest('id')->take(1);
     }
     public function packages(): HasMany
     {
-        return $this->hasMany(Package::class);
+        return $this->hasMany(Package::class)->orderBy('id', 'desc');
     }
 
     public function files(): MorphMany

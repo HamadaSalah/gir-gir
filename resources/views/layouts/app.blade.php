@@ -62,7 +62,7 @@
           </div>
         </nav>
 
-        <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start menusm" style="text-align: right !important;">
+        <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start menusm"  >
           <a
             href="#contactus"
             class="text-decoration-none text-black text-opacity-75"

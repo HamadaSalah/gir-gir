@@ -733,10 +733,13 @@ font-size: 15px;
     font-size: 22px !important;
   }
   .ballons {
-    margin-top: 180px !important;
+    margin-top: 10px !important;
   }
   .images {
     text-align: center;
+  }
+  .bookShop-container .delivery {
+    padding: 15px;
   }
   .service {
     width: 350px !important;
@@ -745,17 +748,29 @@ font-size: 15px;
     width: 350px !important;
   }
   .delivery {
-    width: 380px !important ;
+    width: 355px !important ;
     margin-right: 20px;
   }
   .delivery button {
     margin-right: 20px;
   }
-
-  .booking {
-    width: 400px !important;
-    margin-top: 25px;
+  .footer-section {
+    width: 100%;
   }
+  .booking {
+    width: 100% !important;
+    margin-top: 25px;
+    display: block !important;
+}
+#birthdaytime {
+  margin-left: 30px;
+}
+.booking label {
+  width: 50px;
+}
+.summary-details .btn {
+  margin: 0;
+}
   .delivery h1 {
     width: 350px;
   }
@@ -782,11 +797,7 @@ font-size: 15px;
     flex-direction: column;
   }
   .summary-details .btns {
-    width: 350px;
-    height: 200px;
-    margin-top: 25px;
-    margin-left: 60px;
-  }
+   }
 }
 
 /* ----------------------------- */
@@ -907,7 +918,7 @@ font-size: 15px;
     width: 50px;
   }
   .description {
-    width: 500px !important
+    width: 100% !important
  }
  
   .description h5 {
@@ -950,5 +961,14 @@ flex-direction: column;
  text-decoration: none;
  font-size: 15px;
  
+ }
+ .row.align-items-center.position-relative {
+  padding: 0;
+    margin: 0;
+    width: 100%;
+ }
+ .row.align-items-center.position-relative .me-5 {
+  margin-right: 0!important;
+  width: 67%;
  }
 }

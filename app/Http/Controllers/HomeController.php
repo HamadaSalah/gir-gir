@@ -71,13 +71,13 @@ class HomeController extends Controller
             PackagesFilter::class
         ])->thenReturn();
 
-        $packages = $query->get();
+        $packages = $query->latest('id')->get();
 
 
         $serviceIds = $packages->pluck('services.*.id')->flatten()->unique();
 
         // Now retrieve all services by those IDs and eager-load the packages relationship
-        $services = Service::whereIn('id', $serviceIds)->with('packages')->get();
+        $services = Service::whereIn('id', $serviceIds)->with('packages')->latest('id')->get();
 
         // dd($services[0]->packages[0] );
 
@@ -108,7 +108,9 @@ class HomeController extends Controller
      */
     public function showProvider(Provider $provider) {
 
+        
         $provider->load(['packages']);
+
         $services = $provider->load('packages.services')
         ->packages
         ->flatMap(function ($package) {

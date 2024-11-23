@@ -8,6 +8,13 @@
         .card-img-top {
             height: 200px!important;
         }
+        .hero .splide__list, .hero .splide__slide {
+            height: 300px
+        }
+        .hero .splide__slide img {
+            height: 300px !important;
+            object-fit: cover;
+        }
     </style>
 @endpush
 
