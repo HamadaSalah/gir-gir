@@ -11,9 +11,11 @@
         .hero .splide__list, .hero .splide__slide {
             height: 300px
         }
-        .hero .splide__slide img {
-            height: 300px !important;
-            object-fit: cover;
+        @media screen and (max-width: 991px) {
+            .hero .splide__slide img {
+                height: 300px !important;
+                object-fit: cover;
+            }
         }
     </style>
 @endpush
