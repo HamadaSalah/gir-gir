@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <style>
         .card-img-top {
-            height: 200px!important;
+            height: 250px!important;
         }
         .hero .splide__list, .hero .splide__slide {
             height: 300px
