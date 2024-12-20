@@ -11,6 +11,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     @stack('css')
     <style>
@@ -250,9 +251,21 @@
         </div>
         {{-- Start of Social Media of website --}}
         <div class="footer-social">
-          <a href="#"
-            ><img src="{{ asset('imgs/Group 1000004623.png') }}" alt="Facebook"
-          /></a>
+          <a href="#">
+            <img src="{{ asset('') }}social/instagram.svg" alt="Facebook"/>
+          </a>
+          <a href="#">
+            <img src="{{ asset('') }}social/facebook.svg" alt="Facebook"/>
+          </a>
+          <a href="#">
+            <img src="{{ asset('') }}social/twitter.svg" alt="Facebook"/>
+          </a>
+          <a href="#">
+            <img src="{{ asset('') }}social/tiktok.svg" alt="Facebook"/>
+          </a>
+          <a href="#">
+            <img src="{{ asset('') }}social/yt.svg" alt="Facebook"/>
+          </a>
         </div>
         {{-- End of Social Media of website --}}
         <div class="footer-apps">

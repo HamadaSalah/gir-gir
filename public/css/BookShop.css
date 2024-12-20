@@ -36,7 +36,7 @@ body {
 .backgroundImg {
   position: absolute;
   width: 89px;
-  height: 88px !;
+  height: 89px!important;
   top: 58px;
   left: 172px;
   gap: 0px;
@@ -781,7 +781,7 @@ footer {
 .backgroundImg {
   position: absolute;
   width: 89px;
-  height: 88px !;
+  height: 89px!important;
   top: 58px;
   left: 172px;
   gap: 0px;

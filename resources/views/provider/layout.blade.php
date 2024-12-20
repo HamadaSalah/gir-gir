@@ -265,8 +265,7 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
     </div>
   </div>
 
-  <div style="background: #f0f0f0;
-    padding-bottom: 4px;">
+  <div style="background: #f0f0f0;">
     <div class="container hayperlinks col-8 m-auto d-flex">
       <a class="col m-2 {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $provider]) }}">
           <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
@@ -281,39 +280,36 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
   </div>
     <!-- about-contant -->
     <div class="container col-8 m-auto about-contant d-flex">
-        <h2>{{ $provider->tag ?? $provider->name }}' @yield('title') </h2>
-  
-        <div class="col-7 m-auto icons">
-          <a href="{{ $provider->info->telegram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/logo-telegram-4096 1.png') }}" alt="Telegram">
-          </a>
-          <a href="{{ $provider->info->whatsapp ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/whats.png') }}" alt="WhatsApp">
-          </a>
-          <a href="{{ $provider->info->facebook ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/facebook.png') }}" alt="Facebook">
-          </a>
-          <a href="{{ $provider->info->youtube ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/youtube-.png') }}" alt="YouTube">
-          </a>
-          <a href="{{ $provider->info->twitter ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/X.png') }}" alt="Twitter">
-          </a>
-          <a href="{{ $provider->info->instagram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/instagram-png.png') }}" alt="Instagram">
-          </a>
-          <a href="{{ $provider->info->linkedin ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/Group.png') }}" alt="LinkedIn">
-          </a>
-          <a href="{{ $provider->info->wechat ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/wechat-logo--png 1.png') }}" alt="WeChat">
-          </a>
-          <a href="{{ $provider->info->tiktok ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-              <img src="{{ asset('imgs/Frame 1321315269.png') }}" alt="TikTok">
-          </a>
-      </div>
-      
-             
+
+      <div class="col-7 m-auto icons">
+        <a href="{{ $provider->info->telegram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/logo-telegram-4096 1.png') }}" alt="Telegram">
+        </a>
+        <a href="{{ $provider->info->whatsapp ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/whats.png') }}" alt="WhatsApp">
+        </a>
+        <a href="{{ $provider->info->facebook ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/facebook.png') }}" alt="Facebook">
+        </a>
+        <a href="{{ $provider->info->youtube ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/youtube-.png') }}" alt="YouTube">
+        </a>
+        <a href="{{ $provider->info->twitter ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/X.png') }}" alt="Twitter">
+        </a>
+        <a href="{{ $provider->info->instagram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/instagram-png.png') }}" alt="Instagram">
+        </a>
+        <a href="{{ $provider->info->linkedin ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/Group.png') }}" alt="LinkedIn">
+        </a>
+        <a href="{{ $provider->info->wechat ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/wechat-logo--png 1.png') }}" alt="WeChat">
+        </a>
+        <a href="{{ $provider->info->tiktok ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+            <img src="{{ asset('imgs/Frame 1321315269.png') }}" alt="TikTok">
+        </a>
+    </div>
        </div>
       <!-- about -->
 
@@ -372,11 +368,23 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
             </div>
           </div>
           <div class="footer-social">
-            <a href="#"
-              ><img src="{{ asset('') }}imgs/Group 1000004623.png" alt="Facebook"
-            /></a>
+            <a href="#">
+              <img src="{{ asset('') }}social/instagram.svg" alt="Facebook"/>
+            </a>
+            <a href="#">
+              <img src="{{ asset('') }}social/facebook.svg" alt="Facebook"/>
+            </a>
+            <a href="#">
+              <img src="{{ asset('') }}social/twitter.svg" alt="Facebook"/>
+            </a>
+            <a href="#">
+              <img src="{{ asset('') }}social/tiktok.svg" alt="Facebook"/>
+            </a>
+            <a href="#">
+              <img src="{{ asset('') }}social/yt.svg" alt="Facebook"/>
+            </a>
           </div>
-          <div class="footer-apps">
+            <div class="footer-apps">
             <h4>Get the app</h4>
             <a href="#"
               ><img

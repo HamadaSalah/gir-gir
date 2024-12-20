@@ -34,16 +34,14 @@
                         <div class="newBorn">
                             <h1>{{ $category->name }}</h1>
                             <div class="myCards flex flex-wrap justify-between">
-                                @if ($category->packages->isEmpty())                                  
-                                    <h1 class="text-center w-full">No packages available</h1>
-                                @else
                                 <div class="row">
                                     @foreach ($category->packages as $package)
-                                        <div class="myCard col-md-6 bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                                    <div class=" col-md-6 mb-3">
+                                        <div style="margin:0!important" class="myCard bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
                                             <div class="image">
                                                 <img src="{{ $package->files[0]->path }}" class="w-full h-40 object-cover" alt="{{ $package->name }}" />
                                             </div>
-                                            <div class="info p-4">
+                                            <div class="info p-1">
                                                 <div class="header flex justify-between items-center mb-2">
                                                     <h1 class="text-lg font-bold text-gray-800">{{ $package->name }}</h1>
                                                     <span class="text-yellow-400 font-semibold"><i class="fa-solid fa-star"></i> 4.8</span>
@@ -51,13 +49,17 @@
                                                 <p class="text-gray-600">Details:</p>
                                                 <span class="block text-gray-500 mb-2">{{ $package->description }}</span>
                                                 <span class="block text-lg font-semibold text-gray-700">From / {{ $package->cost }}$</span>
-                                                <button class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 transition duration-200">Discover Now</button>
-                                            </div>
+                                                <a
+                                                href="{{ Route('package', $package->id) }}"
+                                                
+                                                >                                                <button class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 transition duration-200">Discover Now</button>
+                                                </a
+                                              >                                            </div>
                                         </div>
+                                    </div>
                                     @endforeach
 
                                 </div>
-                                @endif
                             </div>
                         </div>
                     @endif
@@ -83,7 +85,12 @@
                                                 <p class="text-gray-600">Details:</p>
                                                 <span class="block text-gray-500 mb-2">{{ $package->description }}</span>
                                                 <span class="block text-lg font-semibold text-gray-700">From / {{ $package->cost }}$</span>
-                                                <button class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 transition duration-200">Discover Now</button>
+                                                <a
+                                href="{{ Route('package', $package->id) }}"
+                                
+                                >                                                <button class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 transition duration-200">Discover Now</button>
+                                </a
+                              >
                                             </div>
                                         </div>
                                     </div>

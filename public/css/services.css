@@ -34,7 +34,7 @@ body {
 .backgroundImg {
   position: absolute;
   width: 89px;
-  height: 88px !;
+  height: 89px!important;
   top: 58px;
   left: 172px;
   gap: 0px;
@@ -183,7 +183,7 @@ body {
 .package-card {
   display: flex;
   justify-content: space-between;
-  max-width: 586px;
+  max-width: 49%;
   min-height: 220px;
   border-radius: 10px;
   margin: 20px 0;
@@ -196,7 +196,7 @@ body {
 
 .package-card img {
   width: 264px;
-  height: 95%;
+  height: 100%;
   border-radius: 8px;
   object-fit: cover;
   margin: 0;

@@ -144,11 +144,23 @@
         </div>
       </div>
       <div class="footer-social">
-        <a href="#"
-          ><img src="{{ asset('') }}imgs/Group 1000004623.png" alt="Facebook"
-        /></a>
+        <a href="#">
+          <img src="{{ asset('') }}social/instagram.svg" alt="Facebook"/>
+        </a>
+        <a href="#">
+          <img src="{{ asset('') }}social/facebook.svg" alt="Facebook"/>
+        </a>
+        <a href="#">
+          <img src="{{ asset('') }}social/twitter.svg" alt="Facebook"/>
+        </a>
+        <a href="#">
+          <img src="{{ asset('') }}social/tiktok.svg" alt="Facebook"/>
+        </a>
+        <a href="#">
+          <img src="{{ asset('') }}social/yt.svg" alt="Facebook"/>
+        </a>
       </div>
-      <div class="footer-apps">
+    <div class="footer-apps">
         <h4>Get the app</h4>
         <a href="{{ $website_info->app_store_link }}"
             target="_blank"

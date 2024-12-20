@@ -14,7 +14,8 @@
     <div class="cleafix"></div>
 <!-- pacckage section -->
 <div class="Pacckages" style="display: block;width: 100%;">
-    <h3>PACKAGES</h3>
+    <h3 style="display: inline;float: left;">PACKAGES</h3>
+    
    </div>
 
 

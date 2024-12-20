@@ -24,7 +24,7 @@
 
 
 <main class="bg-main main__content">
-    <section class="hero position-relative mb-9">
+    <section class="hero position-relative mb-8">
         <section class="splide hero__splide" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
                 <ul class="splide__list gap-2">
@@ -62,9 +62,9 @@
                 start planning &rarr;
             </button> --}}
             <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary startplan" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    START PLANING &#8594;
-  </button>
+                <button type="button" class="btn btn-primary startplan" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    START PLANING &#8594;
+                </button>
 
 
         </div>
@@ -86,7 +86,7 @@
 
             <section class="splide trinds__slider--two container" aria-label="Splide Basic HTML Example">
                 <div class="splide__track">
-                    <ul class="splide__list gap-2">
+                    <ul class="splide__list">
                         {{-- (LOOPING) Most requested packages --}}
                       @foreach ($most_requested_packages as $package)
                       <li class="splide__slide">
@@ -165,18 +165,19 @@
         </div>
     </section>
 
-    <section class="splide wedding__splide wow flipInX " aria-label="Splide Basic HTML Example">
-        <div class="splide__track">
-            <ul class="splide__list ">
-                {{-- (LOOPING)  Big banner --}}
+    <section style="margin-bottom: 30px;">
+        <div id="FeCarousel" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#FeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#FeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
                 @foreach ($slider as $slid)
-                    <li class="splide__slide">
-                        <section class="wedding w-100 p-2 mt-1 mb-6 position-relative" style="background: url({{ asset($slid->files()->first()?->path) }}) no-repeat center;background-size:cover">
-                            <div class="position-absolute mb-4 d-flex  bottom-0 start-50 translate-middle-y">
-                                <span class="line bg-primary"></span>
-                                <span class="line bg-white"></span><span class="line bg-white"></span>
-                            </div>
-                            <div class="container mt-6">
+                <div class="carousel-item <?php if($loop->index == 0) echo 'active'; ?>">
+                    
+                    <section class="wedding w-100 mt-1 mb-6 position-relative" style="background: url({{ asset($slid->files()->first()?->path) }}) no-repeat center;background-size:cover">
+                        <div class="overlayss">
+                            <div class="container mt-6 mb-6">
                                 <div class="d-flex justify-content-between flex-wrap">
                                     <div class="d-flex flex-column">
                                         <h2 class="text-white display-6 fw-medium">
@@ -191,29 +192,31 @@
                                                             {{ $ser->name }}
                                                 </li>
                                             @endforeach
-
+    
                                         </ul>
                                         <p class="text-white fm-cairo fw-medium">
                                             providers: {{ $slid->provider->name }} <br />
                                             sates from: {{ $slid->cost }} $
                                         </p>
-
+    
                                        <a href="{{Route('package', $slid->id)}}"> <button class="align-self-center mb-4 btn btn-primary rounded-5 fm-cairo py-2 px-5">
                                             order now
                                         </button></a>
                                     </div>
-                                    <div>
-                                        <img src="{{ asset($slid->files()->first()?->path) }}" alt="party"
+                                    <div style="display: flex;justify-content: center;align-items: center;">
+                                        <img style="width: 200px;border-radius: 5px" src="{{ asset($slid->files()->first()?->path) }}" alt="party"
                                             class="img-fluid" />
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </li>
-                @endforeach
-                {{-- end of Big banner --}}
-            </ul>
-        </div>
+                        </div>
+                    </section>
+                
+                  </div>
+            @endforeach
+
+            </div>
+          </div>
     </section>
 
     <section class="best_shop mb-6 position-relative">
@@ -334,7 +337,7 @@
                             <div class="d-flex align-items-center">
                             <span class="fm-cairo fs-10"><img src="imgs/union-1.svg" alt="union icon"  style="width: 15px"
                                 class="me-1" /></span>
-                            <a href="#" class="btn text-black p-1 text-decoration-underline fs-14 fw-medium fm-cairo">sick
+                            <a href="#" class="btn text-black p-1 fs-14 fw-medium fm-cairo">sick
                                 {{ $trend->provider->name }}</a>
                             </div>
                             <div class="d-flex align-items-center">

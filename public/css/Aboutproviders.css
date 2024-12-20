@@ -34,7 +34,7 @@ body {
 .backgroundImg {
   position: absolute;
   width: 89px;
-  height: 88px !;
+  height: 89px!important;
   top: 58px;
   left: 172px;
   gap: 0px;
@@ -97,18 +97,17 @@ body {
  }
  .hayperlinks a{
   width: 121px;
-  height: 36px;
   text-decoration: none;
-  border-radius: 17px;
   text-align: center;
-  font-family: Cairo;
   font-size: 15px;
   font-weight: 600;
-  line-height: 20px;
   letter-spacing: -0.5px;
-color: #5C5C5C;
-padding-top: 6px;
- }
+  color: #5C5C5C;
+  margin: 0 !important;
+  padding: 0;
+  line-height: 40px;
+  margin: 8px 0 !important;
+}
  .hayperlinks .active{
   background: #931158 !important;
   color: white;
@@ -118,6 +117,9 @@ padding-top: 6px;
   line-height: 20px;
   letter-spacing: -0.5px;
   text-align: center;
+  border-radius: 25px;
+    padding: 0;
+    line-height: 40px;
  }
 
 /* ---------------------------------------- */
@@ -505,6 +507,9 @@ opacity: 0.34px;
   }
   .hayperlinks a{
     display: inline-block!important;
+    margin: 0 !important;
+    padding: 0;
+    line-height: 39px;
   }
   .package-card {
     height: auto!important;

@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="{{ asset('css/royalwedding.css') }}" />
     <!-- fontAwesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <style>
+        .form-control.border-end-0.rounded-start-5.p-2 {
+            border: 0
+        }
+        .input-group.border.ms-2.rounded.rounded-5 {
+            border: 1px solid #ccc!important
+        }
+        .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+            margin-left: 0
+        }
+        .fa-solid.fa-person, .fa-solid.fa-person-dress {
+            line-height: 40px;
+        }
+        .kind h4 {
+            margin-bottom: 0;
+            line-height: 40px
+        }
+    </style>
 </head>
 
 <body class="bookShop-container">
@@ -130,9 +148,9 @@
                         <a href="{{ Route('myCart') }}"><img
                                 src="{{ asset('imgs') }}/cartnavico.svg" alt="cart icon"></a>
                     </button>
-                    <button class="btn btn-outline-primary border-0 py-1 px-2 mb-1 settings__btn">
+                    {{-- <button class="btn btn-outline-primary border-0 py-1 px-2 mb-1 settings__btn">
                         <img src="{{ asset('imgs') }}/settingnavico.svg" alt="settings icon">
-                    </button>
+                    </button> --}}
                 @endauth
             </div>
         </div>
@@ -492,9 +510,23 @@
                 </div>
             </div>
             <div class="footer-social">
-                <a href="#"><img src="{{ asset('') }}imgs/Group 1000004623.png" alt="Facebook" /></a>
-            </div>
-            <div class="footer-apps">
+                <a href="#">
+                  <img src="{{ asset('') }}social/instagram.svg" alt="Facebook"/>
+                </a>
+                <a href="#">
+                  <img src="{{ asset('') }}social/facebook.svg" alt="Facebook"/>
+                </a>
+                <a href="#">
+                  <img src="{{ asset('') }}social/twitter.svg" alt="Facebook"/>
+                </a>
+                <a href="#">
+                  <img src="{{ asset('') }}social/tiktok.svg" alt="Facebook"/>
+                </a>
+                <a href="#">
+                  <img src="{{ asset('') }}social/yt.svg" alt="Facebook"/>
+                </a>
+              </div>
+                  <div class="footer-apps">
                 <h4>Get the app</h4>
                 <a href="#"><img src="{{ asset('') }}imgs/app-store.24ce31e7a13056d542d1.png"
                         alt="App Store" /></a>

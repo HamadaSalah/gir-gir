@@ -1,3 +1,12 @@
+
+$(document).ready(function() {
+  $('.SelectCateg').on('click', function() {
+      $(this).toggleClass('bgConvert');
+  });
+});
+
+
+
 const select = document.querySelector("#type");
 const passwordInput = document.querySelectorAll(".password");
 const providerPassowrd = document.querySelectorAll(".provider-password");
@@ -8,6 +17,7 @@ const account = document.querySelector(".account");
 //////////////////////////////////////////////
 //// Make the slider works with splide
 try {
+  
   const splideTrindsOne = new Splide(".trinds__slider--one", {
     type: "loop",
     perPage: 4, // Default for large screens
@@ -65,9 +75,8 @@ try {
 
   const splideServicesOne = new Splide(".services__slider--one", {
     type: "loop",
-    perPage: 5, // Default for large screens
+    perPage: 4, // Default for large screens
     perMove: 1, // Moves one slide at a time
-
     breakpoints: {
       // Bootstrap's medium screen size (768px and below)
       768: {
@@ -96,28 +105,29 @@ try {
 
   splidePro.mount();
 
-  var splide = new Splide(".hero__splide", {
+  var splide = new Splide(".hero__splidee", {
+    type: "loop",
+    autoplay: false,
+    interval: 5000,
+    arrows: false,
+    pagination: true,
+    speed: 3000,
+    // easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+    // direction: "ltr",
+  });
+  splide.mount();
+
+  var wedding_splide = new Splide(".wedding__splidess", {
     type: "loop",
     autoplay: true,
     interval: 2000,
     arrows: false,
     pagination: false,
     speed: 2000,
-    easing: "cubic-bezier(0.25, 1, 0.5, 1)",
-    direction: "ltr",
+    // easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+    // direction: "ltr",
   });
-  splide.mount();
-  var splide = new Splide(".wedding__splide", {
-    type: "loop",
-    autoplay: true,
-    interval: 2000,
-    arrows: false,
-    pagination: false,
-    speed: 2000,
-    easing: "cubic-bezier(0.25, 1, 0.5, 1)",
-    direction: "ltr",
-  });
-  splide.mount();
+  wedding_splide.mount();
 
   //////////////////////////////////////////////
   //// toggle overlay and progress box
