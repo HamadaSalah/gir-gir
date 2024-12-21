@@ -337,7 +337,7 @@
                                 >
 
                                 <div class="shopnames">
-                                    <img src="{{asset()}}/imgs/houseico.svg" alt="icon" class="myiconn">
+                                    <img src="{{asset('')}}/imgs/houseico.svg" alt="icon" class="myiconn">
                                     <span class="text-black  fs-14"> Shop :
                                         {{ strlen($shop->name) > 15 ? substr($shop->name, 0, 15) . '...' : $shop->name }}
                                     </span>

@@ -119,22 +119,22 @@
                             aria-roledescription="slide" aria-label="1 of 1" style="width: calc(20%);"
                             aria-hidden="true">
                             <div class="card mb-5 text-start shadow-sm position-relative border-0 p-0 rounded-5">
-                                <img src="{{asset()}}imgs/mdi_heart-outline.svg" alt="add to fav"
+                                <img src="{{asset('')}}imgs/mdi_heart-outline.svg" alt="add to fav"
                                     class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute end-0 me-3 mt-3">
 
-                                <img src="{{asset()}}imgs/most1.png" alt="wedding" class="card-img-top">
+                                <img src="{{asset('')}}imgs/most1.png" alt="wedding" class="card-img-top">
 
                                 <div class="card-body px-2 py-3">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <h3 class="card-title h6 fw-bold mb-0">{{ $service->name }}</h3>
                                         <span class="d-flex align-items-center bg_rating p-1 rounded-5"><img
-                                                src="{{asset()}}imgs/Star_1.svg" alt="rating" class="me-1">
+                                                src="{{asset('')}}imgs/Star_1.svg" alt="rating" class="me-1">
                                             <span class="rating__number text-white fs-12 fw-light">4.9</span>
                                         </span>
                                     </div>
                                     <p class="card-text text-black-50 fs-12 d-flex align-items-center mb-2">
                                         <span class="text-black text-opacity-25 fs-14 d-flex align-items-center"><img
-                                                src="{{asset()}}imgs/houseico.svg" alt="icon" class="myiconn">
+                                                src="{{asset('')}}imgs/houseico.svg" alt="icon" class="myiconn">
                                             Shop
                                             :
                                         </span>
