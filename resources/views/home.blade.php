@@ -3,6 +3,7 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <style>
         .card-img-top {
@@ -11,6 +12,78 @@
         .hero .splide__list, .hero .splide__slide {
             height: 300px
         }
+        .custom-range {
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .custom-range::-webkit-slider-thumb {
+      appearance: none;
+      width: 40px;
+      height: 40px;
+      background: #880e4f;
+      border-radius: 50%;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      z-index: 9999;
+      position: relative;
+      opacity: 0;
+    }
+    
+
+    .custom-range::-moz-range-thumb {
+      width: 40px;
+      height: 40px;
+      background: #880e4f;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      z-index: 99999;
+      opacity: 0;
+
+    }
+
+    .slider-label {
+      position: absolute;
+      color: white;
+      font-size: 12px;
+      background: #880e4f;
+      border-radius: 50%;
+      padding: 2px 6px;
+      width: 45px;
+        height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translate(-50%, -130%);
+      margin-top: 28px
+    }
+
+    .slider-label2 {
+        position: absolute;
+    color: white;
+    font-size: 20px;
+    background: #880e4f;
+    border-radius: 50%;
+    padding: 2px 6px;
+    width: 40px;
+    height: 40px;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-37%, -70%);
+    }
+
+    .slider-container {
+      position: relative;
+      margin: 20px 0;
+    }
         @media screen and (max-width: 991px) {
             .hero .splide__slide img {
                 height: 300px !important;
@@ -30,13 +103,13 @@
                 <ul class="splide__list gap-2">
                     <li class="splide__slide">
                         <div>
-                            <img src="{{ asset('imgs') }}/hero.webp" alt="hero image"
+                            <img src="{{ asset('imgs') }}/bgg.svg" alt="hero image"
                                 class="img-fluid w-100 hero__img" />
                         </div>
                     </li>
                     <li class="splide__slide">
                         <div>
-                            <img src="{{ asset('imgs') }}/hero.webp" alt="hero image"
+                            <img src="{{ asset('imgs') }}/bgg.svg" alt="hero image"
                                 class="img-fluid w-100 hero__img" />
                         </div>
                     </li>
@@ -51,8 +124,8 @@
         </section>
 
         <div
-            class="wow   fadeIn w-50 position-absolute py-1 px-2 py-lg-4 px-lg-6 text-center bottom-0 start-50 bg-white hero__content rounded-3 align-self-center shadow-lg">
-            <h1 class="hero__title text-primary">Plan your dream event</h1>
+            class="wow   fadeIn w-50 position-absolute py-1 px-2 py-lg-4 px-lg-3 text-center bottom-0 start-50 bg-white hero__content rounded-3 align-self-center shadow-lg">
+            <h1 class="hero__title text-primary">Plan your dream event</h1>          
             <p class="hero__text text-center">
                 Weddings, galas, birthdays, and beyond Gir Gir events connects you
                 with exclusive venues, vendors, and inspiration you won't find
@@ -175,7 +248,7 @@
                 @foreach ($slider as $slid)
                 <div class="carousel-item <?php if($loop->index == 0) echo 'active'; ?>">
                     
-                    <section class="wedding w-100 mt-1 mb-6 position-relative" style="background: url({{ asset($slid->files()->first()?->path) }}) no-repeat center;background-size:cover">
+                    <section class="wedding w-100 mt-1 position-relative" style="background: url({{ asset($slid->files()->first()?->path) }}) no-repeat center;background-size:cover">
                         <div class="overlayss">
                             <div class="container mt-6 mb-6">
                                 <div class="d-flex justify-content-between flex-wrap">
@@ -199,13 +272,13 @@
                                             sates from: {{ $slid->cost }} $
                                         </p>
     
-                                       <a href="{{Route('package', $slid->id)}}"> <button class="align-self-center mb-4 btn btn-primary rounded-5 fm-cairo py-2 px-5">
-                                            order now
+                                       <a style="margin-left: 60px" href="{{Route('package', $slid->id)}}"> <button class="align-self-center mb-4 btn btn-primary rounded-5 fm-cairo py-2 px-5">
+                                            Discover Now
                                         </button></a>
                                     </div>
                                     <div style="display: flex;justify-content: center;align-items: center;">
-                                        <img style="width: 200px;border-radius: 5px" src="{{ asset($slid->files()->first()?->path) }}" alt="party"
-                                            class="img-fluid" />
+                                        {{-- <img style="width: 200px;border-radius: 5px" src="{{ asset($slid->files()->first()?->path) }}" alt="party"
+                                            class="img-fluid" /> --}}
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +292,7 @@
           </div>
     </section>
 
-    <section class="best_shop mb-6 position-relative">
+    <section class="best_shop mb-5 position-relative">
         <!-- <img
       src="{{ asset('imgs') }}/arr-left.svg"
       alt="arrow left"
@@ -293,7 +366,7 @@
                                     </div>
                                 </div>
                                 <a
-                                  href="{{Route('provider.show', $shop->id)}}" style="border-radius: 25px!important;width:70%"
+                                  href="{{Route('provider.show', $shop->id)}}" style="border-radius: 10px!important;width:70%"
                                   class="btn btn-primary fm-cairo mt-3 mb-2 py-1 px-2 rounded-3 align-self-center"
                                   >Browse now</a
                                 >
@@ -380,15 +453,15 @@
             </h2>
 
             <div class="d-flex">
-                <img src="{{ asset('imgs') }}/robot.png" alt="ai assistant"
+                <img src="{{ asset('imgs') }}/bot.svg" alt="ai assistant"
                     class="robot__img position-relative" />
                 <div>
                     <h4 class="text-primary">Let me help you.</h4>
                     <p class="text-black-50">
                         What is your event, and how many people will be attending?
                     </p>
-                    <input type="text" class="form-control bg-white py-sm-0 px-sm-0 py-lg-4 px-lg-2 bg-opacity-50 w-165"
-                        placeholder="I have 20 guests for a birthday party. I want a birthday cake, and I need a clown for the kids." />
+                    <textarea style="color: #5e5e5e" type="text" class="form-control bg-white px-sm-0 px-lg-2 bg-opacity-50 w-100"
+                         >I have 20 guests for a birthday party.   I want a birthday cake, and I need a clown for the kids</textarea>
                 </div>
             </div>
         </div>
@@ -672,6 +745,8 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog mw-100 w-50">
       <div class="modal-content">
+        <button type="button" class="btn-close btn-closeee" data-bs-dismiss="modal" aria-label="Close"></button>
+
          <div class="modal-body">
             <form id="eventForm" method="GET" action="{{ Route('search') }}">
                 @csrf
@@ -701,12 +776,19 @@
                     <div class="stepHeader">
                         <h2>Estimate the number of guests</h2>
                     </div>
-                  <div class="container-range--1 position-relative">
+                    
+                     <div class="slider-container">
+                        <input type="range" name="guests" class="custom-range" id="rangeSlider" min="1" max="100" value="50">
+                        <div class="slider-label" id="sliderLabel" style="left: 0;">1</div>
+                        <div class="slider-label2" id="sliderLabel" style="left: 0;">1</div>
+                    </div>
+        
+                   {{-- <div class="container-range--1 position-relative">
                     <div class="range-wrapper position-relative">
                       <output type="number" class="circle" id="output">1</output>
                       <input data-value="1" type="range" min="1" max="500" value="1" class="form-range" id="range" oninput="output.value = this.value" tabindex="-1">
                     </div>
-                  </div>
+                  </div> --}}
                   {{-- <input type="range" name="guests" min="1" max="500" value="100" id="guestCount">
                   <p>Guests: <span id="guestValue">100</span></p> --}}
                   <div class="stepHeader">
@@ -730,8 +812,8 @@
                     <div class="stepHeader">
                     <h2>Do you have a hall?</h2>
                     </div>
-                    <label class="yesornow"><input type="radio" name="hall" value="Yes" required> Yes</label>
-                    <label class="yesornow"><input type="radio" name="hall" value="No" required> No</label>
+                    <label class="yesornow"><input type="radio" name="hall" value="Yes" > Yes</label>
+                    <label class="yesornow"><input type="radio" name="hall" value="No" > No</label>
                     <div style="text-align: center;margin: auto; margin-top: 50px">
                         <button type="button"  class="btn btn-primary"  onclick="prevStep()">Back</button>
                         <button type="button"  class="btn btn-primary"  onclick="nextStep()">Next</button>
@@ -836,5 +918,24 @@
 @push('js')
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        const rangeSlider = document.getElementById('rangeSlider');
+        const sliderLabel = document.getElementById('sliderLabel');
+    
+        rangeSlider.addEventListener('input', function() {
+          const value = this.value;
+          const max = this.max;
+          const min = this.min;
+          const percentage = ((value - min) / (max - min)) * 100;
+          sliderLabel.textContent = value;
+          sliderLabel.style.left = `calc(${percentage}%)`;
+        });
+        sliderLabel.style.left = `calc(50%)`;
+        sliderLabel.textContent = 50;
+
+      </script>
+    
 @endpush

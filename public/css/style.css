@@ -377,20 +377,21 @@ html {
 .closed_srounder{
   height: 30px;
     padding: 5px 10px;
-    border-radius: 25px;
+    border-radius: 10px;
     background: #e5e2e2;
  }
 .step.active {
   display: block;
 }
 .SelectCateg {
-  width: 65%;
+  width: 85%;
     display: inline-block !important;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     float: none;
     height: 160px;
+    padding-top: 25px;
     /* background: #EFEFEF; */
 }
 .splide__arrow {

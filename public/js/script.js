@@ -20,6 +20,7 @@ try {
   
   const splideTrindsOne = new Splide(".trinds__slider--one", {
     type: "loop",
+    pagination: false,
     perPage: 4, // Default for large screens
     perMove: 1, // Moves one slide at a time
     breakpoints: {
@@ -38,6 +39,7 @@ try {
 
   const splideTrindsTwo = new Splide(".trinds__slider--two", {
     type: "loop",
+    pagination: false,
     perPage: 4, // Default for large screens
     perMove: 1, // Moves one slide at a time
     breakpoints: {
@@ -56,6 +58,7 @@ try {
 
   const splideTrindsThree = new Splide(".trinds__slider--three", {
     type: "loop",
+    pagination: false,
     perPage: 4, // Default for large screens
     perMove: 1, // Moves one slide at a time
 
@@ -75,6 +78,7 @@ try {
 
   const splideServicesOne = new Splide(".services__slider--one", {
     type: "loop",
+    pagination: false,
     perPage: 4, // Default for large screens
     perMove: 1, // Moves one slide at a time
     breakpoints: {
@@ -110,7 +114,7 @@ try {
     autoplay: false,
     interval: 5000,
     arrows: false,
-    pagination: true,
+    pagination: false,    
     speed: 3000,
     // easing: "cubic-bezier(0.25, 1, 0.5, 1)",
     // direction: "ltr",
