@@ -47,6 +47,32 @@
       opacity: 0;
 
     }
+    .range--2::-webkit-slider-thumb {
+      appearance: none;
+      width: 40px;
+      height: 40px;
+      background: #880e4f;
+      border-radius: 50%;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      z-index: 9999;
+      position: relative;
+      opacity: 0;
+    }
+    
+
+    .range--2::-moz-range-thumb {
+      width: 40px;
+      height: 40px;
+      background: #880e4f;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      z-index: 99999;
+      opacity: 0;
+
+    }
 
     .slider-label {
       position: absolute;
@@ -937,5 +963,31 @@
         sliderLabel.textContent = 50;
 
       </script>
+          <script>
+            $(document).ready(function () {
+                const $range = $('#range2');
+                const $output = $('#output2');
+    
+                function updateOutputPosition() {
+                    const rangeWidth = $range.outerWidth();
+                    const min = parseFloat($range.attr('min'));
+                    const max = parseFloat($range.attr('max'));
+                    const value = parseFloat($range.val());
+    
+                    const percentage = (value - min) / (max - min);
+                    const offset = percentage * rangeWidth;
+    
+                    $output.css('transform', `translateX(${offset}px)`);
+                    $output.text(value + '$');
+                }
+    
+                // Initialize position
+                updateOutputPosition();
+    
+                // Update position on input change
+                $range.on('input', updateOutputPosition);
+            });
+        </script>
+    
     
 @endpush
