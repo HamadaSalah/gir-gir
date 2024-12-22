@@ -326,7 +326,7 @@
             @endforeach
 
             <div>
-                <p>Additional Services</p>
+                <p style="text-align: center;margin-bottom: 5px">Additional Services</p>
                 @foreach($another_Service as $another)
                     <div class="addition_Ser <?php if($another->another) echo 'anotherProv'; ?> ">
                         {{ $another->service->name }}
@@ -336,8 +336,8 @@
                 @endforeach
             </div>
             <div class="btnmore">
-                <div class="btn1">
-                    <a href="" style="height: 20px;line-height: 28px;padding: 0" type="button" class="btn btn-primary"
+                <div class="btn1" style="text-align: centertext-align: center;display: inline-block;margin: auto;">
+                    <a href="" style="height: 27px;line-height: 28px;padding: 0;display: inline;margin: auto" type="button" class="btn btn-primary"
                         data-bs-toggle="modal" data-bs-target="#choosefromanotherporvider">
                         <img src="{{ asset('imgs/ic_round-plus.png') }}" alt=""> Choose packages
                         from other providers</a>
@@ -447,7 +447,7 @@
         @else
             <div class="btns" style="width: 100%">
                 <input class="btn btn-primary" style="display: inline-block;
-                width: 100%;float: left;" name="add_to_card" type="submit" value="Add to cart">
+                width: 100%;float: left;margin-bottom: 30px;margin-top: 10px" name="add_to_card" type="submit" value="Add to cart">
                 {{-- <input class="btn btn-primary" style="display: inline-block;
                 width: 40%;float: right;"   name="pay_now" type="submit" value="pay now">
                 </div> --}}

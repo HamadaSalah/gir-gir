@@ -310,9 +310,16 @@ button, .btn.btn-primary {
     opacity: 1;
 }
 
+.Pacckages {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
 
-
-
+.bestShops .splide__pagination.splide__pagination--ltr {
+    display: none!important;
+}
 
 
 
@@ -423,5 +430,10 @@ button, .btn.btn-primary {
         padding-top: 0;
     }
  
-    
+    .SelectCateg {
+        background-color: #EFEFEF;
+        padding: 10px;
+        font-size: 12px;
+        height: 120px;
+    }
 }

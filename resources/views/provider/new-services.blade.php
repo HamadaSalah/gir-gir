@@ -20,6 +20,41 @@
 <main class="main__content sliders">
     <section class="most_requested mb-5 position-relative">
         
+        <div class="container">
+            <div class="Pacckages" style="display: block;width: 100%;">
+                <h3 style="display: inline;float: left;">SERVICES</h3>
+                <div class="col-7 m-auto icons">
+                    <a href="{{ $provider->info->telegram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/logo-telegram-4096 1.png') }}" alt="Telegram">
+                    </a>
+                    <a href="{{ $provider->info->whatsapp ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/whats.png') }}" alt="WhatsApp">
+                    </a>
+                    <a href="{{ $provider->info->facebook ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/facebook.png') }}" alt="Facebook">
+                    </a>
+                    <a href="{{ $provider->info->youtube ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/youtube-.png') }}" alt="YouTube">
+                    </a>
+                    <a href="{{ $provider->info->twitter ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/X.png') }}" alt="Twitter">
+                    </a>
+                    <a href="{{ $provider->info->instagram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/instagram-png.png') }}" alt="Instagram">
+                    </a>
+                    <a href="{{ $provider->info->linkedin ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/Group.png') }}" alt="LinkedIn">
+                    </a>
+                    <a href="{{ $provider->info->wechat ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/wechat-logo--png 1.png') }}" alt="WeChat">
+                    </a>
+                    <a href="{{ $provider->info->tiktok ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
+                        <img src="{{ asset('imgs/Frame 1321315269.png') }}" alt="TikTok">
+                    </a>
+                  </div>
+              </div>
+            
+        </div>
                     @if ($services->isEmpty())
                             <div class="text-center">
                                 <h2>No services available</h2>

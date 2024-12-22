@@ -10,14 +10,14 @@
 
 
 <section class="search__results bg-main  ">
-    <div class="container mt-4">
+    <div class="container mt-1">
         <div class="routing d-flex align-items-center" style="display: block !important;
     width: 100%;">
-            <a href="#" class="text-black home__main fs-10 me-2 fw-light">Home</a>
+            <a href="#" class="text-black home__main fs-12 me-2 fw-light">Home</a>
             <span class="text-black">-</span>
-            <a href="#" class="text-black fs-10 ms-2 fw-light add__package">Search Filter</a>
+            <a href="#" class="text-black fs-12 ms-2 fw-light add__package">Search Filter</a>
         </div>
-        <h3 class="mt-3 mb-5 me-2 h1">Search results</h3>
+        <h3 class="mt-1 mb-1 me-2 h1">Search results</h3>
         <div class="d-flex justify-content-between border-bottom pb-2 mb-4 search__content position-relative">
             <div class="d-flex align-items-center"  style="display: block !important;
     width: 100%;height: 42px;">

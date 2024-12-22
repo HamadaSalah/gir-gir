@@ -4,6 +4,11 @@ $(document).ready(function() {
       $(this).toggleClass('bgConvert');
   });
 });
+$(document).ready(function() {
+  $('.vendours label').on('click', function() {
+      $(this).toggleClass('bgConvert');
+  });
+});
 
 
 

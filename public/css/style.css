@@ -1526,10 +1526,10 @@ footer {
 
 .ProviderClass {
     border-radius: 15px;
-    margin: 30px;
-    padding: 20px;
+    margin: 10px 0;
+    padding: 6px;
     box-shadow: 0 0 5px #ccc;
-    height: 180px;
+    height: 156px;
 }
 .ProviderClass .card-img-top.img-fluid.rounded-3 {
   height: 100%;

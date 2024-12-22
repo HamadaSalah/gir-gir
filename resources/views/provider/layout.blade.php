@@ -267,49 +267,20 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
 
   <div style="background: #f0f0f0;">
     <div class="container hayperlinks col-8 m-auto d-flex">
-      <a class="col m-2 {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $provider]) }}">
+      <a class=" {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $provider]) }}">
           <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
           FullPage</a>
-      <a class="col m-2 {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $provider]) }}">Reviews</a>
-      <a class="col m-2 {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $provider]) }}">Services</a>
-      <a class="col m-2 {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $provider]) }}">Location</a>
-      <a class="col m-2 {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $provider]) }}">About</a>
-      <a class="col m-2 {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $provider]) }}">Packages</a>
+      <a class=" {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $provider]) }}">Reviews</a>
+      <a class=" {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $provider]) }}">Services</a>
+      <a class=" {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $provider]) }}">Location</a>
+      <a class=" {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $provider]) }}">About</a>
+      <a class=" {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $provider]) }}">Packages</a>
   </div>
 
   </div>
     <!-- about-contant -->
     <div class="container col-8 m-auto about-contant d-flex">
 
-      <div class="col-7 m-auto icons">
-        <a href="{{ $provider->info->telegram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/logo-telegram-4096 1.png') }}" alt="Telegram">
-        </a>
-        <a href="{{ $provider->info->whatsapp ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/whats.png') }}" alt="WhatsApp">
-        </a>
-        <a href="{{ $provider->info->facebook ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/facebook.png') }}" alt="Facebook">
-        </a>
-        <a href="{{ $provider->info->youtube ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/youtube-.png') }}" alt="YouTube">
-        </a>
-        <a href="{{ $provider->info->twitter ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/X.png') }}" alt="Twitter">
-        </a>
-        <a href="{{ $provider->info->instagram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/instagram-png.png') }}" alt="Instagram">
-        </a>
-        <a href="{{ $provider->info->linkedin ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/Group.png') }}" alt="LinkedIn">
-        </a>
-        <a href="{{ $provider->info->wechat ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/wechat-logo--png 1.png') }}" alt="WeChat">
-        </a>
-        <a href="{{ $provider->info->tiktok ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
-            <img src="{{ asset('imgs/Frame 1321315269.png') }}" alt="TikTok">
-        </a>
-    </div>
        </div>
       <!-- about -->
 
