@@ -320,7 +320,10 @@ button, .btn.btn-primary {
 .bestShops .splide__pagination.splide__pagination--ltr {
     display: none!important;
 }
-
+.serviceHeader {
+    font-size: 30px;
+    font-weight: bold;
+}
 
 
 
