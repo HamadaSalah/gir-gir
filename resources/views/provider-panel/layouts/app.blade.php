@@ -114,36 +114,36 @@
         <div class="footer-section">
           <h4>Legal Information</h4>
           <ul>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
+            <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+            <li><a href="{{ route('cookie') }}">Cookie Policy</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Navigation Links</h4>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="{{ route('about') }}">About</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
+            <li><a href="{{ route('services') }}">Services</a></li>
+            <li><a href="{{ route('faq') }}">FAQ</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Wedding Ideas</h4>
           <ul>
-            <li><a href="#">Summer Weddings</a></li>
-            <li><a href="#">Real Weddings</a></li>
+            <li><a href="{{ route('summer.weddings') }}">Summer Weddings</a></li>
+            <li><a href="{{ route('real.weddings') }}">Real Weddings</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Birthday Ideas</h4>
           <ul>
-            <li><a href="#">Summer Birthdays</a></li>
-            <li><a href="#">Real Birthdays</a></li>
+            <li><a href="{{ route('summer.birthdays') }}">Summer Birthdays</a></li>
+            <li><a href="{{ route('real.birthdays') }}">Real Birthdays</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-social">
+            <div class="footer-social">
         <a href="#">
           <img src="{{ asset('') }}social/instagram.svg" alt="Facebook"/>
         </a>

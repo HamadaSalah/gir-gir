@@ -131,9 +131,9 @@ margin-top: 5px; ">5.0</span>
                                             <img style="margin-bottom: 5px;"
                                                 src="{{ asset('imgs/houseico.svg') }}" alt="icon" />
                                             <strong> Provider Type :</strong> {{ $provider->type }} <br>
-                                            You Get <img style="width: 16px;height: 16px; margin-bottom: 5px;"
+                                            {{-- You Get <img style="width: 16px;height: 16px; margin-bottom: 5px;"
                                                 src="{{ asset('imgs/openmoji_coin.png') }}" alt=""><span style="
-                                                color: #931158;"> 120 Coin </span>
+                                                color: #931158;"> 120 Coin </span> --}}
                                         </span>
 
                                     </p>

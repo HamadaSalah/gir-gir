@@ -86,6 +86,7 @@ body {
   line-height: 20px;
   letter-spacing: -0.5px;
   margin: 15px;
+  margin-left: 0!important;
 }
 .card-header a {
   font-family: Barlow;

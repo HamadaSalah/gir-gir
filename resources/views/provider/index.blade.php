@@ -42,7 +42,7 @@ margin-top: 5px; ">5.0</span>
   </div>
 
   <!-- nav service -->
-  <nav class="navitems">
+  <nav class="navitems"ss>
     <div class="navservice">
       <a class="nav-link active m-2" href="#">
         <img class="vector-item" src="{{ asset('imgs') }}/material-symbols_home.png" alt="" />Full Page</a

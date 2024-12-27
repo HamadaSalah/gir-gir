@@ -368,15 +368,18 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .bookShop-container .ballons h1 {
   color: #5c5c5c;
-  margin: 40px 0;
+  margin: 0;
   font-family: Cabin;
   font-size: 43px;
   font-weight: 400;
   line-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
   letter-spacing: -0.5px;
 }
 .bookShop-container .ballons h1 span {

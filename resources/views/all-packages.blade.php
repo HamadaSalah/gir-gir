@@ -4,6 +4,19 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <style>
+        .page-item {
+            text-align: center;
+        margin: auto;
+        margin: 0
+        }
+       .search__results nav {
+            position: relative;
+    display: inline;
+    width: unset;
+    margin: auto;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -15,9 +28,9 @@
     width: 100%;">
             <a href="#" class="text-black home__main fs-12 me-2 fw-light">Home</a>
             <span class="text-black">-</span>
-            <a href="#" class="text-black fs-12 ms-2 fw-light add__package">Search Filter</a>
+            <a href="#" class="text-black fs-12 ms-2 fw-light add__package">All Products</a>
         </div>
-        <h3 class="mt-1 mb-1 me-2 h1">Search results</h3>
+        <h3 class="mt-1 mb-1 me-2 h1">All Products</h3>
         <div class="d-flex justify-content-between border-bottom pb-2 mb-4 search__content position-relative">
             <div class="d-flex align-items-center"  style="display: block !important;
     width: 100%;height: 42px;">
@@ -120,66 +133,15 @@
                 </div>
 
             @endforeach
+                {{ $packages->links('pagination::bootstrap-4') }}
+
         </div>
         {{-- <div class="d-flex justify-content-center">
             <button class="btn btn-primary fw-light py-1 px-3 mb-5 text-center">
                 Find out more &rarr;
             </button>
         </div> --}}
-        <h5 class="pb-4 border-bottom mb-3 position-relative   serviceHeader">
-            services
-        </h5>
-
-        <section class="splide bestShops trinds__slider--three container" style="padding: 0" aria-label="Splide Basic HTML Example">
-            <div class="splide__track">
-                <ul class="splide__list gap-2">
-                    {{-- (LOOPING) Best shops --}}
-                    @foreach ($services as $service)
-                    <li class="splide__slide">
-                        <div class="card mb-5 text-start shadow-sm position-relative border-0 p-0 rounded-5">
-                            <img src="{{asset('')}}imgs/mdi_heart-outline.svg" alt="add to fav"
-                                class="p-2 bg-dark bg-opacity-75 rounded-5 position-absolute end-0 me-3 mt-3">
-            
-                            <img src="{{ asset($service->files()->first()?->path) }}" alt="wedding" class="card-img-top">
-            
-                            <div class="card-body px-2 py-3">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <h3 class="card-title h6 fw-bold mb-0">{{ $service->name }}</h3>
-                                    <span class="d-flex align-items-center bg_rating p-1 rounded-5"><img
-                                            src="{{asset('')}}imgs/Star_1.svg" alt="rating" class="me-1">
-                                        <span class="rating__number text-white fs-12 fw-light">4.9</span>
-                                    </span>
-                                </div>
-                                <p class="card-text text-black-50 fs-12 d-flex align-items-center mb-2">
-                                    <span class="text-black text-opacity-25 fs-14 d-flex align-items-center"><img
-                                            src="{{asset('')}}imgs/houseico.svg" alt="icon" class="myiconn">
-                                        Shop
-                                        :
-                                    </span>
-                                    {{ $service->packages[0]?->provider?->name }}
-                                </p>
-                                <p class="card-text text-black fs-14 ls-5 fm-cairo mb-2">
-                                    Provider Type :
-                                    <span class="text-secondary text-black-50">
-                                        Company
-                                    </span>
-                                </p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <a href="{{ Route('service', $service->id) }}" class="btn btn-primary fm-cairo py-1 px-2 rounded-2" tabindex="-1">+
-                                        Show Service</a>
-                                    <p class="fm-cairo mb-0">
-                                        from/<span class="text-primary fw-medium">{{ $service->cost }}$</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>                      </li>
-                    @endforeach
-
-                    {{-- end of Best shops --}}
-                </ul>
-            </div>
-        </section>
-        {{-- <section class="splide bestShops services__slider--oneeee container" aria-label="Splide Basic HTML Example">
+         {{-- <section class="splide bestShops services__slider--oneeee container" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
                 <ul class="splide__list gap-2">
                     @foreach($services as $service)

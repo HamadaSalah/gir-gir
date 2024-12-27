@@ -84,6 +84,20 @@ class HomeController extends Controller
         return view('search', ['packages' => $packages, 'services' => $services]);
     }
 
+    public function AllPackages()
+    {
+
+        $query = Package::with('services');
+
+        $query = app(Pipeline::class)->send($query)->through([
+            PackagesFilter::class
+        ])->thenReturn();
+
+        $packages = $query->latest('id')->paginate(6);
+
+        return view('all-packages', ['packages' => $packages]);
+    }
+
 
     /**
      * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
@@ -206,13 +220,24 @@ class HomeController extends Controller
      */
     public function category(Request $request,Category $category)
     {
+
         $category->load('packages');
 
-        $serviceIds = $category->packages->pluck('services.*.id')->flatten()->unique();
+        $packs = Package::where('category_id', $category->id);
 
-        $services = Service::whereIn('id', $serviceIds)->with('packages')->get();
+        if(!empty(request('type'))) {
+            $packs = $packs->whereHas('provider', function($query){
+                $query->where('type', request('type'));
+            });
+         }
+         $packs = $packs->get();
 
-        return view('category.show', ['packages' => $category->packages, 'services' => $services]);
+         $serviceIds = $packs->pluck('services.*.id')->flatten()->unique();
+
+         $services = Service::whereIn('id', $serviceIds)->with('packages')->get();
+ 
+ 
+        return view('category.show', ['packages' => $packs, 'services' => $services, 'category' => $category]);
     }
 
     public function showPackage(Package $package)

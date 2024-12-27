@@ -8,6 +8,11 @@
     <title>BookShop</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/royalwedding.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/Aboutproviders.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"  />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
     <!-- fontAwesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -42,24 +47,21 @@
                 <div class="collapse navbar-collapse text-center text-lg-start" id="navbarNav">
                     <a href="{{ Route('home') }}" class="navbar-brand ps-5">
                         <img src="{{ asset('imgs') }}/logo.svg" alt="brand logo" /></a>
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item active px-4 text-nowrap">
-                            <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item px-4 text-nowrap">
-                            <a class="nav-link p-0" href="{{ Route('search') }}">Packages</a>
-                        </li>
-                        <li class="nav-item px-4 text-nowrap">
-                            <a class="nav-link p-0" href="{{ Route('providers') }}">Best shops</a>
-                        </li>
-                        {{-- <li class="nav-item px-4 text-nowrap">
-                <a class="nav-link p-0" href="#vip">Vip</a>
-              </li> --}}
-                        <li class="nav-item px-4 text-nowrap">
-                            <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
-                        </li>
-                    </ul>
-                </div>
+                        <ul class="navbar-nav align-items-center">
+                            <li class="nav-item active px-4 text-nowrap">
+                                <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
+                            </li>
+                            <li class="nav-item px-4 text-nowrap">
+                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                            </li>
+                            <li class="nav-item px-4 text-nowrap">
+                                <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
+                            </li>
+                            <li class="nav-item px-4 text-nowrap">
+                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Packages</a>
+                            </li>
+                        </ul>
+                            </div>
             </nav>
             <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start">
                 <a href="#contactus" class="text-decoration-none text-black text-opacity-75">
@@ -154,7 +156,7 @@
                 @endauth
             </div>
         </div>
-    </div>
+    </div>    
     <div class="row align-items-center position-relative">
         {{-- Auth User Coins --}}
         {{-- End auth user coins --}}
@@ -247,16 +249,33 @@
             <a class="nav-link m-2" href="{{ route('provider.packages' , $package->provider) }}">Packages</a>
         </div>
     </nav> --}}
+    <div style="background: #f0f0f0;">
+        <div style="background: #f0f0f0;">
+            <div class="container hayperlinks col-8 m-auto d-flex">
+            <a class=" {{ request()->routeIs('provider.show') ? 'active' : '' }}" href="{{ route('provider.show', ['provider' => $package->provider]) }}">
+                <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
+                FullPage</a>
+            <a class=" {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $package->provider]) }}">Reviews</a>
+            <a class=" {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $package->provider]) }}">Services</a>
+            <a class=" {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $package->provider]) }}">Location</a>
+            <a class=" {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $package->provider]) }}">About</a>
+            <a class=" {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $package->provider]) }}">Packages</a>
+            </div>
+        </div>
+    </div>
 
     <!-- ballons image -->
     <div class="ballons">
         <h1>
             {{ $package->name }}
-            <span class="rating"><i class="fa-solid fa-star"></i> {{ $package->average_rate }}</span>
+            <span class="rating" style="padding: 0 5px;"><i class="fa-solid fa-star"></i> {{ $package->average_rate ?? 'N/A' }}</span>
         </h1>
         <div class="images">
             @foreach($package->files as $img)
+            <a href="{{ asset($img->path) }}" data-fancybox data-caption="">
                 <img src="{{ asset($img->path) }}" id="PackageImg" class="img-thumbnail" alt="{{ $package->name }}" />
+            </a>
+                
             @endforeach
         </div>
     </div>
@@ -471,44 +490,38 @@
             </div>
             <div class="footer-links">
                 <div class="footer-section">
-                    <h4>Legal Information</h4>
-                    <ul>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
+                  <h4>Legal Information</h4>
+                  <ul>
+                    <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
+                    <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('cookie') }}">Cookie Policy</a></li>
+                  </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Navigation Links</h4>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
+                  <h4>Navigation Links</h4>
+                  <ul>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                    <li><a href="{{ route('services') }}">Services</a></li>
+                    <li><a href="{{ route('faq') }}">FAQ</a></li>
+                  </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>For Provider</h4>
-                    <ul>
-                        <li><a href="#">Join now</a></li>
-                        <li><a href="#">Sign in</a></li>
-                    </ul>
+                  <h4>Wedding Ideas</h4>
+                  <ul>
+                    <li><a href="{{ route('summer.weddings') }}">Summer Weddings</a></li>
+                    <li><a href="{{ route('real.weddings') }}">Real Weddings</a></li>
+                  </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Wedding Ideas</h4>
-                    <ul>
-                        <li><a href="#">Summer Weddings</a></li>
-                        <li><a href="#">Real Weddings</a></li>
-                    </ul>
+                  <h4>Birthday Ideas</h4>
+                  <ul>
+                    <li><a href="{{ route('summer.birthdays') }}">Summer Birthdays</a></li>
+                    <li><a href="{{ route('real.birthdays') }}">Real Birthdays</a></li>
+                  </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Birthday Ideas</h4>
-                    <ul>
-                        <li><a href="#">Summer Birthdays</a></li>
-                        <li><a href="#">Real Birthdays</a></li>
-                    </ul>
-                </div>
-            </div>
+              </div>
+              
             <div class="footer-social">
                 <a href="#">
                   <img src="{{ asset('') }}social/instagram.svg" alt="Facebook"/>

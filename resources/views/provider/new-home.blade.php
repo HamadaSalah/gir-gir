@@ -2,6 +2,22 @@
 @section('title' , 'Home')
 
 @push('css')
+<style>
+    .packgs {
+        display: inline;float: left;
+        position: relative;
+    }
+    .packgs::before {
+    content: " " ;
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: #931158;
+    bottom: -27px;
+    border-radius: 2px;
+}
+
+</style>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/services.css') }}" />
@@ -14,7 +30,7 @@
     <div class="cleafix"></div>
 <!-- pacckage section -->
 <div class="Pacckages" style="display: block;width: 100%;">
-    <h3 style="display: inline;float: left;">PACKAGES</h3>
+    <h3 style="" class="packgs">PACKAGES</h3>
     <div class="col-7 m-auto icons">
         <a href="{{ $provider->info->telegram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
             <img src="{{ asset('imgs/logo-telegram-4096 1.png') }}" alt="Telegram">
@@ -59,9 +75,7 @@
             <div class="package-content">
                 <h3>{{ $package->name }}</h3>
                 <p style="font-weight: 300;color: #636363;"><strong  style="font-weight: 600;color: #000">Name Shop:</strong> {{ $provider->name }}</p>
-                <p style="font-weight: 300;color: #636363;display: inline-block"> <strong   style="font-weight: 600;color: #000;height: 50px;
-    overflow: hidden;
-    margin-bottom: 0;">Details:</strong> {{ $package->description }}</p>
+                <p style="font-weight: 300;color: #636363;display: inline-block"> <strong   style="font-weight: 600;color: #000;height: 50px;overflow: hidden;margin-bottom: 0;">Details:</strong> {{ $package->description }}</p>
                 <p style="font-weight: 300;color: #636363;"><strong style="font-weight: 600;color: #000">Provider Type:</strong> Company</p>
                 <p style="font-weight: 300;color: #636363;"><strong style="font-weight: 600;color: #000">From:</strong> <span style="color: #931158">{{ $package->cost }}$</span></p>
                 {{-- <p>
@@ -116,9 +130,9 @@
                                             <img style="margin-bottom: 5px;"
                                                 src="{{ asset('imgs/houseico.svg') }}" alt="icon" />
                                             <strong> Provider Type :</strong> {{ $provider->type }} <br>
-                                            You Get <img style="width: 16px;height: 16px; margin-bottom: 5px;"
+                                            {{-- You Get <img style="width: 16px;height: 16px; margin-bottom: 5px;"
                                                 src="{{ asset('imgs/openmoji_coin.png') }}" alt=""><span style="
-                                                color: #931158;"> 120 Coin </span>
+                                                color: #931158;"> 120 Coin </span> --}}
                                         </span>
 
                                     </p>

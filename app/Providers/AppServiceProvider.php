@@ -33,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $globalCssAndFonts = <<<HTML
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"  />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
             <link rel="stylesheet" href="{$this->assetPath('css/global.css')}">
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com">

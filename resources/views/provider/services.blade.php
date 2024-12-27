@@ -21,27 +21,27 @@
                 </button>
                 <div class="collapse navbar-collapse text-center text-lg-start" id="navbarNav">
                     <a href="{{ Route('home') }}" class="navbar-brand ps-5">
-                        <img src="{{ asset('imgs/logo.svg') }}" alt="brand logo" /></a>
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item active px-4 text-nowrap">
-                            <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item px-4 text-nowrap">
-                            <a class="nav-link p-0" href="{{ Route('search') }}">Packages</a>
-                        </li>
-                        <li class="nav-item px-4 text-nowrap">
-                            <a class="nav-link p-0" href="{{ Route('providers') }}">Best shops</a>
-                        </li>
-                        <li class="nav-item px-4 text-nowrap">
-                            <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
-                        </li>
-                    </ul>
-                </div>
+                        <img src="{{ asset('imgs') }}/logo.svg" alt="brand logo" /></a>
+                        <ul class="navbar-nav align-items-center">
+                            <li class="nav-item active px-4 text-nowrap">
+                                <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
+                            </li>
+                            <li class="nav-item px-4 text-nowrap">
+                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                            </li>
+                            <li class="nav-item px-4 text-nowrap">
+                                <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
+                            </li>
+                            <li class="nav-item px-4 text-nowrap">
+                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Packages</a>
+                            </li>
+                        </ul>
+                            </div>
             </nav>
             <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start">
                 <a href="#contactus" class="text-decoration-none text-black text-opacity-75">
                     <img src="{{ asset('imgs/call-calling.svg') }}" alt="contact us" />
-                    <span>Contact Us</span>
+                    <a href="tel:+12345678"><span style="color:#000">Contact Us</span></a>
                 </a>
                 @guest
                     <a href="#" class="fm-cairo btn btn-primary py-1 px-3 mx-3"><span><img

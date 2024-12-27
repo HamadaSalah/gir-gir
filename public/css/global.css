@@ -201,6 +201,7 @@ footer {
     bottom: 0;
     border-radius: 2px;
 }
+
 .serviceHeader {
     margin-left: 20px;
 }
@@ -316,7 +317,9 @@ button, .btn.btn-primary {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
 }
-
+.containerMission {
+    height: unset;
+}
 .bestShops .splide__pagination.splide__pagination--ltr {
     display: none!important;
 }
@@ -324,22 +327,53 @@ button, .btn.btn-primary {
     font-size: 30px;
     font-weight: bold;
 }
+.package-footer .rating {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px;
+    border-radius: 6px;
+}
+.card-img-top-cat {
+    height: 100%!important;
+}
+
+#carouselExampleIndicatorsCats .carousel-indicators {
+    bottom: -30px!important;
+}
 
 
+#carouselExampleIndicatorsCats .carousel-indicators [data-bs-target] {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #929292;
+    
+}
+#carouselExampleIndicatorsCats .carousel-indicators .active  {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #931158!important;
+}
+#dropdownMenuButton1111:hover{
+    background: none!important;
+}
+#dropdownMenuButton1111::after, #dropdownMenuButton1111::after {
+    background: none!important;
+
+}
 
 
-
-
-
-
-
-
-
-
-
+@media screen and (max-width: 1200px) {
+    .SelectCateg {
+        padding: 20px;
+    }
+}
 
 
 @media screen and (max-width: 992px) {
+    .SelectCateg img {
+        width: 90%;
+    }
     .hero .splide__list, .hero .splide__slide {
         height: 270px;
     }
@@ -435,8 +469,23 @@ button, .btn.btn-primary {
  
     .SelectCateg {
         background-color: #EFEFEF;
-        padding: 10px;
+        padding: 10px  ;
         font-size: 12px;
         height: 120px;
+    }
+    .SelectCateg img {
+        width: 85%;
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+    .newBorn, .myCards.flex.flex-wrap.justify-between ,.myCard.bg-white.shadow-lg.rounded-lg.overflow-hidden, .myCards .row {
+        width: 100%;
+    }
+    .myCards .myCard {
+        min-width: unset!important;
+    }
+    .dropdown {
+        margin: 0!important;
     }
 }

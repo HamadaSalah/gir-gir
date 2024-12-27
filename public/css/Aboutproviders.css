@@ -100,7 +100,7 @@ body {
   text-decoration: none;
   text-align: center;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: bold!important;
   letter-spacing: -0.5px;
   color: #5C5C5C;
   margin: 0 !important;
@@ -510,6 +510,8 @@ opacity: 0.34px;
     margin: 0 !important;
     padding: 0;
     line-height: 39px;
+    font-weight: bold!important;
+
   }
   .package-card {
     height: auto!important;

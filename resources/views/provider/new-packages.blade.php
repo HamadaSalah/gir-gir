@@ -6,6 +6,23 @@
 <link rel="stylesheet" href="{{ asset('css/NewBorn.css') }}" />
 <!-- fontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+        .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+       z-index: 1000;
+       width: 300px
+    } 
+    @media only screen and (max-width: 992px) {
+        .fixed {
+      position: relative;
+    } 
+
+    }
+
+</style>
 @endpush
 
 @section('content')
@@ -48,7 +65,7 @@
     <div class="divide">
         <!-- DashBoard -->
         <aside>
-            <ul>
+            <ul id="aaside">
                 @foreach ($allCategories as $category)
                     <!-- Always show all categories if none is selected -->
                     <li>
@@ -141,4 +158,17 @@
         </div>
     </div>
 </div>
+<script>
+    const div = document.getElementById('aaside');
+    const divOffset = div.offsetTop;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= divOffset) {
+        div.classList.add('fixed');
+      } else {
+        div.classList.remove('fixed');
+      }
+    });
+  </script>
+
 @endsection

@@ -26,6 +26,7 @@ use App\Http\Controllers\StripePaymentController;
 Route::get('', [HomeController::class, 'index'])->name('home');
 Route::get('category/{category:uuid}',[CategoryController::class,'show'])->name('category.show')->whereUuid('category');
 Route::get('search', [HomeController::class,'search'])->name('search');
+Route::get('all-packages', [HomeController::class,'AllPackages'])->name('all-packages');
 Route::get('category/{category}', [HomeController::class,'category'])->name('category');
 
 
@@ -39,6 +40,7 @@ Route::get('providers/{provider}/about', [HomeController::class,'aboutProvider']
 Route::get('providers/{provider}/location', [HomeController::class,'locationProvider'])->name('provider.location');
 Route::get('providers/{provider}/reviews', [HomeController::class,'reviewsProvider'])->name('provider.reviews');
 Route::get('packages/{package}', [HomeController::class,'showPackage'])->middleware('auth:web')->name('package');
+Route::get('service/{service}', [HomeController::class,'showService'])->middleware('auth:web')->name('service');
 Route::get('services/{service}', [HomeController::class,'showService'])->middleware('auth:web')->name('service');
 Route::post('addToCard', [HomeController::class,'addToCard'])->name('addToCard');
 Route::get('mycart', [HomeController::class,'myCart'])->name('myCart');
@@ -88,3 +90,26 @@ Route::group(['prefix' => 'profile' , 'as' => 'profile.', 'controller' => Profil
     Route::post('update-info' , 'update_info')->name('update-info');
     Route::post('update-password' , 'update_password')->name('update-password');
 });
+
+
+
+
+// Main Routes
+Route::view('/terms-and-conditions', 'terms-and-conditions')->name('terms');
+Route::view('/privacy-policy', 'privacy-policy')->name('privacy');
+Route::view('/cookie-policy', 'cookie-policy')->name('cookie');
+
+// About Section
+Route::view('/about', 'about')->name('about');
+Route::view('/contact', 'contact')->name('contact');
+Route::view('/services', 'services')->name('services');
+Route::view('/faq', 'faq')->name('faq');
+
+// Weddings Section
+Route::view('/wedding-ideas', 'wedding-ideas')->name('wedding.ideas');
+Route::view('/summer-weddings', 'summer-weddings')->name('summer.weddings');
+Route::view('/real-weddings', 'real-weddings')->name('real.weddings');
+
+// Birthdays Section
+Route::view('/summer-birthdays', 'summer-birthdays')->name('summer.birthdays');
+Route::view('/real-birthdays', 'real-birthdays')->name('real.birthdays');

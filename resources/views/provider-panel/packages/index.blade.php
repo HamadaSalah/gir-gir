@@ -16,7 +16,7 @@
                     <a class="nav-link" href="{{ route('provider-panel.home') }}">Control Panel</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link active" href="#">All Packages</a>
+                    <a class="nav-link active" href="#">All Products</a>
                 </li>
                 <li class="nav-item d-flex justify-content-between">
                     <a class="nav-link" href="{{ route('provider-panel.packages.create') }}">

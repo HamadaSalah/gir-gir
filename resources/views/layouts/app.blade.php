@@ -42,25 +42,26 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          
           <div
             class="collapse navbar-collapse text-center text-lg-start"
             id="navbarNav"
           >
-            <ul class="navbar-nav align-items-center">
-              <li class="nav-item active px-4 text-nowrap">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item active px-4 text-nowrap">
                 <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
-              </li>
-              <li class="nav-item px-4 text-nowrap">
-                <a class="nav-link p-0" href="{{ Route('search') }}">Packages</a>
-              </li>
-              <li class="nav-item px-4 text-nowrap">
-                <a class="nav-link p-0" href="{{ Route('bestShops') }}">Best shops</a>
-              </li>
-              <li class="nav-item px-4 text-nowrap">
+            </li>
+            <li class="nav-item px-4 text-nowrap">
+                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+            </li>
+            <li class="nav-item px-4 text-nowrap">
                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
-              </li>
-            </ul>
-          </div>
+            </li>
+            <li class="nav-item px-4 text-nowrap">
+                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Packages</a>
+            </li>
+        </ul>
+      </div>
         </nav>
 
         <div class="col-md-12 col-lg-4 ms-lg-auto text-center text-lg-start menusm"  >
@@ -69,7 +70,7 @@
             class="text-decoration-none text-black text-opacity-75"
           >
             <img src="{{ asset('imgs') }}/call-calling.svg" alt="contact us" />
-            <span>Contact Us</span>
+            <a href="tel:+12345678"><span style="color:#000">Contact Us</span></a>
           </a>
           @auth
           <div class="dropdown" style="display: inline-block; margin:0 10px">
@@ -186,10 +187,32 @@
               <input type="submit"
               style="position: absolute; left: -9999px; width: 1px; height: 1px;"
               tabindex="-1" />
-
-             <button class="btn filter p-2" type="submit">
+              <div class="dropdown">
+                <button class="btn   dropdown-toggle filter p-2" type="button" id="dropdownMenuButton1111" data-bs-toggle="dropdown" aria-expanded="false" style="margin: 0;padding: 2px!important;">
+                  <img src="{{ asset('imgs/uil_filter.svg') }}" alt="filter icon">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1111" style="padding: 0 20px"> 
+                  @foreach (allCategories() as $catt)
+                    <li>
+                        <div class="form-check dropdown-item">
+                            <input class="form-check-input" name="cat_ids[]" type="checkbox" value="{{ $catt->id }}" id="checkbox{{ $loop->index+1 }}">
+                            <label class="form-check-label" for="checkbox{{ $loop->index+1 }}">
+                                {{  $catt->name }}
+                            </label>
+                        </div>
+                    </li>                      
+                  @endforeach
+              </ul>
+  
+                {{-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1111">
+                  @foreach (allCategories() as $catt)
+                    <li><a class="dropdown-item" href="#">{{ $catt }}</a></li>
+                  @endforeach
+\                </ul> --}}
+              </div>
+             {{-- <button class="btn filter p-2" type="submit">
               <img src="{{ asset('imgs/uil_filter.svg') }}" alt="filter icon">
-            </button>
+            </button> --}}
             <button class="btn search p-2" type="submit">
               <img src="{{ asset('imgs/searchico.svg') }}" alt="search icon">
             </button>
@@ -211,44 +234,36 @@
           <div class="footer-section">
             <h4>Legal Information</h4>
             <ul>
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
+              <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+              <li><a href="{{ route('cookie') }}">Cookie Policy</a></li>
             </ul>
           </div>
           <div class="footer-section">
             <h4>Navigation Links</h4>
             <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="{{ route('about') }}">About</a></li>
+              <li><a href="{{ route('contact') }}">Contact</a></li>
+              <li><a href="{{ route('services') }}">Services</a></li>
+              <li><a href="{{ route('faq') }}">FAQ</a></li>
             </ul>
           </div>
-          @guest
-          <div class="footer-section">
-            <h4>For Provider</h4>
-            <ul>
-              <li><a href="#">Join now</a></li>
-              <li><a href="#">Sign in</a></li>
-            </ul>
-          </div>
-          @endguest
           <div class="footer-section">
             <h4>Wedding Ideas</h4>
             <ul>
-              <li><a href="#">Summer Weddings</a></li>
-              <li><a href="#">Real Weddings</a></li>
+              <li><a href="{{ route('summer.weddings') }}">Summer Weddings</a></li>
+              <li><a href="{{ route('real.weddings') }}">Real Weddings</a></li>
             </ul>
           </div>
           <div class="footer-section">
             <h4>Birthday Ideas</h4>
             <ul>
-              <li><a href="#">Summer Birthdays</a></li>
-              <li><a href="#">Real Birthdays</a></li>
+              <li><a href="{{ route('summer.birthdays') }}">Summer Birthdays</a></li>
+              <li><a href="{{ route('real.birthdays') }}">Real Birthdays</a></li>
             </ul>
           </div>
         </div>
+        
         {{-- Start of Social Media of website --}}
         <div class="footer-social">
           <a href="#">

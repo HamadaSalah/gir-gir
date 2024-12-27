@@ -47,6 +47,12 @@ if (!function_exists('categories')) {
        return Category::take(6)->get();
     }
 }
+if (!function_exists('allCategories')) {
+    function allCategories()
+    {
+       return Category::take(6)->get();
+    }
+}
 if (!function_exists('cartCount')) {
     function cartCount()
     {

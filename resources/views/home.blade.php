@@ -695,9 +695,9 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-primary fw-light py-1 px-3 mb-5 text-center">
+            <a href="{{Route('all-packages')}}"><button class="btn btn-primary fw-light py-1 px-3 mb-5 text-center">
                 Find out more &rarr;
-            </button>
+            </button></a>
         </div>
         <h5 class="pb-4 border-bottom mb-3 position-relative services__heading">
             services
@@ -781,18 +781,43 @@
                     <div class="stepHeader">
                         <h2>What type of event are you hosting?</h2>
                     </div>
-
-                    @foreach (categories() as $categ)
-                    <label style="text-align: center;width: 32%;margin: auto;margin-bottom: 20px">
-                        <input type="checkbox" name="cat_ids[]" value="{{ $categ->id }}">
-                        <div class="col-3 events d-flex flex-column align-items-center bg-gray SelectCateg">
-                            <img src="{{ asset($categ->files()?->path) }}" alt="birthday icon" />
-                            <span>{{ $categ->name }}</span>
+                    <div id="carouselExampleIndicatorsCats" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            @foreach (allCategories()->chunk(6) as $index => $chunk)
+                                <button type="button" data-bs-target="#carouselExampleIndicatorsCats" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                            @endforeach
                         </div>
-                    </label>
-
-                    @endforeach
-                    <div style="text-align: center;margin: auto; margin-top: 50px">
+                        <div class="carousel-inner">
+                            @foreach (allCategories()->chunk(6) as $index => $chunk)
+                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                    <div class="d-flex flex-wrap justify-content-center">
+                                        @foreach ($chunk as $categ)
+                                            <label style="text-align: center; width: 32%; margin: auto; margin-bottom: 20px;">
+                                                <input type="checkbox" name="cat_ids[]" value="{{ $categ->id }}">
+                                                <div class="col-3 events d-flex flex-column align-items-center bg-gray SelectCateg">
+                                                    @if($categ->files() && $categ->files()->path)
+                                                        <img src="{{ asset($categ->files()->path) }}" alt="category icon" />
+                                                    @else
+                                                        <img src="{{ asset('default-image-path.jpg') }}" alt="default icon" />
+                                                    @endif
+                                                    <span>{{ $categ->name }}</span>
+                                                </div>
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicatorsCats" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicatorsCats" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                                        <div style="text-align: center;margin: auto; margin-top: 50px">
                         <button style="" class="btn btn-primary" type="button" onclick="nextStep()">Next</button>
                     </div>
                 </div>
