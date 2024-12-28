@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet"/>
 @endpush
 
-@section('title', 'Services')
+@section('title', 'Products')
 
 @section('sidebar')
     <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
@@ -16,7 +16,7 @@
                     <a class="nav-link" href="{{ route('provider-panel.home') }}">Control Panel</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link active" href="#">All Services</a>
+                    <a class="nav-link active" href="#">All Products</a>
                 </li>
                 <li class="nav-item d-flex justify-content-between">
                     <a class="nav-link" href="{{ route('provider-panel.services.create') }}">

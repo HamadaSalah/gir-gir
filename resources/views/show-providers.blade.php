@@ -104,7 +104,7 @@ margin-top: 5px; ">5.0</span>
 
         <section class="splide trinds__slider--one container" aria-label="Splide Basic HTML Example">
             <div class="Pacckages" style="display: block;width: 100%;">
-                <h3>SERVICES</h3>
+                <h3>Products</h3>
                </div>
 
             <div class="splide__track">

@@ -76,7 +76,7 @@
 
                     <!-- Add Service Button and Inputs -->
                     <div class="mb-3">
-                        <label class="form-note-label" style="color: #83044a;">Services in This Package</label>
+                        <label class="form-note-label" style="color: #83044a;">Products in This Package</label>
                         <div id="services-section">
                             <img src="{{ asset('imgs/plussign.png') }}" width="50px" alt="Add Service" id="addServiceBtn" style="cursor: pointer;">
                         </div>

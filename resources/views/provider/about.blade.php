@@ -44,7 +44,7 @@ margin-top: 5px; ">5.0</span>
       <div class="navservice">
         <a class="nav-link m-2" href="./index.html">Full Page</a>
         <a class="nav-link m-2" href="#">Reviews</a>
-        <a class="nav-link m-2" href="#">Services</a>
+        <a class="nav-link m-2" href="#">Products</a>
         <a class="nav-link m-2" href="#">Location</a>
         <a class="nav-link m-2 active" href="#">About</a>
         <a class="nav-link m-2" href="#">Packages</a>
@@ -234,7 +234,7 @@ margin-top: 5px; ">5.0</span>
             <p>dubai</p>
           </span>
           <span class="reviewparagraph">The drinks are a masterpiece. The hotel is more than wonderful. Sweet, <br>
-             beautiful, delicious. All the services are delicious.</span>
+             beautiful, delicious. All the Products are delicious.</span>
           <span class="arrowformore">
              <a  href="">More </a></span>
         </div>

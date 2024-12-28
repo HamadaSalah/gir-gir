@@ -103,7 +103,7 @@
 
         <section class="splide trinds__slider--one container" aria-label="Splide Basic HTML Example">
             <div class="Pacckages" style="display: block;width: 100%;">
-                <h3>SERVICES</h3>
+                <h3>Products</h3>
                </div>
 
             <div class="splide__track">
@@ -137,7 +137,13 @@
 
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <a href="{{ Route('service', $service->id) }}" class="btn btn-primary fm-cairo py-1 px-2 rounded-2">Discover now</a>
+                                        <form action="{{ Route('addToCard') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="service" value="{{ $service->id }}">
+                                    
+                                        <button type="submit" href="{{ Route('service', $service->id) }}" class="btn btn-primary fm-cairo py-1 px-2 rounded-2" tabindex="-1">+
+                                            Add To Cart</button>
+                                        </form>
                                         <p class="fm-cairo mb-0">
                                             <span class="text-primary fw-medium " style="font-family: Cairo;font-size: 19px;font-weight: 500;line-height: 20px;letter-spacing: -0.5px;
                         ">100.2$</span>

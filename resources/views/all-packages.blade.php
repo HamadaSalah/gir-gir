@@ -28,9 +28,9 @@
     width: 100%;">
             <a href="#" class="text-black home__main fs-12 me-2 fw-light">Home</a>
             <span class="text-black">-</span>
-            <a href="#" class="text-black fs-12 ms-2 fw-light add__package">All Products</a>
+            <a href="#" class="text-black fs-12 ms-2 fw-light add__package">All Packages</a>
         </div>
-        <h3 class="mt-1 mb-1 me-2 h1">All Products</h3>
+        <h3 class="mt-1 mb-1 me-2 h1">All Packages</h3>
         <div class="d-flex justify-content-between border-bottom pb-2 mb-4 search__content position-relative">
             <div class="d-flex align-items-center"  style="display: block !important;
     width: 100%;height: 42px;">
@@ -113,14 +113,17 @@
                                 </span>
                             </p>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">
-                                Details :
+                                Items :
                                 <span class="text-secondary text-black-50">
-                                    {{ strlen($package->description) > 70 ? substr($package->description, 0, 70) . '...' : $package->description }}
+                                    @foreach($package->services as $service)
+                                        {{ $service->name }} @if(!$loop->last),@endif
+                                    @endforeach
+                                    {{-- {{ strlen($package->description) > 70 ? substr($package->description, 0, 70) . '...' : $package->description }} --}}
                                 </span>
                             </p>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">
                                 Provider Type :
-                                <span class="text-secondary text-black-50"> Company </span>
+                                <span class="text-secondary text-black-50"> {{ $service->provider->type }} </span>
                             </p>
                             <p class="fm-cairo mb-0">
                                 from/<span class="text-primary fw-medium">{{ $package->cost }}$</span>
@@ -347,7 +350,7 @@
     display:none;
   }
   .card-img-top {
-    height: 204px!important;
+    height: 184px!important;
   }
   footer {
     margin-top: 0!important

@@ -28,7 +28,7 @@
                                 <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
-                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                                <a class="nav-link p-0" href="{{ Route('products') }}">Products</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
                                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
@@ -148,7 +148,7 @@
                 <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}"
                     alt="" />Full Page</a>
             <a class="nav-link m-2" href="#">Reviews</a>
-            <a class="nav-link m-2" href="#">Services</a>
+            <a class="nav-link m-2" href="#">Products</a>
             <a class="nav-link m-2" href="#">Location</a>
             <a class="nav-link m-2" href="./aboutProviders.html">About</a>
             <a class="nav-link m-2" href="#">Pacckages</a>
@@ -240,7 +240,7 @@
                   <ul>
                     <li><a href="{{ route('about') }}">About</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
-                    <li><a href="{{ route('services') }}">Services</a></li>
+                    <li><a href="{{ route('services') }}">Products</a></li>
                     <li><a href="{{ route('faq') }}">FAQ</a></li>
                   </ul>
                 </div>

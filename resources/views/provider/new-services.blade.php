@@ -1,5 +1,5 @@
 @extends('provider.layout')
-@section('title', 'Services')
+@section('title', 'Products')
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
@@ -22,7 +22,7 @@
         
         <div class="container">
             <div class="Pacckages" style="display: block;width: 100%;">
-                <h3 style="display: inline;float: left;">SERVICES</h3>
+                <h3 style="display: inline;float: left;">Products</h3>
                 <div class="col-7 m-auto icons">
                     <a href="{{ $provider->info->telegram ?? '#' }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none">
                         <img src="{{ asset('imgs/logo-telegram-4096 1.png') }}" alt="Telegram">
@@ -57,7 +57,7 @@
         </div>
                     @if ($services->isEmpty())
                             <div class="text-center">
-                                <h2>No services available</h2>
+                                <h2>No Products available</h2>
                             </div>
                     @else
                     <section class="splide trinds__slider--one container" aria-label="Services Carousel">

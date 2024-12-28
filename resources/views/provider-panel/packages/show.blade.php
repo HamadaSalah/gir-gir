@@ -23,7 +23,7 @@
                         <p><strong>Price:</strong> <span class="text-success">${{ number_format($package->cost, 2) }}</span></p>
                         <span class="badge bg-info">Times Ordered: {{ $orderingCount }}</span>
 
-                        <p class="mt-3"><strong>Services Offered:</strong></p>
+                        <p class="mt-3"><strong>Products Offered:</strong></p>
                         <div class="row">
                             @foreach ($package->services as $service)
                                 <div class="col-md-4 mb-3">

@@ -52,7 +52,7 @@
                 <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
             </li>
             <li class="nav-item px-4 text-nowrap">
-                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                <a class="nav-link p-0" href="{{ Route('products') }}">Products</a>
             </li>
             <li class="nav-item px-4 text-nowrap">
                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>

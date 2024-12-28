@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title' , 'Services')
+@section('title' , 'Products')
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('') }}css/bootstrap.css" />
@@ -49,7 +49,7 @@ margin-top: 5px; ">5.0</span>
       <div class="navservice">
         <a class="nav-link m-2" href="{{ Route('provider.show', $provider->id) }}">Full Page</a>
         <a class="nav-link m-2" href="#">Reviews</a>
-        <a class="nav-link m-2" href="#">Services</a>
+        <a class="nav-link m-2" href="#">Products</a>
         <a class="nav-link m-2" href="#">Location</a>
         <a class="nav-link m-2 active" href="#">About</a>
         <a class="nav-link m-2" href="{{ Route('provider.show', $provider->id) }}">Pacckages</a>

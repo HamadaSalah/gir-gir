@@ -40,7 +40,7 @@
                 <a class="nav-link" href="{{ route('provider-panel.packages.index') }}">Packages</a>
               </li>
               <li class="nav-item px-4">
-                <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Services</a>
+                <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Products</a>
               </li>
               <li class="nav-item px-4">
                 <a class="nav-link" href="{{ route('provider-panel.chat.index') }}">Chats</a>
@@ -124,7 +124,7 @@
           <ul>
             <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('contact') }}">Contact</a></li>
-            <li><a href="{{ route('services') }}">Services</a></li>
+            <li><a href="{{ route('services') }}">Products</a></li>
             <li><a href="{{ route('faq') }}">FAQ</a></li>
           </ul>
         </div>

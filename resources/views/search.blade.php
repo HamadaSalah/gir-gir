@@ -100,14 +100,14 @@
                                 </span>
                             </p>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">
-                                Details :
+                                Item :
                                 <span class="text-secondary text-black-50">
                                     {{ strlen($package->description) > 70 ? substr($package->description, 0, 70) . '...' : $package->description }}
                                 </span>
                             </p>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">
                                 Provider Type :
-                                <span class="text-secondary text-black-50"> Company </span>
+                                <span class="text-secondary text-black-50"> {{ $package->provider->type }} </span>
                             </p>
                             <p class="fm-cairo mb-0">
                                 from/<span class="text-primary fw-medium">{{ $package->cost }}$</span>
@@ -127,7 +127,7 @@
             </button>
         </div> --}}
         <h5 class="pb-4 border-bottom mb-3 position-relative   serviceHeader">
-            services
+            Products
         </h5>
 
         <section class="splide bestShops trinds__slider--three container" style="padding: 0" aria-label="Splide Basic HTML Example">
@@ -161,12 +161,18 @@
                                 <p class="card-text text-black fs-14 ls-5 fm-cairo mb-2">
                                     Provider Type :
                                     <span class="text-secondary text-black-50">
-                                        Company
+                                        {{ $service->provider->type }}
                                     </span>
                                 </p>
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <a href="{{ Route('service', $service->id) }}" class="btn btn-primary fm-cairo py-1 px-2 rounded-2" tabindex="-1">+
-                                        Show Service</a>
+                                    <form action="{{ Route('addToCard') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="service" value="{{ $service->id }}">
+                                
+                                    <button type="submit" href="{{ Route('service', $service->id) }}" class="btn btn-primary fm-cairo py-1 px-2 rounded-2" tabindex="-1">+
+                                        Add To Cart</button>
+                                    </form>
+
                                     <p class="fm-cairo mb-0">
                                         from/<span class="text-primary fw-medium">{{ $service->cost }}$</span>
                                     </p>

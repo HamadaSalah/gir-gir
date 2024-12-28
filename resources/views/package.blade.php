@@ -52,7 +52,7 @@
                                 <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
-                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                                <a class="nav-link p-0" href="{{ Route('products') }}">Products</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
                                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
@@ -256,7 +256,7 @@
                 <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
                 FullPage</a>
             <a class=" {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $package->provider]) }}">Reviews</a>
-            <a class=" {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $package->provider]) }}">Services</a>
+            <a class=" {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $package->provider]) }}">Products</a>
             <a class=" {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $package->provider]) }}">Location</a>
             <a class=" {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $package->provider]) }}">About</a>
             <a class=" {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $package->provider]) }}">Packages</a>
@@ -345,7 +345,7 @@
             @endforeach
 
             <div>
-                <p style="text-align: center;margin-bottom: 5px">Additional Services</p>
+                <p style="text-align: center;margin-bottom: 5px">Additional Products</p>
                 @foreach($another_Service as $another)
                     <div class="addition_Ser <?php if($another->another) echo 'anotherProv'; ?> ">
                         {{ $another->service->name }}
@@ -502,7 +502,7 @@
                   <ul>
                     <li><a href="{{ route('about') }}">About</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
-                    <li><a href="{{ route('services') }}">Services</a></li>
+                    <li><a href="{{ route('services') }}">Products</a></li>
                     <li><a href="{{ route('faq') }}">FAQ</a></li>
                   </ul>
                 </div>

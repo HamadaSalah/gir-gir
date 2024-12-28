@@ -27,7 +27,7 @@
               <a class="nav-link" href="{{ route('provider-panel.packages.index') }}">Packages</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Services</a>
+              <a class="nav-link" href="{{ route('provider-panel.services.index') }}">Products</a>
             </li>
             @if(auth('provider')->user()->type == 'company')
             <li class="nav-item">

@@ -150,7 +150,7 @@ margin-top: 5px; ">5.0</span>
   <!-- slider -->
   <main class="main__content sliders ">
     <div class="row Pacckages">
-      Services
+      Products
       <img class="Pacckagesicons" src="{{ asset('imgs') }}/Group 1000004403.png" alt="" />
       <img class="PacckagesQR" src="{{ asset('imgs') }}/Frame 1321315269.png" alt="" />
     </div>

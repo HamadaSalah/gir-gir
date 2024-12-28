@@ -286,7 +286,6 @@ class HomeController extends Controller
                 "phone_numbers" => $request->phone_numbers,
                 'discount' => $discount
             ]);
-
         }
         return redirect()->route('myCart');
 

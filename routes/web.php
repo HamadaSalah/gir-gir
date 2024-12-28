@@ -11,6 +11,7 @@ use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripePaymentController;
+use App\Models\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,11 @@ Route::view('/cookie-policy', 'cookie-policy')->name('cookie');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/services', 'services')->name('services');
+Route::get('/products', function(){
+
+    
+    return view('services', ['services' => Service::all()]);
+})->name('products');
 Route::view('/faq', 'faq')->name('faq');
 
 // Weddings Section

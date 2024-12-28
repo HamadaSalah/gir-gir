@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $provider->name }} Services</title>
+    <title>{{ $provider->name }} Products</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/NewBorn.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -27,7 +27,7 @@
                                 <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
-                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                                <a class="nav-link p-0" href="{{ Route('products') }}">Products</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
                                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>

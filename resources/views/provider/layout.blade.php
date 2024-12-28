@@ -89,7 +89,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                         <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
                     </li>
                     <li class="nav-item px-4 text-nowrap">
-                        <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                        <a class="nav-link p-0" href="{{ Route('products') }}">Products</a>
                     </li>
                     <li class="nav-item px-4 text-nowrap">
                         <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
@@ -270,7 +270,7 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
           <img class="vector-item" src="{{ asset('imgs/material-symbols_home.png') }}">
           FullPage</a>
       <a class=" {{ request()->routeIs('provider.reviews') ? 'active' : '' }}" href="{{ route('provider.reviews', ['provider' => $provider]) }}">Reviews</a>
-      <a class=" {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $provider]) }}">Services</a>
+      <a class=" {{ request()->routeIs('provider.services') ? 'active' : '' }}" href="{{ route('provider.services', ['provider' => $provider]) }}">Products</a>
       <a class=" {{ request()->routeIs('provider.location') ? 'active' : '' }}" href="{{ route('provider.location', ['provider' => $provider]) }}">Location</a>
       <a class=" {{ request()->routeIs('provider.about') ? 'active' : '' }}" href="{{ route('provider.about', ['provider' => $provider]) }}">About</a>
       <a class=" {{ request()->routeIs('provider.packages') ? 'active' : '' }}" href="{{ route('provider.packages', ['provider' => $provider]) }}">Packages</a>
@@ -311,7 +311,7 @@ margin-top: 15px;">{{ $provider->average_rate }}</span>
               <ul>
                 <li><a href="{{ route('about') }}">About</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li><a href="{{ route('services') }}">Services</a></li>
+                <li><a href="{{ route('services') }}">Products</a></li>
                 <li><a href="{{ route('faq') }}">FAQ</a></li>
               </ul>
             </div>

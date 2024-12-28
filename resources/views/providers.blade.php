@@ -34,7 +34,7 @@
                     </p>
                     <p class="card-text text-black fs-14 ls-5 fm-cairo mb-2">
                         Provider Type :
-                        <span class="text-secondary text-black-50"> Company </span>
+                        <span class="text-secondary text-black-50"> {{ $shop->type }} </span>
                     </p>
                     <div class=" ">
                         <a href="{{ Route('provider.show',  $shop->id) }}" class="btn btn-primary fm-cairo py-1 px-2 rounded-2" style="float: right">Discover now</a>

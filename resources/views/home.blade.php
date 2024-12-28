@@ -700,7 +700,7 @@
             </button></a>
         </div>
         <h5 class="pb-4 border-bottom mb-3 position-relative services__heading">
-            services
+            Products
         </h5>
         <section class="splide services__slider--one container" aria-label="Splide Basic HTML Example">
             <div class="splide__track">

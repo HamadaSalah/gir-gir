@@ -35,7 +35,7 @@
                                 <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
-                                <a class="nav-link p-0" href="{{ Route('all-packages') }}">Products</a>
+                                <a class="nav-link p-0" href="{{ Route('products') }}">Products</a>
                             </li>
                             <li class="nav-item px-4 text-nowrap">
                                 <a class="nav-link p-0" href="{{ Route('providers') }}">Providers</a>
@@ -457,7 +457,7 @@
                   <ul>
                     <li><a href="{{ route('about') }}">About</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
-                    <li><a href="{{ route('services') }}">Services</a></li>
+                    <li><a href="{{ route('services') }}">Products</a></li>
                     <li><a href="{{ route('faq') }}">FAQ</a></li>
                   </ul>
                 </div>
