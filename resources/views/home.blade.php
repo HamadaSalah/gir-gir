@@ -464,9 +464,9 @@
             </div>
           </section>
           <div class="d-flex justify-content-end">
-            <button class="btn btn-primary fw-light py-1 px-3 mt-4">
+            <a href="{{ Route('all-packages') }}"><button class="btn btn-primary fw-light py-1 px-3 mt-4">
               Find out more &rarr;
-            </button>
+            </button></a>
           </div>
         </div>
       </section>

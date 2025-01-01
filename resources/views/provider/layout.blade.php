@@ -82,8 +82,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse text-center text-lg-start" id="navbarNav">
-              <a href="{{ Route('home') }}" class="navbar-brand ps-5">
-                  <img src="{{ asset('imgs') }}/logo.svg" alt="brand logo" /></a>
+              {{-- <a href="{{ Route('home') }}" class="navbar-brand ps-5">
+                  <img src="{{ asset('imgs') }}/logo.svg" alt="brand logo" /></a> --}}
                   <ul class="navbar-nav align-items-center">
                     <li class="nav-item active px-4 text-nowrap">
                         <a class="nav-link home__main p-0" href="{{ Route('home') }}">Home</a>
