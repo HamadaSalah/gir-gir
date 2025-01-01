@@ -123,7 +123,7 @@
                             </p>
                             <p class="card-text text-black fs-14 ls-5 fm-cairo mb-1">
                                 Provider Type :
-                                <span class="text-secondary text-black-50"> {{ $service->provider->type }} </span>
+                                <span class="text-secondary text-black-50"> {{ $package->provider->type }} </span>
                             </p>
                             <p class="fm-cairo mb-0">
                                 from/<span class="text-primary fw-medium">{{ $package->cost }}$</span>
