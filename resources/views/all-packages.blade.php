@@ -171,7 +171,7 @@
                                         Shop
                                         :
                                     </span>
-                                    {{ $service->packages[0]?->provider?->name }}
+                                    {{ $service->provider?->name }}
                                 </p>
                                 <p class="card-text text-black fs-14 ls-5 fm-cairo mb-2">
                                     Provider Type :
